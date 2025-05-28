@@ -38,7 +38,12 @@
     border-bottom: solid 2px;
   }
 
+  .nav a p {
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+
   .nav a p:hover {
-    text-align: end;
+    transform: translateX(5px);
   }
 </style>

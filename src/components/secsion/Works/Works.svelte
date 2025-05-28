@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-works">
+<section class="section-works section-height">
   <div>
     <p>Works</p>
   </div>
@@ -10,7 +10,6 @@
 <style>
   .section-works {
     background-color: var(--peach-fuzz);
-    height: 95vh;
     padding: 3rem;
   }
 </style>

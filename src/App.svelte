@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Footer from "./components/common/Footer.svelte";
+  import Header from "./components/common/Header.svelte";
   import Navbar from "./components/common/Navbar.svelte";
   import Info from "./components/secsion/Info/Info.svelte";
   import Me from "./components/secsion/Me/Me.svelte";
@@ -7,7 +9,8 @@
 </script>
 
 <main>
-  <section class="page-top">
+  <Header />
+  <section class="page-top section-height">
     <!-- max-width: 768px / none display -->
     <Navbar />
     <div class="names">
@@ -22,16 +25,20 @@
   <Works />
   <Ramble />
   <Info />
+  <Footer />
 </main>
 
 <style>
   .page-top {
     background-color: var(--cactus-green);
-    height: 95vh;
-    padding: 3rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
+  }
+  @media (max-width: 768px) {
+    .page-top {
+      padding-top: 10rem;
+    }
   }
   .names {
     display: flex;
@@ -46,16 +53,16 @@
     font-weight: var(--font-weight-bold);
   }
   .names .name-kana {
-    font-family: "Outfit";
+    font-family: var(--font-en);
     font-weight: 600;
     text-align: center;
     font-size: 1.3em;
   }
   .links {
     margin: 0 auto;
-    font-family: "Outfit";
   }
   .github-link {
+    font-family: var(--font-en);
     display: inline-block;
     transform: translateY(0);
     transition: transform 0.2s ease-in-out;

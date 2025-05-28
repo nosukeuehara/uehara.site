@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-me">
+<section class="section-me section-height">
   <div>
     <p>Me</p>
   </div>
@@ -10,7 +10,6 @@
 <style>
   .section-me {
     background-color: var(--turquoise-fresh);
-    height: 95vh;
     padding: 3rem;
   }
 </style>

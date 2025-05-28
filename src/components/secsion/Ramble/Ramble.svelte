@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-ramble">
+<section class="section-ramble section-height">
   <div>
     <p>Ramble</p>
   </div>
@@ -10,7 +10,6 @@
 <style>
   .section-ramble {
     background-color: var(--amber-orange);
-    height: 95vh;
     padding: 3rem;
   }
 </style>

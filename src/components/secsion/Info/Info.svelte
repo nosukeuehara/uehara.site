@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-info">
+<section class="section-info section-height">
   <div>
     <p>Info</p>
   </div>
@@ -10,7 +10,6 @@
 <style>
   .section-info {
     background-color: var(--sunshine-yellow);
-    height: 95vh;
     padding: 3rem;
   }
 </style>

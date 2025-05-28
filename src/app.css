@@ -22,6 +22,7 @@
   --cedar-wood: #77602f;
   --turquoise-fresh: #73bfc3;
   --deep-ocean: #2a7b91;
+  --fuzz-purple: #f393e3;
   --plum-purple: #593159;
 
   --clear-white: #f6f7faff;
@@ -47,6 +48,10 @@
   --font-size-sm: 1rem; /* 16px */
   --font-size-xs: 0.875rem; /* 14px */
   --font-size-xxs: 0.75rem; /* 12px */
+
+  /* font family */
+  --font-en: "Outfit";
+  --font-jp: "Noto Sans JP", sans-serif;
 }
 
 * {
@@ -54,6 +59,7 @@
   padding: 0;
   margin: 0;
   line-height: 1;
+  font-family: var(--font-jp);
 }
 
 a {
@@ -75,16 +81,23 @@ body {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  background-color: var(--sand-dune);
+  border: none;
+  background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.25s;
+  color: var(--clear-white);
 }
-button:hover {
-  background-color: var(--caramel-brown);
+
+ul {
+  list-style: none;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.section-height {
+  height: 95vh;
+  padding: 3rem 0;
+  max-width: 1280px;
+}
+@media (max-width: 768px) {
+  .section-height {
+    height: 500px;
+  }
 }
