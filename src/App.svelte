@@ -2,10 +2,10 @@
   import Footer from "./components/common/Footer.svelte";
   import Header from "./components/common/Header.svelte";
   import Navbar from "./components/common/Navbar.svelte";
-  import Info from "./components/secsion/Info/Info.svelte";
-  import Me from "./components/secsion/Me/Me.svelte";
-  import Ramble from "./components/secsion/Ramble/Ramble.svelte";
-  import Works from "./components/secsion/Works/Works.svelte";
+  import Info from "./components/section/Info/Info.svelte";
+  import Me from "./components/section/Me/Me.svelte";
+  import Ramble from "./components/section/Ramble/Ramble.svelte";
+  import Works from "./components/section/Works/Works.svelte";
 </script>
 
 <main>
