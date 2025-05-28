@@ -15,11 +15,11 @@
         <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
       </div>
     </div>
-    <div class="please-down">
-      <p class="please-down--text">下</p>
-      <div></div>
-    </div>
   </section>
+  <div class="please-down">
+    <p class="please-down--text">下</p>
+    <div></div>
+  </div>
 </div>
 
 <style>
@@ -48,7 +48,7 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      padding: 50% 0 90%;
+      padding-top: 50%;
       gap: 50px;
     }
   }
@@ -86,6 +86,9 @@
     font-family: var(--font-jp);
     font-size: var(--font-size-sm);
     text-align: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
   }
 
   .please-down--text {
