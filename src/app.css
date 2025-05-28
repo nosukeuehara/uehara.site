@@ -1,0 +1,90 @@
+:root {
+  /* color pallet */
+  --peach-fuzz: #f3cba5;
+  --coral-blush: #e98d71;
+  --sunset-orange: #e0603d;
+  --tomato-red: #d03d36;
+  --crimson-wine: #901c1c;
+
+  --sunshine-yellow: #f9d742;
+  --melon-yellow: #dfbb4c;
+  --tangerine-orange: #e09028;
+  --amber-orange: #eb8e1f;
+  --pumpkin-orange: #e0711a;
+
+  --sage-green: #aaae77;
+  --cactus-green: #a1b84b;
+  --olive-leaf: #799633;
+  --grass-green: #388a27;
+  --pine-forest: #264822;
+
+  --mud-brown: #84723d;
+  --cedar-wood: #77602f;
+  --turquoise-fresh: #73bfc3;
+  --deep-ocean: #2a7b91;
+  --plum-purple: #593159;
+
+  --clear-white: #f6f7faff;
+  --vanilla-cream: #f7eac6;
+  --sand-dune: #d3b275;
+  --caramel-brown: #a37730;
+  --chocolate-bark: #653a1f;
+  --dark-soil: #2e1e0d;
+
+  /* font weight */
+  --font-weight-heavy: 700;
+  --font-weight-bold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 200;
+
+  /* font size */
+  --font-size-xxl: 2.5rem; /* 40px */
+  --font-size-xl: 2rem; /* 32px */
+  --font-size-lg: 1.5rem; /* 24px */
+  --font-size-md: 1.25rem; /* 20px */
+  --font-size-sm: 1rem; /* 16px */
+  --font-size-xs: 0.875rem; /* 14px */
+  --font-size-xxs: 0.75rem; /* 12px */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+a {
+  font-weight: 500;
+  color: var(--clear-white);
+  text-decoration: inherit;
+  transition: color 0.25s;
+}
+
+body {
+  margin: 0;
+  color: var(--clear-white);
+  background-color: var(--clear-white);
+  font-weight: 400;
+}
+
+#app {
+  max-width: 1280px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: var(--sand-dune);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+button:hover {
+  background-color: var(--caramel-brown);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
