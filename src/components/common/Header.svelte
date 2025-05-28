@@ -63,10 +63,6 @@
     font-weight: var(--font-weight-bold);
     transform: rotate(0deg);
     transition: transform 0.3s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: inherit;
   }
 
   .header-btn--clicked {
@@ -148,10 +144,5 @@
       transform: translateY(0);
       opacity: 1;
     }
-  }
-
-  /* メニューが開いている時にスクロールを無効化 */
-  :global(body.menu-open) {
-    overflow: hidden;
   }
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import Footer from "./components/common/Footer.svelte";
   import Header from "./components/common/Header.svelte";
-  import Navbar from "./components/common/Navbar.svelte";
+  import Pagetop from "./components/section/Pagetop/Pagetop.svelte";
   import Info from "./components/section/Info/Info.svelte";
   import Me from "./components/section/Me/Me.svelte";
   import Ramble from "./components/section/Ramble/Ramble.svelte";
@@ -10,90 +10,10 @@
 
 <main>
   <Header />
-  <section class="page-top section-height">
-    <!-- max-width: 768px / none display -->
-    <Navbar />
-    <div class="names">
-      <p class="name-kanji">上 / 原</p>
-      <p class="name-kana">ue / hara</p>
-    </div>
-    <div class="links">
-      <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
-    </div>
-    <div>
-      <div class="please-down">
-        <p class="please-down--text">下</p>
-        <div></div>
-      </div>
-    </div>
-  </section>
+  <Pagetop />
   <Me />
   <Works />
   <Ramble />
   <Info />
   <Footer />
 </main>
-
-<style>
-  .page-top {
-    background-color: var(--cactus-green);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(0px, 10vh, 5rem);
-    min-height: 330px;
-    overflow: hidden;
-  }
-  @media (max-width: 768px) {
-    .page-top {
-      padding-top: 10rem;
-    }
-  }
-  .names {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0 auto;
-    width: fit-content;
-  }
-  .names .name-kanji {
-    font-size: 2em;
-    font-weight: var(--font-weight-bold);
-  }
-  .names .name-kana {
-    font-family: var(--font-en);
-    font-weight: 600;
-    text-align: center;
-    font-size: 1.3em;
-  }
-  .links {
-    margin: 0 auto;
-  }
-  .github-link {
-    font-family: var(--font-en);
-    display: inline-block;
-    transform: translateY(0);
-    transition: transform 0.2s ease-in-out;
-  }
-  .github-link:hover {
-    transform: translateY(2px);
-  }
-  .please-down {
-    margin-top: 10px;
-    font-family: var(--font-jp);
-    font-size: var(--font-size-sm);
-    text-align: center;
-  }
-
-  .please-down--text {
-    padding-bottom: 1rem;
-  }
-  .please-down div::after {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 30px;
-    border: 1px solid var(--clear-white);
-    margin: 0 auto;
-  }
-</style>
