@@ -20,6 +20,12 @@
     <div class="links">
       <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
     </div>
+    <div>
+      <div class="please-down">
+        <p class="please-down--text">下</p>
+        <div></div>
+      </div>
+    </div>
   </section>
   <Me />
   <Works />
@@ -33,7 +39,9 @@
     background-color: var(--cactus-green);
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: clamp(0px, 10vh, 5rem);
+    min-height: 330px;
+    overflow: hidden;
   }
   @media (max-width: 768px) {
     .page-top {
@@ -69,5 +77,23 @@
   }
   .github-link:hover {
     transform: translateY(2px);
+  }
+  .please-down {
+    margin-top: 10px;
+    font-family: var(--font-jp);
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+
+  .please-down--text {
+    padding-bottom: 1rem;
+  }
+  .please-down div::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 30px;
+    border: 1px solid var(--clear-white);
+    margin: 0 auto;
   }
 </style>

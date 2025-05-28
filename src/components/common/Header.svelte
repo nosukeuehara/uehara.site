@@ -40,9 +40,13 @@
         on:keydown|stopPropagation
       >
         <div class="menu-nav">
-          <div><a href="/works" on:click={closeMenu}>わあくす</a></div>
-          <div><a href="/ramble" on:click={closeMenu}>言・こと</a></div>
-          <div><a href="/info" on:click={closeMenu}>しらせ</a></div>
+          <div><a href="/works" on:click={closeMenu}>創作</a></div>
+          <div>
+            <a href="/ramble" on:click={closeMenu}>言・こと</a>
+          </div>
+          <div>
+            <a href="/me" on:click={closeMenu}>私</a>
+          </div>
         </div>
       </div>
     </div>
@@ -98,32 +102,32 @@
     height: 100vh;
     z-index: 900;
     background-color: var(--cactus-green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     animation: fadeIn 0.3s ease;
   }
 
   .menu-content {
-    padding-left: 1rem;
-    width: 100vw;
     animation: slideIn 0.3s ease;
   }
 
   .menu-nav {
+    position: relative;
+    padding: 200px 1.5rem;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    list-style: none;
-    gap: 1.7rem;
-    padding: 0;
-    margin: 0;
+    gap: 2rem;
   }
 
   .menu-nav a {
-    font-family: var(--font-jp);
+    font-family: var(--font-en);
     color: var(--clear-white);
     font-size: 1.5em;
     display: block;
+  }
+
+  .menu-nav div {
+    border-bottom: 1px solid var(--clear-white);
+    padding-bottom: 0.25rem;
   }
 
   @keyframes fadeIn {

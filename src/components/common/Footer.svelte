@@ -11,5 +11,6 @@
   .footer {
     background-color: var(--fuzz-purple);
     padding: 3rem;
+    height: 100vh;
   }
 </style>

@@ -72,12 +72,12 @@ a {
 body {
   margin: 0;
   color: var(--clear-white);
-  background-color: var(--clear-white);
+  background-color: var(--cactus-green);
   font-weight: 400;
 }
 
 #app {
-  max-width: 1280px;
+  width: 100vw;
 }
 
 button {
@@ -94,10 +94,11 @@ ul {
 .section-height {
   height: 95vh;
   padding: 3rem 0;
-  max-width: 1280px;
+  margin: 0 auto;
+  width: 100vw;
 }
 @media (max-width: 768px) {
   .section-height {
-    height: 500px;
+    height: 700px;
   }
 }
