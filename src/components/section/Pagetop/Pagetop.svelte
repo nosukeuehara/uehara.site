@@ -2,25 +2,20 @@
   import Navbar from "../../common/Navbar.svelte";
 </script>
 
-<div>
-  <section class="page-top section-height">
-    <!-- max-width: 768px / none display -->
-    <Navbar />
-    <div class="pagetop-contents">
-      <div class="names">
-        <p class="name-kanji">上 / 原</p>
-        <p class="name-kana">ue / hara</p>
-      </div>
-      <div class="links">
-        <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
-      </div>
+<section class="page-top section-height">
+  <!-- max-width: 768px / none display -->
+  <Navbar />
+  <div class="pagetop-contents">
+    <div class="names">
+      <p class="name-kanji">上 / 原</p>
+      <p class="name-kana">ue / hara</p>
     </div>
-  </section>
-  <div class="please-down">
-    <p class="please-down--text">下</p>
-    <div></div>
+    <div class="links">
+      <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
+    </div>
   </div>
-</div>
+  <div class="please-scroll">{"＜＜　"}スクロール{"　＜＜"}</div>
+</section>
 
 <style>
   .page-top {
@@ -39,7 +34,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: calc(100vh / 3);
+    gap: 30px;
     padding-top: calc(100vh / 5);
   }
   @media (max-width: 768px) {
@@ -82,42 +77,21 @@
   .github-link:hover {
     transform: translateY(2px);
   }
-  .please-down {
-    font-family: var(--font-jp);
-    font-size: var(--font-size-sm);
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+  .please-scroll {
+    display: none;
   }
-
-  .please-down--text {
-    padding-bottom: 1rem;
+  @media (max-width: 768px) {
+    .please-scroll {
+      font-family: var(--font-jp);
+      display: block;
+      text-align: center;
+      position: absolute;
+      background-color: transparent;
+      color: var(--clrear-white);
+      width: 200px;
+      bottom: 13%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(270deg);
+    }
   }
-  .please-down::after {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 40px;
-    border: 1px solid var(--clear-white);
-    margin: 0 auto;
-    /* animation: growLine 2s ease-in-out infinite; */
-  }
-  /* 
-  @keyframes growLine {
-    0% {
-      height: 0px;
-      opacity: 0;
-      top: 0;
-    }
-    50% {
-      height: 20px;
-      opacity: 0.5;
-      top: 20px;
-    }
-    100% {
-      height: 40px;
-      opacity: 1;
-    }
-  } */
 </style>
