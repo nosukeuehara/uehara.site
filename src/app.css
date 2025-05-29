@@ -111,5 +111,5 @@ ul {
 .perSection-title-base {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  padding-left: calc(var(--font-size-xl) * 2.5);
+  /* padding-left: calc(var(--font-size-xl) * 2.5); */
 }
