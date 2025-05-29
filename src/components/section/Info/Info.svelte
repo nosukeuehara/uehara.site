@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-info section-height">
+<section class="section-info section-style-base">
   <div>
     <p>Info</p>
   </div>

@@ -59,7 +59,7 @@
   }
 
   .header-btn {
-    font-size: 2em;
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     transform: rotate(0deg);
     transition: transform 0.3s ease;
@@ -77,7 +77,7 @@
       background-color: transparent;
       display: flex;
       justify-content: space-between;
-      padding: 0 1.5rem;
+      padding: 0 24px;
       height: 100px;
       align-items: center;
       z-index: 999;
@@ -85,7 +85,7 @@
   }
 
   p {
-    font-size: 2em;
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     margin: 0;
   }

@@ -2,7 +2,7 @@
   import Navbar from "../../common/Navbar.svelte";
 </script>
 
-<section class="page-top section-height">
+<section class="page-top section-style-base">
   <!-- max-width: 768px / none display -->
   <Navbar />
   <div class="pagetop-contents">
@@ -78,7 +78,27 @@
     transform: translateY(2px);
   }
   .please-scroll {
-    display: none;
+    position: relative;
+    font-family: var(--font-jp);
+    display: block;
+    text-align: center;
+    position: absolute;
+    background-color: transparent;
+    color: var(--clrear-white);
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+  }
+  .please-scroll::after {
+    content: "";
+    display: block;
+    width: 0;
+    border: 1px solid var(--clear-white);
+    height: 50px;
+    font-size: 1.5em;
+    font-weight: var(--font-weight-bold);
+    margin-top: 10px;
+    transform: translateX(calc(var(--font-size-sm) / 2 - 2px));
   }
   @media (max-width: 768px) {
     .please-scroll {

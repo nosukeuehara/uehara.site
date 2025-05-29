@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="footer section-height">
+<section class="footer section-style-base">
   <div>
     <p>footer</p>
   </div>

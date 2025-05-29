@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<section class="section-ramble section-height">
+<section class="section-ramble section-style-base">
   <div>
     <p>Ramble</p>
   </div>
