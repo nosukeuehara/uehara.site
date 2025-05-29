@@ -14,7 +14,7 @@
       <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
     </div>
   </div>
-  <div class="please-scroll">{"＜＜　"}スクロール{"　＜＜"}</div>
+  <div class="please-scroll">下</div>
 </section>
 
 <style>
@@ -82,16 +82,27 @@
   }
   @media (max-width: 768px) {
     .please-scroll {
+      position: relative;
       font-family: var(--font-jp);
       display: block;
       text-align: center;
       position: absolute;
       background-color: transparent;
       color: var(--clrear-white);
-      width: 200px;
-      bottom: 13%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(270deg);
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+    .please-scroll::after {
+      content: "";
+      display: block;
+      width: 0;
+      border: 1px solid var(--clear-white);
+      height: 50px;
+      font-size: 1.5em;
+      font-weight: var(--font-weight-bold);
+      margin-top: 10px;
+      transform: translateX(calc(var(--font-size-sm) / 2 - 2px));
     }
   }
 </style>
