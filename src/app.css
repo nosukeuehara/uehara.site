@@ -50,8 +50,11 @@
   --font-size-xxs: 0.75rem; /* 12px */
 
   /* font family */
-  --font-en: "Outfit";
+  --font-en: "Outfit", sans-serif;
   --font-jp: "Noto Sans JP", sans-serif;
+
+  /* screen size */
+  --screen-size-xs: 272px;
 }
 
 * {
@@ -64,7 +67,6 @@
 }
 
 a {
-  font-weight: 500;
   color: var(--clear-white);
   text-decoration: inherit;
   transition: color 0.25s;
@@ -74,7 +76,7 @@ body {
   margin: 0;
   color: var(--clear-white);
   background-color: var(--clear-white);
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 
 #app {
@@ -111,5 +113,8 @@ ul {
 .perSection-title-base {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  /* padding-left: calc(var(--font-size-xl) * 2.5); */
+}
+
+.gl-font-en {
+  font-family: var(--font-en);
 }
