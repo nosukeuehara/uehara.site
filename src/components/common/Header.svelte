@@ -1,5 +1,6 @@
 <script lang="ts">
   let isMenuOpen = false;
+  const href = "/";
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -12,7 +13,7 @@
 
 <div>
   <header class="header">
-    <p>上 / 原</p>
+    <a class="home-text" {href}>上 / 原</a>
     <button
       class="header-btn"
       class:header-btn--clicked={isMenuOpen}
@@ -78,13 +79,13 @@
       display: flex;
       justify-content: space-between;
       padding: 0 24px;
-      height: 100px;
+      height: 75px;
       align-items: center;
       z-index: 999;
     }
   }
 
-  p {
+  .home-text {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     margin: 0;
