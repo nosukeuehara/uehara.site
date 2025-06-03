@@ -113,7 +113,7 @@
   }
   .names .name-kana {
     font-family: var(--font-en);
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     font-size: 1.3em;
     animation: none;

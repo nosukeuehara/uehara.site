@@ -31,6 +31,7 @@
   --caramel-brown: #a37730;
   --chocolate-bark: #653a1f;
   --dark-soil: #2e1e0d;
+  --dark: #3f3d38;
 
   /* font weight */
   --font-weight-heavy: 700;
@@ -81,6 +82,15 @@ body {
 
 #app {
   width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-regular);
 }
 
 button {

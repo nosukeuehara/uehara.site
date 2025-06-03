@@ -41,7 +41,7 @@
         on:keydown|stopPropagation
       >
         <div class="menu-nav">
-          <div><a href="/works" on:click={closeMenu}>創作</a></div>
+          <div><a href="/works" on:click={closeMenu}>集</a></div>
           <div>
             <a href="/ramble" on:click={closeMenu}>言・こと</a>
           </div>

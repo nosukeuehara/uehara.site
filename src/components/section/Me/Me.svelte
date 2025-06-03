@@ -63,7 +63,7 @@
       class:fade-in-up={isProfileVisible}
       bind:this={profileRef}
     >
-      <p class="name">上 原 龍 之 介</p>
+      <h2 class="name">上 原 龍 之 介</h2>
       <p class="job">frontend @ web</p>
     </div>
     <div
@@ -151,6 +151,9 @@
 </section>
 
 <style>
+  * {
+    color: var(--vanilla-cream);
+  }
   .section-me {
     background-color: var(--turquoise-fresh);
   }
@@ -221,18 +224,18 @@
     display: block;
     height: 1px;
     width: 100%;
-    margin: 0.5rem 0 2rem;
+    margin: 8px 0 30px;
     background-image: repeating-linear-gradient(
       to right,
-      var(--clear-white),
-      var(--clear-white) 10px,
+      var(--vanilla-cream),
+      var(--vanilla-cream) 10px,
       transparent 10px,
       transparent 20px
     );
   }
   .name {
     font-size: var(--font-size-lg);
-    padding-bottom: 0.2rem;
+    padding-bottom: 3px;
   }
   .job {
     font-family: var(--font-en);
@@ -243,7 +246,7 @@
     font-family: var(--font-jp);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-thin);
-    padding-bottom: 0.8rem;
+    padding-bottom: 15px;
   }
   .skills-container {
     display: flex;
@@ -253,23 +256,23 @@
   .skill-gr-title {
     font-family: var(--font-jp);
     font-size: var(--font-size-sm);
-    padding-bottom: 0.3rem;
+    padding-bottom: 8px;
   }
   .skill-gr-title::before {
     content: "✜";
     display: inline-block;
     font-size: var(--font-size-sm);
-    padding-right: 0.2rem;
+    padding-right: 3px;
   }
   .skills-group {
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 1.7rem;
+    padding-bottom: 27px;
     max-width: 253px;
     width: 100%;
     /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
-    padding-left: calc(var(--font-size-sm) + 0.2rem);
-    column-gap: 0.5rem;
+    padding-left: calc(var(--font-size-sm) + 3px);
+    column-gap: 8px;
   }
   .skills-group p {
     font-family: var(--font-en);
@@ -291,26 +294,26 @@
       font-size: var(--font-size-lg);
     }
     .profile::after {
-      margin: 0.5rem 0 4rem;
+      margin: 8px 0 64px;
     }
     .skillSec-ttl {
       font-size: var(--font-size-xl);
-      padding-bottom: 1.2rem;
+      padding-bottom: 19px;
     }
     .skill-gr-title {
       font-size: var(--font-size-lg);
-      padding-bottom: 1rem;
+      padding-bottom: 16px;
     }
     .skill-gr-title::before {
       font-size: var(--font-size-lg);
-      padding-right: 0.7rem;
+      padding-right: 11px;
     }
     .skills-group {
-      padding-bottom: 3rem;
+      padding-bottom: 48px;
       max-width: 100%;
       /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
-      padding-left: calc(var(--font-size-lg) + 0.7rem);
-      column-gap: 1rem;
+      padding-left: calc(var(--font-size-lg) + 11px);
+      column-gap: 16px;
     }
     .skills-group p {
       font-size: var(--font-size-md);
