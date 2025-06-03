@@ -240,7 +240,7 @@
       font-size: 1.5em;
       font-weight: var(--font-weight-bold);
       margin-top: 10px;
-      transform: translateX(calc(var(--font-size-sm) / 2 - 2px));
+      transform: translateX(calc(var(--font-size-sm) / 2 - 1.6px));
     }
   }
 </style>
