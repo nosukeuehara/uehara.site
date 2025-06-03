@@ -148,6 +148,7 @@
   }
   .section-works {
     background-color: var(--peach-fuzz);
+    min-height: 95vh;
   }
   .section-works-contents {
     width: 100%;

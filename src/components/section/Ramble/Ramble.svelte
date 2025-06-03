@@ -10,6 +10,6 @@
 <style>
   .section-ramble {
     background-color: var(--amber-orange);
-    padding: 3rem;
+    min-height: 95vh;
   }
 </style>

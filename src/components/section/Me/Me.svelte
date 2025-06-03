@@ -156,6 +156,7 @@
   }
   .section-me {
     background-color: var(--turquoise-fresh);
+    min-height: 95vh;
   }
   .profile,
   .skillSec-ttl,

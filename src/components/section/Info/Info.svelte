@@ -10,6 +10,6 @@
 <style>
   .section-info {
     background-color: var(--sunshine-yellow);
-    padding: 3rem;
+    min-height: 95vh;
   }
 </style>
