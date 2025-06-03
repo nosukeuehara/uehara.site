@@ -64,7 +64,7 @@
       bind:this={profileRef}
     >
       <p class="name">上 原 龍 之 介</p>
-      <p class="job">web enginner --frontend--</p>
+      <p class="job">frontend @ web</p>
     </div>
     <div
       class="skillSec-ttl"
@@ -129,7 +129,7 @@
         <div class="skills-group">
           <p>WordPress</p>
           <p>HubSpot</p>
-          <p>other HeadlessCMS..</p>
+          <p>other HeadlessCMS...</p>
         </div>
       </div>
 
@@ -140,7 +140,7 @@
       >
         <div class="skill-gr-title">バックエンド / 他</div>
         <div class="skills-group">
-          <p>AppRouter</p>
+          <p>AppRouter[Next.js]</p>
           <p>Hono.js</p>
           <p>Express</p>
           <p>Docekr</p>
@@ -154,7 +154,6 @@
   .section-me {
     background-color: var(--turquoise-fresh);
   }
-  /* 基本のアニメーション設定 */
   .profile,
   .skillSec-ttl,
   .skills-container,
@@ -203,82 +202,118 @@
     }
   }
 
-  @media (max-width: 768px) {
-    .section-me {
-      background-color: var(--turquoise-fresh);
-      display: grid;
-      justify-items: start;
-    }
+  .section-me {
+    background-color: var(--turquoise-fresh);
+    display: grid;
+    justify-items: start;
+  }
+  .section-me-contents {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .profile::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin: 0.5rem 0 2rem;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--clear-white),
+      var(--clear-white) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+  .name {
+    font-size: var(--font-size-lg);
+    padding-bottom: 0.2rem;
+  }
+  .job {
+    font-family: var(--font-en);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-light);
+  }
+  .skillSec-ttl {
+    font-family: var(--font-jp);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-thin);
+    padding-bottom: 0.8rem;
+  }
+  .skills-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .skill-gr-title {
+    font-family: var(--font-jp);
+    font-size: var(--font-size-sm);
+    padding-bottom: 0.3rem;
+  }
+  .skill-gr-title::before {
+    content: "✜";
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    padding-right: 0.2rem;
+  }
+  .skills-group {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1.7rem;
+    max-width: 253px;
+    width: 100%;
+    /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
+    padding-left: calc(var(--font-size-sm) + 0.2rem);
+    column-gap: 0.5rem;
+  }
+  .skills-group p {
+    font-family: var(--font-en);
+    white-space: nowrap;
+  }
+
+  .skill-group-wrapper {
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
     .section-me-contents {
-      width: 100%;
-    }
-    .profile {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .profile::after {
-      content: "";
-      display: block;
-      height: 1px;
-      width: 100%;
-      margin: 0.5rem 0 2rem;
-      background-image: repeating-linear-gradient(
-        to right,
-        var(--clear-white),
-        var(--clear-white) 10px,
-        transparent 10px,
-        transparent 20px
-      );
+      max-width: 1080px;
     }
     .name {
-      font-size: var(--font-size-lg);
-      padding-bottom: 0.2rem;
+      font-size: var(--font-size-xl);
     }
     .job {
-      font-family: var(--font-en);
-      font-size: var(--font-size-md);
-      font-weight: var(--font-weight-light);
+      font-size: var(--font-size-lg);
+    }
+    .profile::after {
+      margin: 0.5rem 0 4rem;
     }
     .skillSec-ttl {
-      font-family: var(--font-jp);
-      font-size: var(--font-size-md);
-      font-weight: var(--font-weight-thin);
-      padding-bottom: 0.8rem;
-    }
-    .skills-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      font-size: var(--font-size-xl);
+      padding-bottom: 1.2rem;
     }
     .skill-gr-title {
-      font-family: var(--font-jp);
-      font-size: var(--font-size-sm);
-      padding-bottom: 0.3rem;
+      font-size: var(--font-size-lg);
+      padding-bottom: 1rem;
     }
     .skill-gr-title::before {
-      content: "✜";
-      display: inline-block;
-      font-size: var(--font-size-sm);
-      padding-right: 0.2rem;
+      font-size: var(--font-size-lg);
+      padding-right: 0.7rem;
     }
     .skills-group {
-      display: flex;
-      flex-wrap: wrap;
-      padding-bottom: 1.7rem;
-      max-width: 253px;
-      width: 100%;
+      padding-bottom: 3rem;
+      max-width: 100%;
       /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
-      padding-left: calc(var(--font-size-sm) + 0.2rem);
-      column-gap: 0.5rem;
+      padding-left: calc(var(--font-size-lg) + 0.7rem);
+      column-gap: 1rem;
     }
     .skills-group p {
-      font-family: var(--font-en);
-      white-space: nowrap;
-    }
-
-    .skill-group-wrapper {
-      width: 100%;
+      font-size: var(--font-size-md);
     }
   }
 </style>

@@ -99,14 +99,14 @@ ul {
 }
 
 .section-style-base {
-  height: 95vh;
-  width: 100vw;
-  padding: 120px 64px;
+  height: auto;
+  padding: 80px 24px;
 }
-@media (max-width: 768px) {
+
+@media (min-width: 1024px) {
   .section-style-base {
-    height: 100vh;
-    padding: 80px 24px;
+    width: 100vw;
+    padding: 120px 64px;
   }
 }
 
