@@ -64,7 +64,7 @@
       bind:this={profileRef}
     >
       <p class="name">上 原 龍 之 介</p>
-      <p class="job">web enginner frontend</p>
+      <p class="job">web enginner --frontend--</p>
     </div>
     <div
       class="skillSec-ttl"
