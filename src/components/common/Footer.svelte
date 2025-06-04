@@ -12,6 +12,33 @@
     <p class="name-kanji">上 / 原</p>
     <p class="name-kana">ue / hara</p>
   </div>
+  <div class="account-container">
+    <p class="mail">uehara.ryunosuke.06@gmail.com</p>
+    <a
+      class="github"
+      href="https://github.com/nosukeuehara"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+      <svg
+        class="external-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
+      </svg>
+    </a>
+  </div>
   <div class="footer-sitemap">
     <ul class="footer-sitemap-list">
       {#each sitemap as item}
@@ -27,16 +54,12 @@
 <style>
   .footer {
     background-color: var(--fuzz-purple);
-    color: var(--clear-white);
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 250px 0;
   }
-
-  /* 名前セクション */
   .names {
     display: flex;
     flex-direction: column;
@@ -58,10 +81,33 @@
     font-weight: var(--font-weight-bold);
     letter-spacing: 1px;
   }
-
-  /* サイトマップセクション */
+  .account-container {
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .account-container .mail,
+  .github {
+    font-size: var(--font-size-xs);
+  }
+  .github {
+    font-size: var(--font-size-xs);
+    color: var(--clear-white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .external-icon {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    opacity: 0.8;
+  }
   .footer-sitemap {
-    margin-top: 20px;
+    margin-top: 60px;
   }
   .footer-sitemap-list {
     list-style: none;
@@ -72,7 +118,6 @@
     gap: 20px;
     align-items: flex-start;
   }
-
   .footer-sitemap-link {
     font-size: 1.2em;
     color: var(--clear-white);
