@@ -41,12 +41,32 @@
         on:keydown|stopPropagation
       >
         <div class="menu-nav">
-          <div><a href="/works" on:click={closeMenu}>集</a></div>
           <div>
-            <a href="/ramble" on:click={closeMenu}>言・こと</a>
+            <a
+              aria-disabled="true"
+              class="menu-link disabled"
+              href="/works"
+              on:click={closeMenu}>集</a
+            ><span class="coming-soon-label">近日公開</span>
           </div>
+
           <div>
-            <a href="/me" on:click={closeMenu}>私</a>
+            <a
+              class="menu-link disabled"
+              aria-disabled="true"
+              href="/ramble"
+              on:click={closeMenu}>言・こと</a
+            >
+            <span class="coming-soon-label">近日公開</span>
+          </div>
+
+          <div>
+            <a
+              aria-disabled="true"
+              class="menu-link disabled"
+              href="/me"
+              on:click={closeMenu}>私</a
+            ><span class="coming-soon-label">近日公開</span>
           </div>
         </div>
       </div>
@@ -125,6 +145,21 @@
   .menu-nav div {
     border-bottom: 1px solid var(--clear-white);
     padding-bottom: 0.25rem;
+  }
+
+  .menu-link.disabled {
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+
+  .coming-soon-label {
+    display: inline-block;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: 8px;
+    font-style: italic;
   }
 
   @keyframes fadeIn {
