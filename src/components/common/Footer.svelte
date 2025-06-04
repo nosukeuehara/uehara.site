@@ -28,7 +28,7 @@
   .footer {
     background-color: var(--fuzz-purple);
     color: var(--clear-white);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
