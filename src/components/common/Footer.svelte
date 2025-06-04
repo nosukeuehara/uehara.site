@@ -28,12 +28,12 @@
   .footer {
     background-color: var(--fuzz-purple);
     color: var(--clear-white);
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 0;
+    padding: 250px 0;
   }
 
   /* 名前セクション */
