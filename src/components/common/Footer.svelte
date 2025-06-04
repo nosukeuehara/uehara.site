@@ -13,7 +13,9 @@
     <p class="name-kana">ue / hara</p>
   </div>
   <div class="account-container">
-    <p class="mail">uehara.ryunosuke.06@gmail.com</p>
+    <a class="mail" href="mailto:uehara.ryunosuke.06@gmail.com">
+      uehara.ryunosuke.06@gmail.com
+    </a>
     <a
       class="github"
       href="https://github.com/nosukeuehara"
@@ -91,6 +93,9 @@
   .account-container .mail,
   .github {
     font-size: var(--font-size-xs);
+  }
+  .mail {
+    text-decoration: none;
   }
   .github {
     font-size: var(--font-size-xs);
