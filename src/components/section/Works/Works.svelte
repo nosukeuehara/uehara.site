@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  const ueharaLink = "https://nosukeuehara.github.io/uehara.site/";
   const cotoLink =
     "https://coto-git-develop-ryunosuke-ueharas-projects.vercel.app/";
   const works = "/works";
@@ -15,7 +14,6 @@
   let isCotoVisible = false;
   let isWorksPageLinkVisible = false;
 
-  // タイピング効果用の状態
   let titleText = "集";
   let subtitleText = "works";
   let displayTitle = "";

@@ -125,7 +125,6 @@
     width: 100%;
   }
   .quote {
-    margin: 170px 0 0;
     min-height: 170px;
   }
   .quote-text {
