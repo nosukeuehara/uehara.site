@@ -60,10 +60,10 @@
 
     <div
       class="quote-wrapper"
-      class:fade-in-up={isTitleVisible}
+      class:fade-in-up={isQuoteVisible}
       bind:this={quoteRef}
     >
-      <QuoteDisplay typingSpeed_ms={50} interval_s={20} autoStart={true} />
+      <QuoteDisplay />
     </div>
   </div>
 </section>
