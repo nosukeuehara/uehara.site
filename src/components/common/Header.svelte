@@ -45,6 +45,15 @@
             <a
               aria-disabled="true"
               class="menu-link disabled"
+              href="/me"
+              on:click={closeMenu}>私</a
+            ><span class="coming-soon-label">近日公開</span>
+          </div>
+
+          <div>
+            <a
+              aria-disabled="true"
+              class="menu-link disabled"
               href="/works"
               on:click={closeMenu}>集</a
             ><span class="coming-soon-label">近日公開</span>
@@ -62,11 +71,12 @@
 
           <div>
             <a
-              aria-disabled="true"
               class="menu-link disabled"
-              href="/me"
-              on:click={closeMenu}>私</a
-            ><span class="coming-soon-label">近日公開</span>
+              aria-disabled="true"
+              href="/ramble"
+              on:click={closeMenu}>伝</a
+            >
+            <span class="coming-soon-label">近日公開</span>
           </div>
         </div>
       </div>

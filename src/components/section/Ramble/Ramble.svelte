@@ -58,7 +58,6 @@
       <a {href} aria-disabled="true" class="coto2-link disabled">→ 言・こと</a>
     </div>
 
-    <!-- 名言コンポーネントを使用 -->
     <div
       class="quote-wrapper"
       class:fade-in-up={isTitleVisible}
