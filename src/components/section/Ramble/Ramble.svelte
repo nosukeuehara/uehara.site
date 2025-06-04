@@ -54,7 +54,7 @@
     padding: 40px 0 20px;
   }
   .coto2-link {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     display: flex;
     justify-content: center;
     padding-right: 7px;
