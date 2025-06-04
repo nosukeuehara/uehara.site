@@ -22,9 +22,13 @@
   let timer: ReturnType<typeof setInterval>;
   let isPaused = false;
 
+  const API_URL = import.meta.env.PROD
+    ? "https://meigen.doodlenote.net/api/json.php"
+    : "/api/meigen";
+
   async function fetchQuote(): Promise<Array<Quote>> {
     try {
-      const res = await fetch("/api/meigen");
+      const res = await fetch(API_URL);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
       return data;
