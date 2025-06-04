@@ -120,7 +120,7 @@
 
     <div
       class="work-coto"
-      class:slide-in-right={isCotoVisible}
+      class:slide-in-left={isCotoVisible}
       bind:this={cotoRef}
     >
       <h3 class="work-title">coto</h3>
@@ -129,7 +129,7 @@
         />
         インターネットが得意じゃない人たちでも直感的に使えるよう、シンプルでわかりやすいデザインを意識しました。<br
         />
-        今後も機能の改善を進め、よりやさしいサービスにします。
+        現在も開発中。
       </p>
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
@@ -148,7 +148,7 @@
   }
   .section-works {
     background-color: var(--peach-fuzz);
-    min-height: 95vh;
+    min-height: 100vh;
   }
   .section-works-contents {
     width: 100%;
@@ -173,10 +173,6 @@
   .slide-in-left {
     opacity: 1;
     animation: slideInLeft 0.8s ease-out forwards;
-  }
-  .slide-in-right {
-    opacity: 1;
-    animation: slideInRight 0.8s ease-out forwards;
   }
   @keyframes slideInLeft {
     from {

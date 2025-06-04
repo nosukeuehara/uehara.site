@@ -151,12 +151,9 @@
 </section>
 
 <style>
-  * {
-    color: var(--vanilla-cream);
-  }
   .section-me {
     background-color: var(--turquoise-fresh);
-    min-height: 95vh;
+    min-height: 100vh;
   }
   .profile,
   .skillSec-ttl,
@@ -228,8 +225,8 @@
     margin: 8px 0 30px;
     background-image: repeating-linear-gradient(
       to right,
-      var(--vanilla-cream),
-      var(--vanilla-cream) 10px,
+      var(--clear-white),
+      var(--clear-white) 10px,
       transparent 10px,
       transparent 20px
     );
