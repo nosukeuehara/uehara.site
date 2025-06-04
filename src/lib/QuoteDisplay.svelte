@@ -36,7 +36,7 @@
     }
 
     try {
-      const res = await fetch(`${API_URL}?c=${SIZE}`);
+      const res = await fetch(`${API_URL}meigen?c=${SIZE}`);
       const data = await res.json();
       localStorage.setItem(
         STORAGE_KEY,
