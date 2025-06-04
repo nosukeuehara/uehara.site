@@ -71,37 +71,9 @@
     padding: 80px 0;
   }
 
-  /* テキストのみの無機質なリスト表示 */
-  .release-note-list-wrapper {
-    list-style: none;
-    padding: 0 16px;
-    margin: 0;
-  }
-
-  .release-note-item {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--pine-forest);
-  }
-
-  .release-note-link {
-    text-decoration: none;
-    color: var(--pine-forest);
-    font-size: 14px;
-    display: inline-block;
-    transition: all 0.2s ease;
-  }
-
-  .release-note-link:hover {
-    text-decoration: underline;
-    opacity: 0.7;
-  }
-
   @media (min-width: 768px) {
-    .release-note-list-wrapper {
-      padding: 0 32px;
-    }
-    .release-note-link {
-      font-size: 15px;
+    .section-info-contents {
+      max-width: 1080px;
     }
   }
 </style>
