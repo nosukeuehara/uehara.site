@@ -1,6 +1,6 @@
 <script lang="ts">
   let isMenuOpen = false;
-  const href = "/";
+  const BASE_URL = import.meta.env.VITE_BASE_URL!;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -13,7 +13,7 @@
 
 <div>
   <header class="header">
-    <a class="home-text" {href}>上 / 原</a>
+    <a class="home-text" href={BASE_URL}>上 / 原</a>
     <button
       class="header-btn"
       class:header-btn--clicked={isMenuOpen}
