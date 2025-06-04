@@ -115,7 +115,6 @@
         />
         創作物や趣味の写真、なんとなく書いた文章などを掲載してます。
       </p>
-      <a class="link link-uehara" href={ueharaLink}>上 / 原</a>
     </div>
 
     <div
@@ -129,15 +128,16 @@
         />
         インターネットが得意じゃない人たちでも直感的に使えるよう、シンプルでわかりやすいデザインを意識しました。<br
         />
-        現在も開発中。
+        より易しいを考えて現在も開発中。
       </p>
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
     <a
-      class="work-page-link"
+      class="work-page-link disabled"
+      aria-disabled="true"
       href={works}
       class:slide-in-left={isWorksPageLinkVisible}
-      bind:this={worksPageLinkRef}>創作一覧</a
+      bind:this={worksPageLinkRef}>→ 創作一覧</a
     >
   </div>
 </section>
@@ -319,6 +319,12 @@
     font-size: var(--font-size-sm);
     color: var(--dark);
     justify-content: flex-end;
+  }
+  .work-page-link.disabled {
+    cursor: not-allowed;
+    opacity: 0.6 !important;
+    text-decoration: none;
+    pointer-events: none;
   }
   @media (min-width: 1024px) {
     .section-works-contents {
