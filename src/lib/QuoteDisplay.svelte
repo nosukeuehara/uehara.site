@@ -82,7 +82,7 @@
   function copyQuote() {
     const text = `${displayed} ${author}`;
     navigator.clipboard.writeText(text).then(() => {
-      alert("名言をコピーしました！");
+      alert("名言をコピーしました");
     });
   }
 
@@ -124,24 +124,20 @@
   .quote-container {
     width: 100%;
   }
-
   .quote {
     margin: 170px 0 0;
     min-height: 170px;
   }
-
   .quote-text {
     font-family: "Courier New", Courier, monospace;
     margin-bottom: 20px;
   }
-
   .quote-author {
     font-size: var(--font-size-xs);
     display: flex;
     justify-content: flex-end;
     font-style: italic;
   }
-
   .quote-controls {
     display: flex;
     gap: 10px;
@@ -149,11 +145,16 @@
     align-items: center;
     margin-top: 20px;
   }
-
   .quote-controls button {
     display: flex;
     border: none;
     font-size: var(--font-size-xs);
     cursor: pointer;
+  }
+  @media (min-width: 1024px) {
+    .quote-container {
+      width: 40%;
+      margin: 0 auto;
+    }
   }
 </style>

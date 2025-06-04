@@ -65,4 +65,9 @@
     text-decoration: none;
     pointer-events: none;
   }
+  @media (min-width: 1024px) {
+    .section-ramble-contents {
+      max-width: 1080px;
+    }
+  }
 </style>

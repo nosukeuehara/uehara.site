@@ -10,6 +10,6 @@
 <style>
   .section-info {
     background-color: var(--sunshine-yellow);
-    min-height: 95vh;
+    min-height: 100vh;
   }
 </style>
