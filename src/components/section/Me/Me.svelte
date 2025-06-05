@@ -259,6 +259,9 @@
     font-size: var(--font-size-sm);
     padding-bottom: 2rem;
   }
+  .live-in p {
+    font-size: var(--font-size-sm);
+  }
   .skillSec-ttl {
     font-family: var(--font-jp);
     font-size: var(--font-size-md);
@@ -310,7 +313,7 @@
     .job {
       font-size: var(--font-size-lg);
     }
-    .live-in {
+    .live-in p {
       font-size: var(--font-size-md);
     }
     .skillSec-ttl {
