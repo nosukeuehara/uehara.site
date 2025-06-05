@@ -66,7 +66,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
   }
   .names .name-kanji {
     font-size: var(--font-size-xl);

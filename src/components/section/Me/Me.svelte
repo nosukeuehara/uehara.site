@@ -215,6 +215,7 @@
   .profile {
     width: 100%;
     display: flex;
+    margin-bottom: 42px;
     flex-direction: column;
   }
   .profile::after {
@@ -222,7 +223,7 @@
     display: block;
     height: 1px;
     width: 100%;
-    margin: 8px 0 30px;
+    margin-top: 8px;
     background-image: repeating-linear-gradient(
       to right,
       var(--clear-white),
@@ -290,9 +291,6 @@
     }
     .job {
       font-size: var(--font-size-lg);
-    }
-    .profile::after {
-      margin: 8px 0 64px;
     }
     .skillSec-ttl {
       font-size: var(--font-size-xl);

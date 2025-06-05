@@ -109,8 +109,7 @@
       <h3 class="work-title">上 / 原</h3>
       <p class="work-description">
         好きなことを自由にアウトプットするための個人サイト。<br />
-        凡な名字に記号を加えることで、無機質さと余白を感じるデザインにしました。<br
-        />
+        平凡な名字に記号を加えることで、無機質さと余白を感じるデザインに。<br />
         創作物や趣味の写真、なんとなく書いた文章などを掲載してます。
       </p>
     </div>
@@ -126,7 +125,7 @@
         />
         インターネットが得意じゃない人たちでも直感的に使えるよう、シンプルでわかりやすいデザインを意識しました。<br
         />
-        より易しいを考えて現在も開発中。
+        よりやさしいを考えて現在も開発中。
       </p>
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
@@ -156,6 +155,7 @@
   .section-works-title-wrapper {
     opacity: 0;
     transform: translateY(30px);
+    margin-bottom: 42px;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .work-uehara,
@@ -255,7 +255,7 @@
     display: block;
     height: 1px;
     width: 100%;
-    margin: 8px 0 32px;
+    margin-top: 8px;
     background-image: repeating-linear-gradient(
       to right,
       var(--dark),

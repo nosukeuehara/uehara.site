@@ -43,7 +43,7 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    padding-top: calc(100vh / 3);
+    padding-top: calc(100vh / 3.5);
   }
   .navbar-wrapper,
   .names,
@@ -61,7 +61,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
     width: fit-content;
   }
   .links {

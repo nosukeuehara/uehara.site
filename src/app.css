@@ -65,6 +65,7 @@
   line-height: 1;
   font-family: var(--font-jp);
   font-size: var(--font-size-sm);
+  line-height: 1.25;
 }
 
 a {
