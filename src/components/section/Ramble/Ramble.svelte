@@ -80,6 +80,7 @@
   .section-ramble-title-wrapper {
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 42px;
   }
   .section-ramble-title {
     font-size: var(--font-size-lg);
@@ -92,7 +93,7 @@
     display: block;
     height: 1px;
     width: 100%;
-    margin: 8px 0 32px;
+    margin-top: 8px;
     background-image: repeating-linear-gradient(
       to right,
       var(--clear-white),

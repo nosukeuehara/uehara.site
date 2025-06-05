@@ -2,9 +2,11 @@
   import { onMount } from "svelte";
 
   let profileRef: HTMLDivElement;
+  let historyRef: HTMLDivElement;
   let skillSecTtlRef: HTMLDivElement;
   let skillsRef: HTMLDivElement;
   let isProfileVisible = false;
+  let isHistoryVisible = false;
   let isSkillSecTtlVisible = false;
   let isSkillsVisible = false;
   let skillGroups: HTMLDivElement[] = [];
@@ -16,6 +18,8 @@
         entries.forEach((entry) => {
           if (entry.target === profileRef) {
             isProfileVisible = entry.isIntersecting;
+          } else if (entry.target === historyRef) {
+            isHistoryVisible = entry.isIntersecting;
           } else if (entry.target === skillSecTtlRef) {
             isSkillSecTtlVisible = entry.isIntersecting;
           } else if (entry.target === skillsRef) {
@@ -36,6 +40,7 @@
     );
 
     if (profileRef) observer.observe(profileRef);
+    if (historyRef) observer.observe(historyRef);
     if (skillSecTtlRef) observer.observe(skillSecTtlRef);
     if (skillsRef) observer.observe(skillsRef);
 
@@ -65,6 +70,14 @@
     >
       <h2 class="name">上 原 龍 之 介</h2>
       <p class="job">frontend @ web</p>
+    </div>
+    <div
+      class="live-in"
+      class:fade-in-up={isHistoryVisible}
+      bind:this={historyRef}
+    >
+      <p>2001年、宮古島出身</p>
+      <p>東京都在住</p>
     </div>
     <div
       class="skillSec-ttl"
@@ -156,6 +169,7 @@
     min-height: 100vh;
   }
   .profile,
+  .live-in,
   .skillSec-ttl,
   .skills-container,
   .skill-group-wrapper {
@@ -240,6 +254,10 @@
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
+  }
+  .live-in {
+    font-size: var(--font-size-sm);
+    padding-bottom: 2rem;
   }
   .skillSec-ttl {
     font-family: var(--font-jp);

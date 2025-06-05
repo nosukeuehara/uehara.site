@@ -42,12 +42,15 @@
     width: 100%;
     margin: 0 auto;
   }
+  .section-info-title-wrapper {
+    margin-bottom: 42px;
+  }
   .section-info-title-wrapper::after {
     content: "";
     display: block;
     height: 1px;
     width: 100%;
-    margin: 8px 0 30px;
+    margin-top: 8px;
     background-image: repeating-linear-gradient(
       to right,
       var(--pine-forest),
@@ -68,7 +71,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 80px 0;
+    padding: 40px 0;
   }
 
   @media (min-width: 768px) {
