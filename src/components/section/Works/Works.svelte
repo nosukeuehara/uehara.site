@@ -304,12 +304,12 @@
   }
   .work-uehara h3 {
     font-size: var(--font-size-lg);
-    padding-bottom: 8px;
+    padding-bottom: 14px;
   }
   .work-coto h3 {
     font-family: "Lunasima", sans-serif;
     font-size: var(--font-size-lg);
-    padding-bottom: 8px;
+    padding-bottom: 14px;
   }
   .work-page-link {
     display: flex;
