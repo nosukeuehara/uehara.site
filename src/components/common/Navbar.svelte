@@ -3,16 +3,16 @@
 
 <div class="nav-header">
   <nav class="nav">
-    <a href="/me">
+    <a href="/#/me">
       <p>Me</p>
     </a>
-    <a href="/works">
+    <a href="/#/works">
       <p>Works</p>
     </a>
-    <a href="/contact">
+    <a href="/#/ramble">
       <p>Ramble</p>
     </a>
-    <a href="/">
+    <a href="/#/info">
       <p>Info</p>
     </a>
   </nav>

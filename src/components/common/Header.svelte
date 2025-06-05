@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { link } from "svelte-spa-router";
+
   let isMenuOpen = false;
-  const BASE_URL = import.meta.env.VITE_BASE_URL!;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -13,7 +14,7 @@
 
 <div>
   <header class="header">
-    <a class="home-text" href={BASE_URL}>上 / 原</a>
+    <a class="home-text" href="/" use:link>上 / 原</a>
     <button
       class="header-btn"
       class:header-btn--clicked={isMenuOpen}
@@ -42,41 +43,25 @@
       >
         <div class="menu-nav">
           <div>
-            <a
-              aria-disabled="true"
-              class="menu-link disabled"
-              href="/me"
-              on:click={closeMenu}>私</a
-            ><span class="coming-soon-label">近日公開</span>
+            <a class="menu-link" href="/me" use:link on:click={closeMenu}>私</a>
           </div>
 
           <div>
-            <a
-              aria-disabled="true"
-              class="menu-link disabled"
-              href="/works"
-              on:click={closeMenu}>集</a
-            ><span class="coming-soon-label">近日公開</span>
-          </div>
-
-          <div>
-            <a
-              class="menu-link disabled"
-              aria-disabled="true"
-              href="/ramble"
-              on:click={closeMenu}>言・こと</a
+            <a class="menu-link" href="/works" use:link on:click={closeMenu}
+              >集</a
             >
-            <span class="coming-soon-label">近日公開</span>
           </div>
 
           <div>
-            <a
-              class="menu-link disabled"
-              aria-disabled="true"
-              href="/ramble"
-              on:click={closeMenu}>伝</a
+            <a class="menu-link" href="/ramble" use:link on:click={closeMenu}
+              >言・こと</a
             >
-            <span class="coming-soon-label">近日公開</span>
+          </div>
+
+          <div>
+            <a class="menu-link" href="/info" use:link on:click={closeMenu}
+              >伝</a
+            >
           </div>
         </div>
       </div>
@@ -157,19 +142,9 @@
     padding-bottom: 0.25rem;
   }
 
-  .menu-link.disabled {
-    color: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-    cursor: default;
+  .menu-link {
+    color: var(--clear-white);
     text-decoration: none;
-  }
-
-  .coming-soon-label {
-    display: inline-block;
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.7);
-    margin-left: 8px;
-    font-style: italic;
   }
 
   @keyframes fadeIn {

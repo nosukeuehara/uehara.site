@@ -7,7 +7,7 @@
   ];
 </script>
 
-<section class="footer section-style-base">
+<div class="footer">
   <div class="names">
     <p class="name-kanji">上 / 原</p>
     <p class="name-kana">ue / hara</p>
@@ -51,16 +51,17 @@
       {/each}
     </ul>
   </div>
-</section>
+</div>
 
 <style>
   .footer {
     background-color: var(--fuzz-purple);
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 80px 0px;
   }
   .names {
     display: flex;
