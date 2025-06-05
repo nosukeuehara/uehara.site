@@ -132,7 +132,7 @@
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     justify-content: center;
-    padding: 70px 0;
+    padding: 30px 0;
   }
   .fade-in-up {
     opacity: 1;
@@ -151,6 +151,9 @@
   @media (min-width: 1024px) {
     .section-ramble-contents {
       max-width: 1080px;
+    }
+    .quote-wrapper {
+      padding: 70px 0;
     }
   }
 </style>
