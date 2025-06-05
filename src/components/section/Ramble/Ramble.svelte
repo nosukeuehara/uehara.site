@@ -132,7 +132,7 @@
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     justify-content: center;
-    padding: 100px 0;
+    padding: 70px 0;
   }
   .fade-in-up {
     opacity: 1;
