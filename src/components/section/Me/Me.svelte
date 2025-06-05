@@ -310,6 +310,9 @@
     .job {
       font-size: var(--font-size-lg);
     }
+    .live-in {
+      font-size: var(--font-size-md);
+    }
     .skillSec-ttl {
       font-size: var(--font-size-xl);
       padding-bottom: 19px;
