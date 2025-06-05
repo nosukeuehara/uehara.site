@@ -300,11 +300,14 @@
     transform: translateX(3px);
   }
   .work-uehara {
-    padding-bottom: 50px;
+    padding-bottom: 40px;
   }
   .work-uehara h3 {
     font-size: var(--font-size-lg);
     padding-bottom: 14px;
+  }
+  .work-coto {
+    padding-bottom: 40px;
   }
   .work-coto h3 {
     font-family: "Lunasima", sans-serif;
@@ -313,7 +316,7 @@
   }
   .work-page-link {
     display: flex;
-    margin-top: 40px;
+    margin-top: 60px;
     font-size: var(--font-size-sm);
     color: var(--dark);
     justify-content: flex-end;
