@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { link } from "svelte-spa-router";
   const sitemap = [
     { name: "私", link: "/me" },
     { name: "集", link: "/works" },
@@ -45,7 +46,9 @@
     <ul class="footer-sitemap-list">
       {#each sitemap as item}
         <li class="footer-sitemap-item">
-          <a href={item.link} class="footer-sitemap-link">{item.name}</a>
+          <a href={item.link} class="footer-sitemap-link" use:link
+            >{item.name}</a
+          >
         </li>
       {/each}
     </ul>

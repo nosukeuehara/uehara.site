@@ -1,18 +1,19 @@
 <script lang="ts">
+  import { link } from "svelte-spa-router";
 </script>
 
 <div class="nav-header">
   <nav class="nav">
-    <a href="/#/me">
+    <a href="/me" use:link>
       <p>Me</p>
     </a>
-    <a href="/#/works">
+    <a href="/works" use:link>
       <p>Works</p>
     </a>
-    <a href="/#/ramble">
+    <a href="/ramble" use:link>
       <p>Ramble</p>
     </a>
-    <a href="/#/info">
+    <a href="/info" use:link>
       <p>Info</p>
     </a>
   </nav>
