@@ -44,9 +44,8 @@
   <div class="footer-sitemap">
     <ul class="footer-sitemap-list">
       {#each sitemap as item}
-        <li class="footer-sitemap-item disabled">
+        <li class="footer-sitemap-item">
           <a href={item.link} class="footer-sitemap-link">{item.name}</a>
-          <span class="coming-soon-label">近日公開</span>
         </li>
       {/each}
     </ul>
@@ -113,6 +112,7 @@
   }
   .footer-sitemap {
     margin-top: 60px;
+    width: 150px;
   }
   .footer-sitemap-list {
     list-style: none;
@@ -130,20 +130,6 @@
     transition:
       color 0.3s ease,
       transform 0.3s ease;
-    display: inline-block;
-  }
-  .coming-soon-label {
-    display: inline-block;
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.7);
-    margin-left: 8px;
-    font-style: italic;
-  }
-  .footer-sitemap-item.disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-    text-decoration: none;
-    pointer-events: none;
   }
   .footer-sitemap-item {
     width: 100%;
