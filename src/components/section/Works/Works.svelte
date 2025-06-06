@@ -159,6 +159,9 @@
     margin-bottom: 42px;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .section-works-title-wrapper * {
+    line-height: 1;
+  }
   .work-uehara,
   .work-coto {
     opacity: 0;

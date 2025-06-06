@@ -1,9 +1,4 @@
 <script lang="ts">
-  const releaseNotes = [
-    { title: "サイト公開のお知らせ", slug: "site-launch" },
-    { title: "新機能「記録」追加", slug: "new-feature" },
-    { title: "ダークモード対応", slug: "dark-mode" },
-  ];
 </script>
 
 <section class="section-info section-style-base">
@@ -41,6 +36,9 @@
   .section-info-contents {
     width: 100%;
     margin: 0 auto;
+  }
+  .section-info-title-wrapper * {
+    line-height: 1;
   }
   .section-info-title-wrapper {
     margin-bottom: 42px;

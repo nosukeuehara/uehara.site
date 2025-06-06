@@ -77,6 +77,9 @@
     width: 100%;
     margin: 0 auto;
   }
+  .section-ramble-title-wrapper * {
+    line-height: 1;
+  }
   .section-ramble-title-wrapper {
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);

@@ -226,6 +226,9 @@
     width: 100%;
     margin: 0 auto;
   }
+  .profile * {
+    line-height: 1;
+  }
   .profile {
     width: 100%;
     display: flex;
