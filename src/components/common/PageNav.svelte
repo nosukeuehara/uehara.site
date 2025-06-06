@@ -1,27 +1,18 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
+  import { sitemap } from "../../utils";
 </script>
 
 <div class="page-nav">
   <header class="header">
     <a class="home-text" href="/" use:link>上 / 原</a>
-    <div class="menu-nav">
-      <div>
-        <a class="menu-link" href="/me" use:link>私</a>
-      </div>
-
-      <div>
-        <a class="menu-link" href="/works" use:link>集</a>
-      </div>
-
-      <div>
-        <a class="menu-link" href="/ramble" use:link>言・こと</a>
-      </div>
-
-      <div>
-        <a class="menu-link" href="/info" use:link>伝</a>
-      </div>
-    </div>
+    <ul class="menu-nav">
+      {#each sitemap as item}
+        <li>
+          <a href={item.link} class="menu-link" use:link>{item.name}</a>
+        </li>
+      {/each}
+    </ul>
   </header>
 </div>
 

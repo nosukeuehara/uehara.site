@@ -1,22 +1,16 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
+  import { sitemap } from "../../utils";
 </script>
 
 <div class="nav-header">
-  <nav class="nav">
-    <a href="/me" use:link>
-      <p>Me</p>
-    </a>
-    <a href="/works" use:link>
-      <p>Works</p>
-    </a>
-    <a href="/ramble" use:link>
-      <p>Ramble</p>
-    </a>
-    <a href="/info" use:link>
-      <p>Info</p>
-    </a>
-  </nav>
+  <ul class="nav">
+    {#each sitemap as item}
+      <li>
+        <a href={item.link} class="menu-link" use:link>{item.name}</a>
+      </li>
+    {/each}
+  </ul>
 </div>
 
 <style>
@@ -34,17 +28,19 @@
     max-width: 400px;
   }
 
-  .nav a {
+  .nav li {
     padding-bottom: 0.2em;
     border-bottom: solid 2px;
   }
 
-  .nav a p {
+  .nav li a {
+    display: block;
+    width: 100%;
     transform: translateX(0);
     transition: transform 0.3s ease;
   }
 
-  .nav a p:hover {
+  .nav li a:hover {
     transform: translateX(5px);
   }
 </style>

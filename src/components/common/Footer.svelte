@@ -1,11 +1,6 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
-  const sitemap = [
-    { name: "私", link: "/me" },
-    { name: "集", link: "/works" },
-    { name: "言・こと", link: "/ramble" },
-    { name: "伝", link: "/info" },
-  ];
+  import { sitemap } from "../../utils";
 </script>
 
 <div class="footer">
@@ -14,12 +9,12 @@
     <p class="name-kana">ue / hara</p>
   </div>
   <div class="account-container">
-    <a class="mail" href="mailto:uehara.ryunosuke.06@gmail.com">
+    <a class="mail" href={`mailto:${import.meta.env.VITE_EMAIL_ADD}`}>
       uehara.ryunosuke.06@gmail.com
     </a>
     <a
       class="github"
-      href="https://github.com/nosukeuehara"
+      href={import.meta.env.VITE_GITHUB_REPO_URL}
       target="_blank"
       rel="noopener noreferrer"
     >
