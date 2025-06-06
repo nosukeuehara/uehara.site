@@ -141,4 +141,14 @@
     margin: 3px 0 10px;
     border: 1px solid var(--clear-white);
   }
+  .footer-sitemap-list .footer-sitemap-item a {
+    display: block;
+    width: 100%;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .footer-sitemap-list .footer-sitemap-item a:hover {
+    transform: translateX(5px);
+  }
 </style>
