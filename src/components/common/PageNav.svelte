@@ -8,8 +8,8 @@
     <a class="home-text" href="/" use:link>上 / 原</a>
     <ul class="menu-nav">
       {#each sitemap as item}
-        <li>
-          <a href={item.link} class="menu-link" use:link>{item.name}</a>
+        <li class="menu-item">
+          <a href={item.link} class="menu-link" use:link>『 {item.name} 』</a>
         </li>
       {/each}
     </ul>
@@ -48,11 +48,13 @@
 
     .menu-nav {
       display: flex;
-      gap: 2rem;
+      gap: 10px;
     }
 
     .menu-link {
-      font-size: var(--font-size-lg);
+      font-size: var(--font-size-md);
+      width: 100%;
+      display: block;
     }
   }
 </style>
