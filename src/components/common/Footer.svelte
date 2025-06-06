@@ -133,6 +133,7 @@
     transition:
       color 0.3s ease,
       transform 0.3s ease;
+    display: block;
   }
   .footer-sitemap-item {
     width: 100%;
