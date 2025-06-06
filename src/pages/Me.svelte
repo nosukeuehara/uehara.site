@@ -1,21 +1,103 @@
 <script lang="ts">
   import DefaultLayout from "../layout/DefaultLayout.svelte";
+  import { onMount } from "svelte";
+
+  let profileRef: HTMLDivElement;
+  let historyRef: HTMLDivElement;
+  let skillSecTtlRef: HTMLDivElement;
+  let skillsRef: HTMLDivElement;
+  let isProfileVisible = false;
+  let isHistoryVisible = false;
+  let isSkillSecTtlVisible = false;
+  let isSkillsVisible = false;
+  let skillGroups: HTMLDivElement[] = [];
+  let visibleSkillGroups: boolean[] = [];
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === profileRef) {
+            isProfileVisible = entry.isIntersecting;
+          } else if (entry.target === historyRef) {
+            isHistoryVisible = entry.isIntersecting;
+          } else if (entry.target === skillSecTtlRef) {
+            isSkillSecTtlVisible = entry.isIntersecting;
+          } else if (entry.target === skillsRef) {
+            isSkillsVisible = entry.isIntersecting;
+          } else {
+            const index = skillGroups.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              visibleSkillGroups[index] = entry.isIntersecting;
+              visibleSkillGroups = [...visibleSkillGroups];
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (profileRef) observer.observe(profileRef);
+    if (historyRef) observer.observe(historyRef);
+    if (skillSecTtlRef) observer.observe(skillSecTtlRef);
+    if (skillsRef) observer.observe(skillsRef);
+
+    skillGroups.forEach((group, index) => {
+      if (group) {
+        observer.observe(group);
+        visibleSkillGroups[index] = false;
+      }
+    });
+
+    return () => observer.disconnect();
+  });
+
+  function setSkillGroupRef(element: HTMLDivElement, index: number) {
+    if (element) {
+      skillGroups[index] = element;
+    }
+  }
 </script>
 
 <DefaultLayout>
   <div class="section-me">
     <div class="section-me-contents">
-      <div class="profile">
+      <div
+        class="profile"
+        class:fade-in-up={isProfileVisible}
+        bind:this={profileRef}
+      >
         <h2 class="name">上 原 龍 之 介</h2>
         <p class="job">frontend @ web</p>
       </div>
-      <div class="live-in">
+      <div
+        class="live-in"
+        class:fade-in-up={isHistoryVisible}
+        bind:this={historyRef}
+      >
         <p>2001年、宮古島出身</p>
         <p>東京都在住</p>
       </div>
-      <div class="skillSec-ttl">スキル</div>
-      <div class="skills-container">
-        <div class="skill-group-wrapper">
+      <div
+        class="skillSec-ttl"
+        class:fade-in-up={isSkillSecTtlVisible}
+        bind:this={skillSecTtlRef}
+      >
+        スキル
+      </div>
+      <div
+        class="skills-container"
+        class:fade-in-up={isSkillsVisible}
+        bind:this={skillsRef}
+      >
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[0]}
+          use:setSkillGroupRef={0}
+        >
           <div class="skill-gr-title">言語</div>
           <div class="skills-group">
             <p>JavaScript</p>
@@ -25,7 +107,11 @@
           </div>
         </div>
 
-        <div class="skill-group-wrapper">
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[1]}
+          use:setSkillGroupRef={1}
+        >
           <div class="skill-gr-title">フレームワーク</div>
           <div class="skills-group">
             <p>React</p>
@@ -36,7 +122,11 @@
           </div>
         </div>
 
-        <div class="skill-group-wrapper">
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[2]}
+          use:setSkillGroupRef={2}
+        >
           <div class="skill-gr-title">スタイリング</div>
           <div class="skills-group">
             <p>CSS Modules</p>
@@ -45,7 +135,11 @@
           </div>
         </div>
 
-        <div class="skill-group-wrapper">
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[3]}
+          use:setSkillGroupRef={3}
+        >
           <div class="skill-gr-title">CMS</div>
           <div class="skills-group">
             <p>WordPress</p>
@@ -54,7 +148,11 @@
           </div>
         </div>
 
-        <div class="skill-group-wrapper">
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[4]}
+          use:setSkillGroupRef={4}
+        >
           <div class="skill-gr-title">バックエンド / 他</div>
           <div class="skills-group">
             <p>AppRouter[Next.js]</p>
@@ -73,6 +171,22 @@
     background-color: var(--turquoise-fresh);
     min-height: 100vh;
     padding: 100px 24px;
+  }
+  .profile,
+  .live-in,
+  .skillSec-ttl,
+  .skills-container,
+  .skill-group-wrapper {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fade-in-up {
+    opacity: 1;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .slide-in-left {
+    opacity: 1;
+    animation: slideInLeft 0.8s ease-out forwards;
   }
   @keyframes fadeInUp {
     from {
