@@ -6,10 +6,11 @@
   import Footer from "./components/common/Footer.svelte";
 
   import { routes } from "./router";
+  import { scrollToTop } from "./utils";
 </script>
 
 <main>
   <Header />
-  <Router {routes} />
+  <Router {routes} on:routeLoaded={scrollToTop} />
   <Footer />
 </main>
