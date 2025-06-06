@@ -83,10 +83,11 @@
     margin-bottom: 42px;
   }
   .section-ramble-title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    padding-bottom: 3px;
   }
   .section-ramble-subtitle {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
   }
   .section-ramble-title-wrapper::after {
     content: "";
@@ -154,6 +155,12 @@
     }
     .quote-wrapper {
       padding: 70px 0;
+    }
+    .section-ramble-title {
+      font-size: var(--font-size-xl);
+    }
+    .section-ramble-subtitle {
+      font-size: var(--font-size-lg);
     }
   }
 </style>
