@@ -1,0 +1,67 @@
+<script lang="ts">
+  import { link } from "svelte-spa-router";
+</script>
+
+<div class="page-nav">
+  <header class="header">
+    <a class="home-text" href="/" use:link>上 / 原</a>
+    <div class="menu-nav">
+      <div>
+        <a class="menu-link" href="/me" use:link>私</a>
+      </div>
+
+      <div>
+        <a class="menu-link" href="/works" use:link>集</a>
+      </div>
+
+      <div>
+        <a class="menu-link" href="/ramble" use:link>言・こと</a>
+      </div>
+
+      <div>
+        <a class="menu-link" href="/info" use:link>伝</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<style>
+  .page-nav {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .page-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100px;
+      display: flex;
+      padding: 0px 24px;
+    }
+
+    .header {
+      display: flex;
+      height: 100%;
+      width: 1080px;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .home-text {
+      font-size: var(--font-size-xxl);
+      font-weight: var(--font-weight-bold);
+      margin: 0;
+    }
+
+    .menu-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu-link {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>

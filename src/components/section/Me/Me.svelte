@@ -235,7 +235,7 @@
   .profile::after {
     content: "";
     display: block;
-    height: 1px;
+    height: 2px;
     width: 100%;
     margin-top: 8px;
     background-image: repeating-linear-gradient(

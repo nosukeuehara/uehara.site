@@ -71,7 +71,16 @@
 
 <style>
   .header {
-    display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 75px;
+    align-items: center;
+    z-index: 999;
   }
 
   .header-btn {
@@ -83,21 +92,6 @@
 
   .header-btn--clicked {
     transform: rotate(45deg);
-  }
-
-  @media (max-width: 768px) {
-    .header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background-color: transparent;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 75px;
-      align-items: center;
-      z-index: 999;
-    }
   }
 
   .home-text {
@@ -164,6 +158,12 @@
     to {
       transform: translateY(0);
       opacity: 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header {
+      display: none;
     }
   }
 </style>

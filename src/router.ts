@@ -9,7 +9,8 @@ import Info from "./pages/Info.svelte";
 
 // Common Components
 import NotFound from "./components/common/NotFound.svelte";
-
+import DefaultLayout from "./layout/DefaultLayout.svelte";
+DefaultLayout
 export const routes = {
   "/": Home,
   "/me": Me,

@@ -83,15 +83,15 @@
     margin-bottom: 42px;
   }
   .section-ramble-title {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
   .section-ramble-subtitle {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
   }
   .section-ramble-title-wrapper::after {
     content: "";
     display: block;
-    height: 1px;
+    height: 2px;
     width: 100%;
     margin-top: 8px;
     background-image: repeating-linear-gradient(

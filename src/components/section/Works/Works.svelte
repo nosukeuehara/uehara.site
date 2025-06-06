@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
 
   const cotoLink =
@@ -130,10 +131,11 @@
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
     <a
-      class="work-page-link disabled"
+      class="work-page-link"
       aria-disabled="true"
       href={works}
       class:slide-in-left={isWorksPageLinkVisible}
+      use:link
       bind:this={worksPageLinkRef}>→ 創作一覧</a
     >
   </div>
@@ -253,7 +255,7 @@
   .section-works-title-wrapper::after {
     content: "";
     display: block;
-    height: 1px;
+    height: 2px;
     width: 100%;
     margin-top: 8px;
     background-image: repeating-linear-gradient(
@@ -320,12 +322,6 @@
     font-size: var(--font-size-sm);
     color: var(--dark);
     justify-content: flex-end;
-  }
-  .work-page-link.disabled {
-    cursor: not-allowed;
-    opacity: 0.6 !important;
-    text-decoration: none;
-    pointer-events: none;
   }
   @media (min-width: 1024px) {
     .section-works-contents {
