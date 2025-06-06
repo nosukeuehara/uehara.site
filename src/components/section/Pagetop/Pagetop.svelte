@@ -23,7 +23,9 @@
       <p class="name-kana">ue / hara</p>
     </div>
     <div class="links" class:fade-in-delay={isLoaded}>
-      <a class="github-link" href="https://github.com/nosukeuehara">GitHub</a>
+      <a class="github-link" href={import.meta.env.VITE_GITHUB_REPO_URL}
+        >GitHub</a
+      >
     </div>
   </div>
 
