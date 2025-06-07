@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Info from "../../../lib/Info.svelte";
 </script>
 
 <section class="section-info section-style-base">
@@ -9,19 +10,8 @@
     </div>
 
     <div class="release-soon-wrapper">
-      まだお知らせがありません。<br />
-      最新のリリースノートをお楽しみに、、、
+      <Info />
     </div>
-
-    <!-- <ul class="release-note-list-wrapper">
-      {#each releaseNotes.slice(0, 3) as note}
-        <li class="release-note-item">
-          <a href={`/info/${note.slug}`} class="release-note-link">
-            {note.title}
-          </a>
-        </li>
-      {/each}
-    </ul> -->
   </div>
 </section>
 
