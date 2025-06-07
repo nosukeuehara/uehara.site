@@ -17,6 +17,7 @@ export async function fetchInfos() {
       'X-MICROCMS-API-KEY': API_KEY,
     },
   });
+  console.log(`${API_URL}info`);
   const data = await res.json();
   return data.contents;
 }

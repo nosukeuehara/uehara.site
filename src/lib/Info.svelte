@@ -7,6 +7,7 @@
 
   onMount(async () => {
     const res = await fetchInfos();
+    console.log(res);
     articles = res;
   });
 </script>
@@ -18,6 +19,17 @@
       <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
       <p>{article.category.name}</p>
       <h2>{article.title}</h2>
+      <p>{article.description}</p>
     </a>
   {/each}
 </div>
+
+<style>
+  * {
+    color: var(--pine-forest);
+  }
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+</style>

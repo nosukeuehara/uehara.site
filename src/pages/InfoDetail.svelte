@@ -38,7 +38,6 @@
       height={info.eyecatch.height}
     />
     <div class="category"><p>{info.category.name}</p></div>
-    <p><strong>説明:</strong> {info.description}</p>
     <div class="body">{@html info.body}</div>
   </article>
 {/if}
@@ -57,9 +56,12 @@
   }
 
   img {
+    max-width: 300px;
     width: 100%;
     height: auto;
     padding: 1.5rem 0;
+    display: block;
+    margin: 0 auto;
   }
 
   strong {
