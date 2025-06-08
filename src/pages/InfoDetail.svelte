@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fetchSpecificInfo } from "../service/api";
-  import type { Info } from "../types/microcms";
   import { link } from "svelte-spa-router";
 
   interface Props {

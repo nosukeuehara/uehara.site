@@ -1,42 +1,23 @@
 <script lang="ts">
   import DefaultLayout from "../layout/DefaultLayout.svelte";
-  import { onMount } from "svelte";
+  import { createObserver } from "../lib/actions/createObserver";
   import QuoteDisplay from "../../src/lib/QuoteDisplay.svelte";
-  const href = "/ramble";
 
-  let titleRef: HTMLDivElement;
-  let commingsoonRef: HTMLDivElement;
-  let quoteRef: HTMLDivElement;
+  const href = "/ramble";
 
   let isTitleVisible = false;
   let isCommingSoonVisible = false;
   let isQuoteVisible = false;
 
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === titleRef) {
-            isTitleVisible = entry.isIntersecting;
-          } else if (entry.target === commingsoonRef) {
-            isCommingSoonVisible = entry.isIntersecting;
-          } else if (entry.target === quoteRef) {
-            isQuoteVisible = entry.isIntersecting;
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    if (titleRef) observer.observe(titleRef);
-    if (commingsoonRef) observer.observe(commingsoonRef);
-    if (quoteRef) observer.observe(quoteRef);
-
-    return () => observer.disconnect();
-  });
+  const titleObserver = createObserver(
+    (entry) => (isTitleVisible = entry.isIntersecting)
+  );
+  const commingsoonObserver = createObserver(
+    (entry) => (isCommingSoonVisible = entry.isIntersecting)
+  );
+  const quoteObserver = createObserver(
+    (entry) => (isQuoteVisible = entry.isIntersecting)
+  );
 </script>
 
 <DefaultLayout>
@@ -45,7 +26,7 @@
       <div
         class="section-ramble-title-wrapper"
         class:fade-in-up={isTitleVisible}
-        bind:this={titleRef}
+        use:titleObserver
       >
         <h2 class="section-ramble-title">言・こと</h2>
         <p class="section-ramble-subtitle">ramble</p>
@@ -54,7 +35,7 @@
       <div
         class="commingsoon-wrapper"
         class:fade-in-up={isCommingSoonVisible}
-        bind:this={commingsoonRef}
+        use:commingsoonObserver
       >
         <p class="release-soon-text">近日公開</p>
         <a {href} aria-disabled="true" class="coto2-link disabled">→ 言・こと</a
@@ -64,7 +45,7 @@
       <div
         class="quote-wrapper"
         class:fade-in-up={isQuoteVisible}
-        bind:this={quoteRef}
+        use:quoteObserver
       >
         <QuoteDisplay />
       </div>

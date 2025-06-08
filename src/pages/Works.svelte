@@ -1,10 +1,9 @@
 <script lang="ts">
   import DefaultLayout from "../layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
+  import QuoteDisplay from "../../src/lib/QuoteDisplay.svelte";
 
-  const cotoLink =
-    "https://coto-git-develop-ryunosuke-ueharas-projects.vercel.app/";
-  const works = "/works";
+  const href = "/ramble";
 
   let titleRef: HTMLDivElement;
   let ueharaRef: HTMLDivElement;
@@ -125,7 +124,7 @@
           />
           よりやさしいを考えて現在も開発中。
         </p>
-        <a class="link link-coto" href={cotoLink}>coto</a>
+        <a class="link link-coto" {href}>coto</a>
       </div>
     </div>
   </div>
@@ -143,19 +142,12 @@
     width: 100%;
     margin: 0 auto;
   }
-  /* アニメーション用の初期状態 */
   .section-works-title-wrapper {
     opacity: 0;
     transform: translateY(30px);
     margin-bottom: 42px;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .work-uehara,
-  .work-coto {
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  /* アニメーション後の状態 */
   .fade-slide-up {
     opacity: 1;
     transform: translateY(0);
@@ -174,17 +166,6 @@
       transform: translateX(0);
     }
   }
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  /* タイピングエフェクト */
   .cursor {
     animation: blink 1s infinite;
     color: var(--dark);
@@ -201,8 +182,9 @@
   }
   .work-uehara,
   .work-coto {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
   }
@@ -291,22 +273,18 @@
   .link:hover::before {
     transform: translateX(3px);
   }
-  .work-uehara {
-    padding-bottom: 40px;
-  }
-  .work-uehara h3 {
-    font-size: var(--font-size-lg);
-    padding-bottom: 14px;
-  }
+  .work-uehara,
   .work-coto {
     padding-bottom: 40px;
   }
+  .work-uehara h3,
   .work-coto h3 {
-    font-family: "Lunasima", sans-serif;
     font-size: var(--font-size-lg);
     padding-bottom: 14px;
   }
-
+  .work-coto h3 {
+    font-family: "Lunasima", sans-serif;
+  }
   @media (min-width: 768px) {
     .section-works {
       padding: 190px 24px;
@@ -314,21 +292,15 @@
     .section-works-contents {
       max-width: 1080px;
     }
-    .section-works-title span.typing-text {
-      font-size: var(--font-size-xl);
-    }
+    .section-works-title span.typing-text,
     .section-works-title span.cursor {
       font-size: var(--font-size-xl);
     }
-    .section-works-subtitle span.typing-text {
-      font-size: var(--font-size-lg);
-    }
+    .section-works-subtitle span.typing-text,
     .section-works-subtitle span.cursor {
       font-size: var(--font-size-lg);
     }
-    .work-uehara h3 {
-      padding-bottom: 12px;
-    }
+    .work-uehara h3,
     .work-coto h3 {
       padding-bottom: 12px;
     }

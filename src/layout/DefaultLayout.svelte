@@ -4,7 +4,7 @@
 
 <div class="default-layout">
   <PageNav />
-  <slot></slot>
+  <slot />
 </div>
 
 <style>
