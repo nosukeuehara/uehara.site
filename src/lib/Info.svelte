@@ -3,7 +3,7 @@
   import { link } from "svelte-spa-router";
 </script>
 
-<div>
+<div class="info-list">
   {#await fetchInfos()}
     <p>loading...</p>
   {:then res}
@@ -11,14 +11,14 @@
       <p class="no-items">記事がありません</p>
     {:else}
       {#each res as article}
-        <a href={`/info/${article.id}`} use:link>
+        <a class="info-item" href={`/info/${article.id}`} use:link>
           <img src={article.eyecatch.url} alt={"記事のサムネイル"} />
-          <p class="pablished">
+          <p class="pablished padding-y">
             {new Date(article.publishedAt).toLocaleDateString()}
           </p>
-          <p class="category">#{article.category.name}</p>
-          <h2 class="title">{article.title}</h2>
-          <p class="description">{article.description}</p>
+          <p class="category padding-y">#{article.category.name}</p>
+          <h2 class="title padding-y">{article.title}</h2>
+          <p class="description padding-y">{article.description}</p>
         </a>
       {/each}
     {/if}
@@ -30,26 +30,66 @@
 <style>
   * {
     color: var(--pine-forest);
+    box-sizing: border-box;
   }
+
+  .padding-y {
+    padding: 0 20px;
+  }
+
+  .info-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+
+  .info-item {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 6;
+    text-decoration: none;
+    background-color: #ffffffad;
+    gap: 8px;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .info-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .pablished {
+    font-size: var(--font-size-sm);
+    color: #666;
+  }
+
+  .category {
+    font-size: var(--font-size-xs);
+    color: #999;
+  }
+
+  .title {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--pine-forest);
+    margin: 0;
+  }
+
+  .description {
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: #444;
+    margin: 0;
+  }
+
   .no-items {
     text-align: center;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
-  }
-  img {
-    width: 100%;
-    max-width: 400px;
-  }
-  .pablished {
-    font-size: var(--font-size-sm);
-  }
-  .category {
-    font-size: var(--font-size-xs);
-  }
-  h2.title {
-    font-size: var(--font-size-md);
-  }
-  p.description {
-    font-size: var(--font-size-xs);
+    grid-column: 1 / -1;
   }
 </style>

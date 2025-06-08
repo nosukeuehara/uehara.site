@@ -11,7 +11,7 @@
   export let switchInterval_s: number = 30;
 
   const SIZE = 10;
-  const API_URL = import.meta.env.VITE_API_URL!;
+  const API_URL = import.meta.env.VITE_QUOTE_API_URL!;
   const STORAGE_KEY = "meigen_cache";
 
   let quote: Quote = {
