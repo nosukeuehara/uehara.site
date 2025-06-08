@@ -1,5 +1,6 @@
 <script lang="ts">
   import DefaultLayout from "../layout/DefaultLayout.svelte";
+  import Info from "../lib/Info.svelte";
 </script>
 
 <DefaultLayout>
@@ -10,20 +11,9 @@
         <p class="section-info-subtitle">info</p>
       </div>
 
-      <div class="release-soon-wrapper">
-        まだお知らせがありません。<br />
-        最新のリリースノートをお楽しみに、、、
+      <div class="release-wrapper">
+        <Info />
       </div>
-
-      <!-- <ul class="release-note-list-wrapper">
-      {#each releaseNotes.slice(0, 3) as note}
-        <li class="release-note-item">
-          <a href={`/info/${note.slug}`} class="release-note-link">
-            {note.title}
-          </a>
-        </li>
-      {/each}
-    </ul> -->
     </div>
   </div>
 </DefaultLayout>
@@ -64,11 +54,11 @@
     font-size: var(--font-size-md);
   }
 
-  .release-soon-wrapper {
+  .release-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 40px 0;
+    padding-bottom: 40px 0;
   }
 
   @media (min-width: 768px) {

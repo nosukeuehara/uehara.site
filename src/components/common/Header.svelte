@@ -1,7 +1,7 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
 
-  let isMenuOpen = false;
+  let isMenuOpen = $state(false);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -18,7 +18,7 @@
     <button
       class="header-btn"
       class:header-btn--clicked={isMenuOpen}
-      on:click={toggleMenu}
+      onclick={toggleMenu}
     >
       ＋
     </button>
@@ -28,39 +28,32 @@
   {#if isMenuOpen}
     <div
       class="fullscreen-menu"
-      on:click={closeMenu}
-      on:keydown={(e) => e.key === "Escape" && closeMenu()}
+      onclick={closeMenu}
+      onkeydown={(e) => e.key === "Escape" && closeMenu()}
       role="dialog"
       aria-modal="true"
       tabindex="-1"
     >
-      <div
-        class="menu-content"
-        tabindex="0"
-        role="button"
-        on:click|stopPropagation
-        on:keydown|stopPropagation
-      >
+      <div class="menu-content" tabindex="0" role="button">
         <div class="menu-nav">
           <div>
-            <a class="menu-link" href="/me" use:link on:click={closeMenu}>私</a>
+            <a class="menu-link" href="/me" use:link onclick={closeMenu}>私</a>
           </div>
 
           <div>
-            <a class="menu-link" href="/works" use:link on:click={closeMenu}
+            <a class="menu-link" href="/works" use:link onclick={closeMenu}
               >集</a
             >
           </div>
 
           <div>
-            <a class="menu-link" href="/ramble" use:link on:click={closeMenu}
+            <a class="menu-link" href="/ramble" use:link onclick={closeMenu}
               >言・こと</a
             >
           </div>
 
           <div>
-            <a class="menu-link" href="/info" use:link on:click={closeMenu}
-              >伝</a
+            <a class="menu-link" href="/info" use:link onclick={closeMenu}>伝</a
             >
           </div>
         </div>
@@ -161,7 +154,7 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .header {
       display: none;
     }

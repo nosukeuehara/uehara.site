@@ -9,7 +9,7 @@
       <p class="section-info-subtitle">info</p>
     </div>
 
-    <div class="release-soon-wrapper">
+    <div class="info-wrapper">
       <Info />
     </div>
   </div>
@@ -55,11 +55,12 @@
     font-size: var(--font-size-md);
   }
 
-  .release-soon-wrapper {
+  .info-wrapper {
     width: 100%;
+    max-width: 400px;
     display: flex;
     justify-content: center;
-    padding: 40px 0;
+    padding-bottom: 40px;
   }
 
   @media (min-width: 768px) {

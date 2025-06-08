@@ -2,7 +2,6 @@
   import { fetchSpecificInfo } from "../service/api";
   import type { Info } from "../types/microcms";
   import { link } from "svelte-spa-router";
-  import { onMount } from "svelte";
 
   interface Props {
     params: {
@@ -14,28 +13,14 @@
   let info: Info | null = $state(null);
   let loading = $state(true);
   let error: string | null = $state(null);
-
-  async function fetchInfo() {
-    try {
-      if (!props.params.id) throw new Error("IDが無効です");
-
-      info = await fetchSpecificInfo(props.params.id);
-    } catch (err) {
-      error = err instanceof Error ? err.message : String(err);
-    } finally {
-      loading = false;
-    }
-  }
-
-  onMount(fetchInfo);
 </script>
 
-{#if loading}
-  <p>読み込み中...</p>
-{:else if error}
-  <p style="color:red;">{error}</p>
-{:else if info}
-  <div class="info-detail">
+<div class="info-detail">
+  {#await fetchSpecificInfo(props.params.id)}
+    <div class="loadingUI">
+      <p>読み込み中...</p>
+    </div>
+  {:then info}
     <article>
       <h1>{info.title}</h1>
       <div class="category"><p>#{info.category.name}</p></div>
@@ -50,12 +35,18 @@
     <a class="go-infos" href="/Info" use:link>
       <p>一覧へ</p>
     </a>
-  </div>
-{/if}
+  {:catch err}
+    <p style="color:red;">{err instanceof Error ? err.message : String(err)}</p>
+  {/await}
+</div>
 
 <style>
   * {
     color: var(--pine-forest);
+  }
+  .loadingUI {
+    height: 100vh;
+    padding: 100px 24px 60px;
   }
   .go-infos {
     display: flex;
@@ -91,7 +82,7 @@
   :global(.body h2) {
     font-size: 1.3rem;
     border-bottom: 1px solid var(--pine-forest);
-    padding: 2rem 0 1rem;
+    padding: 2rem 0 4px;
   }
 
   :global(strong) {
