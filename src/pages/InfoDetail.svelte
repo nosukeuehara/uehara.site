@@ -36,13 +36,13 @@
 {:else if info}
   <article class="info-detail">
     <h1>{info.title}</h1>
+    <div class="category"><p>#{info.category.name}</p></div>
     <img
       src={info.eyecatch.url}
       alt={info.title}
       width={info.eyecatch.width}
       height={info.eyecatch.height}
     />
-    <div class="category"><p>{info.category.name}</p></div>
     <div class="body">{@html info.body}</div>
   </article>
 {/if}
@@ -58,30 +58,31 @@
 
   h1 {
     font-size: var(--font-size-lg);
+    padding-bottom: 1rem;
   }
 
   img {
-    min-width: 327px;
+    max-width: 327px;
     width: 100%;
     height: auto;
-    padding: 1.5rem 0;
+    padding-top: 1.5rem;
     display: block;
-  }
-
-  strong {
-    font-weight: var(--font-weight-bold);
+    margin: 0 auto;
   }
 
   .category {
     display: inline-block;
     font-size: var(--font-size-xs);
-    padding-bottom: 1rem;
   }
 
   :global(.body h2) {
     font-size: 1.3rem;
     border-bottom: 1px solid var(--pine-forest);
     padding: 2rem 0 1rem;
+  }
+
+  :global(strong) {
+    font-weight: var(--font-weight-bold);
   }
 
   :global(.body p) {
