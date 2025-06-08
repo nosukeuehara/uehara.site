@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fetchSpecificInfo } from "../service/api";
   import type { Info } from "../types/microcms";
+  import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
 
   interface Props {
@@ -34,26 +35,38 @@
 {:else if error}
   <p style="color:red;">{error}</p>
 {:else if info}
-  <article class="info-detail">
-    <h1>{info.title}</h1>
-    <div class="category"><p>#{info.category.name}</p></div>
-    <img
-      src={info.eyecatch.url}
-      alt={info.title}
-      width={info.eyecatch.width}
-      height={info.eyecatch.height}
-    />
-    <div class="body">{@html info.body}</div>
-  </article>
+  <div class="info-detail">
+    <article>
+      <h1>{info.title}</h1>
+      <div class="category"><p>#{info.category.name}</p></div>
+      <img
+        src={info.eyecatch.url}
+        alt={info.title}
+        width={info.eyecatch.width}
+        height={info.eyecatch.height}
+      />
+      <div class="body">{@html info.body}</div>
+    </article>
+    <a class="go-infos" href="/Info" use:link>
+      <p>一覧へ</p>
+    </a>
+  </div>
 {/if}
 
 <style>
   * {
     color: var(--pine-forest);
   }
-  article {
+  .go-infos {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
+  .info-detail {
     background-color: var(--sunshine-yellow);
-    padding: 100px 24px;
+  }
+  article {
+    padding: 100px 24px 60px;
   }
 
   h1 {
