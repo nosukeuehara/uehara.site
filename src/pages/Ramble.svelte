@@ -152,7 +152,7 @@
       transform: translateY(0);
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .section-ramble {
       padding: 190px 24px;
     }

@@ -10,9 +10,6 @@
   }
 
   let props: Props = $props();
-  let info: Info | null = $state(null);
-  let loading = $state(true);
-  let error: string | null = $state(null);
 </script>
 
 <div class="info-detail">

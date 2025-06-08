@@ -164,6 +164,9 @@
 </section>
 
 <style>
+  * {
+    color: var(--clear-white);
+  }
   .section-me {
     background-color: var(--turquoise-fresh);
     min-height: 100vh;

@@ -167,6 +167,9 @@
 </DefaultLayout>
 
 <style>
+  * {
+    color: var(--clear-white);
+  }
   .section-me {
     background-color: var(--turquoise-fresh);
     min-height: 100vh;
@@ -302,7 +305,7 @@
     width: 100%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .section-me {
       padding: 190px 24px;
     }

@@ -307,7 +307,7 @@
     padding-bottom: 14px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .section-works {
       padding: 190px 24px;
     }

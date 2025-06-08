@@ -9,7 +9,7 @@
     <ul class="menu-nav">
       {#each sitemap as item}
         <li class="menu-item">
-          <a href={item.link} class="menu-link" use:link>『 {item.name} 』</a>
+          <a href={item.link} class="menu-link" use:link>{item.name}</a>
         </li>
       {/each}
     </ul>
@@ -20,7 +20,7 @@
   .page-nav {
     display: none;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .page-nav {
       position: fixed;
       top: 0;
@@ -48,7 +48,7 @@
 
     .menu-nav {
       display: flex;
-      gap: 10px;
+      gap: 50px;
     }
 
     .menu-link {
