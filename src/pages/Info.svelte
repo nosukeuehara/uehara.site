@@ -7,7 +7,7 @@
   <div class="section-info section-style-base">
     <div class="section-info-contents">
       <div class="section-info-title-wrapper">
-        <h2 class="section-info-title">伝</h2>
+        <h2 class="section-info-title">報</h2>
         <p class="section-info-subtitle">info</p>
       </div>
 

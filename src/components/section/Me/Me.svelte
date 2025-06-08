@@ -201,7 +201,7 @@
     width: 100%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .section-me-contents {
       max-width: 1080px;
     }

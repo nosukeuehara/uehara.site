@@ -53,7 +53,7 @@
           </div>
 
           <div>
-            <a class="menu-link" href="/info" use:link onclick={closeMenu}>伝</a
+            <a class="menu-link" href="/info" use:link onclick={closeMenu}>報</a
             >
           </div>
         </div>

@@ -109,15 +109,15 @@
       </p>
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
-    <a
-      class="work-page-link"
-      aria-disabled="true"
-      href={works}
-      class:slide-in-left={isWorksPageLinkVisible}
-      use:link
-      use:worksPageLinkObserver>→ 創作一覧</a
-    >
   </div>
+  <a
+    class="work-page-link"
+    aria-disabled="true"
+    href={works}
+    class:slide-in-left={isWorksPageLinkVisible}
+    use:link
+    use:worksPageLinkObserver>→ 集</a
+  >
 </section>
 
 <style>
@@ -127,6 +127,7 @@
   .section-works {
     background-color: var(--peach-fuzz);
     min-height: 100vh;
+    position: relative;
   }
   .section-works-contents {
     width: 100%;
@@ -276,11 +277,14 @@
   .work-page-link {
     display: flex;
     margin-top: 60px;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     color: var(--dark);
     justify-content: flex-end;
+    position: absolute;
+    bottom: 45px;
+    right: 24px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .section-works-contents {
       max-width: 1080px;
     }

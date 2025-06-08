@@ -39,13 +39,15 @@
 
   .info-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
     gap: 24px;
-    align-items: start;
+    justify-items: center;
   }
 
   .info-item {
     display: grid;
+    width: 100%;
+    max-width: 400px;
     grid-template-rows: subgrid;
     grid-row: span 6;
     text-decoration: none;
@@ -58,8 +60,9 @@
 
   .info-item img {
     width: 100%;
-    height: auto;
+    height: 200px;
     object-fit: cover;
+    object-position: center;
   }
 
   .pablished {
@@ -84,6 +87,11 @@
     line-height: 1.5;
     color: #444;
     margin: 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 表示したい行数を指定 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .no-items {
@@ -91,5 +99,14 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     grid-column: 1 / -1;
+  }
+
+  @media (min-width: 768px) {
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
   }
 </style>

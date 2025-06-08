@@ -156,7 +156,7 @@
     margin-top: 10px;
     transform: translateX(calc(var(--font-size-sm) / 2 - 1.7px));
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .page-top {
       height: 95vh;
     }

@@ -1,7 +1,6 @@
 <script lang="ts">
   import DefaultLayout from "../layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
-  import QuoteDisplay from "../../src/lib/QuoteDisplay.svelte";
 
   const href = "/ramble";
 
