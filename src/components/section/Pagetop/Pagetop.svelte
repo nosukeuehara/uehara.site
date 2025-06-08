@@ -1,17 +1,15 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import Navbar from "../../common/Navbar.svelte";
+  import { delayLoad } from "../../../lib/actions/delayLoad";
 
   let isLoaded = false;
-
-  onMount(() => {
-    setTimeout(() => {
-      isLoaded = true;
-    }, 100);
-  });
 </script>
 
-<section class="page-top section-style-base">
+<section
+  class="page-top section-style-base"
+  use:delayLoad={100}
+  on:delayload={() => (isLoaded = true)}
+>
   <!-- max-width: 768px / none display -->
   <div class="navbar-wrapper" class:fade-in={isLoaded}>
     <Navbar />
@@ -94,15 +92,6 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
     animation: float 3s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateX(-50%) translateY(0px);
-    }
-    50% {
-      transform: translateX(-50%) translateY(-14px);
-    }
   }
   .names .name-kanji {
     font-size: 2em;

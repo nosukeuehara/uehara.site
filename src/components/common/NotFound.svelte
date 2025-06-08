@@ -1,16 +1,10 @@
 <script lang="ts">
-  export let userData: { notFound?: boolean } = {};
 </script>
 
 <section class="notfound-container">
   <div class="notfound-content">
     <h1 class="notfound-title">404</h1>
     <p class="notfound-message">ページが見つかりません</p>
-    {#if userData.notFound}
-      <p class="notfound-detail">
-        URLが間違っているか、ページが削除された可能性があります。
-      </p>
-    {/if}
     <a href="/" class="notfound-link">トップページに戻る</a>
   </div>
 </section>
@@ -47,12 +41,6 @@
     font-size: 1.5rem;
     margin-top: 1rem;
     color: var(--dark);
-  }
-
-  .notfound-detail {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    color: #666;
   }
 
   .notfound-link {

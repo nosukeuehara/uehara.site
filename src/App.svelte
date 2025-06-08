@@ -1,6 +1,6 @@
 <script lang="ts">
   import Router from "svelte-spa-router";
-
+  import "./styles/animations.css";
   // Common components
   import Header from "./components/common/Header.svelte";
   import Footer from "./components/common/Footer.svelte";

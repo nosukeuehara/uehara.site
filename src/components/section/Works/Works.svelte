@@ -1,15 +1,11 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
-  import { onMount } from "svelte";
+  import { createObserver } from "../../../lib/actions/createObserver";
 
   const cotoLink =
     "https://coto-git-develop-ryunosuke-ueharas-projects.vercel.app/";
   const works = "/works";
 
-  let titleRef: HTMLDivElement;
-  let ueharaRef: HTMLDivElement;
-  let cotoRef: HTMLDivElement;
-  let worksPageLinkRef: HTMLAnchorElement;
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
@@ -24,37 +20,24 @@
   let isTypingTitle = false;
   let isTypingSubtitle = false;
 
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === titleRef) {
-            isTitleVisible = entry.isIntersecting;
-            if (entry.isIntersecting && !isTypingTitle) {
-              startTypingAnimation();
-            }
-          } else if (entry.target === ueharaRef) {
-            isUeharaVisible = entry.isIntersecting;
-          } else if (entry.target === cotoRef) {
-            isCotoVisible = entry.isIntersecting;
-          } else if (entry.target === worksPageLinkRef) {
-            isWorksPageLinkVisible = entry.isIntersecting;
-          }
-        });
-      },
-      {
-        threshold: 0.3,
-        rootMargin: "0px 0px -100px 0px",
-      }
-    );
-
-    if (titleRef) observer.observe(titleRef);
-    if (ueharaRef) observer.observe(ueharaRef);
-    if (cotoRef) observer.observe(cotoRef);
-    if (worksPageLinkRef) observer.observe(worksPageLinkRef);
-
-    return () => observer.disconnect();
+  const titleObserver = createObserver((entry) => {
+    isTitleVisible = entry.isIntersecting;
+    if (entry.isIntersecting && !isTypingTitle) {
+      startTypingAnimation();
+    }
   });
+
+  const ueharaObserver = createObserver(
+    (entry) => (isUeharaVisible = entry.isIntersecting)
+  );
+
+  const cotoObserver = createObserver(
+    (entry) => (isCotoVisible = entry.isIntersecting)
+  );
+
+  const worksPageLinkObserver = createObserver(
+    (entry) => (isWorksPageLinkVisible = entry.isIntersecting)
+  );
 
   function startTypingAnimation() {
     isTypingTitle = true;
@@ -85,8 +68,8 @@
   <div class="section-works-contents">
     <div
       class="section-works-title-wrapper"
-      class:fade-slide-up={isTitleVisible}
-      bind:this={titleRef}
+      class:typing={isTitleVisible}
+      use:titleObserver
     >
       <h2 class="section-works-title">
         <span class="typing-text">{displayTitle}</span>
@@ -105,7 +88,7 @@
     <div
       class="work-uehara"
       class:slide-in-left={isUeharaVisible}
-      bind:this={ueharaRef}
+      use:ueharaObserver
     >
       <h3 class="work-title">上 / 原</h3>
       <p class="work-description">
@@ -115,11 +98,7 @@
       </p>
     </div>
 
-    <div
-      class="work-coto"
-      class:slide-in-left={isCotoVisible}
-      bind:this={cotoRef}
-    >
+    <div class="work-coto" class:slide-in-left={isCotoVisible} use:cotoObserver>
       <h3 class="work-title">coto</h3>
       <p class="work-description">
         「言葉」や「物事」など"コト"を由来に名付けた読書管理のためのサービス。<br
@@ -136,7 +115,7 @@
       href={works}
       class:slide-in-left={isWorksPageLinkVisible}
       use:link
-      bind:this={worksPageLinkRef}>→ 創作一覧</a
+      use:worksPageLinkObserver>→ 創作一覧</a
     >
   </div>
 </section>
@@ -168,35 +147,11 @@
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   /* アニメーション後の状態 */
-  .fade-slide-up {
+  /* タイピングエフェクト */
+  .typing {
     opacity: 1;
     transform: translateY(0);
   }
-  .slide-in-left {
-    opacity: 1;
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  /* タイピングエフェクト */
   .cursor {
     animation: blink 1s infinite;
     color: var(--dark);

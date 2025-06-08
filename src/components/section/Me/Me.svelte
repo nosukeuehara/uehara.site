@@ -1,63 +1,29 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { createObserver } from "../../../lib/actions/createObserver";
 
-  let profileRef: HTMLDivElement;
-  let historyRef: HTMLDivElement;
-  let skillSecTtlRef: HTMLDivElement;
-  let skillsRef: HTMLDivElement;
   let isProfileVisible = false;
   let isHistoryVisible = false;
   let isSkillSecTtlVisible = false;
   let isSkillsVisible = false;
-  let skillGroups: HTMLDivElement[] = [];
-  let visibleSkillGroups: boolean[] = [];
+  let visibleSkillGroups: boolean[] = [false, false, false, false, false];
 
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === profileRef) {
-            isProfileVisible = entry.isIntersecting;
-          } else if (entry.target === historyRef) {
-            isHistoryVisible = entry.isIntersecting;
-          } else if (entry.target === skillSecTtlRef) {
-            isSkillSecTtlVisible = entry.isIntersecting;
-          } else if (entry.target === skillsRef) {
-            isSkillsVisible = entry.isIntersecting;
-          } else {
-            const index = skillGroups.indexOf(entry.target as HTMLDivElement);
-            if (index !== -1) {
-              visibleSkillGroups[index] = entry.isIntersecting;
-              visibleSkillGroups = [...visibleSkillGroups];
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    if (profileRef) observer.observe(profileRef);
-    if (historyRef) observer.observe(historyRef);
-    if (skillSecTtlRef) observer.observe(skillSecTtlRef);
-    if (skillsRef) observer.observe(skillsRef);
-
-    skillGroups.forEach((group, index) => {
-      if (group) {
-        observer.observe(group);
-        visibleSkillGroups[index] = false;
-      }
+  const profileObserver = createObserver(
+    (entry) => (isProfileVisible = entry.isIntersecting)
+  );
+  const historyObserver = createObserver(
+    (entry) => (isHistoryVisible = entry.isIntersecting)
+  );
+  const skillSecTtlObserver = createObserver(
+    (entry) => (isSkillSecTtlVisible = entry.isIntersecting)
+  );
+  const skillsObserver = createObserver(
+    (entry) => (isSkillsVisible = entry.isIntersecting)
+  );
+  function skillGroupObserver(index: number) {
+    return createObserver((entry) => {
+      visibleSkillGroups[index] = entry.isIntersecting;
+      visibleSkillGroups = [...visibleSkillGroups];
     });
-
-    return () => observer.disconnect();
-  });
-
-  function setSkillGroupRef(element: HTMLDivElement, index: number) {
-    if (element) {
-      skillGroups[index] = element;
-    }
   }
 </script>
 
@@ -66,7 +32,7 @@
     <div
       class="profile"
       class:fade-in-up={isProfileVisible}
-      bind:this={profileRef}
+      use:profileObserver
     >
       <h2 class="name">上 原 龍 之 介</h2>
       <p class="job">frontend @ web</p>
@@ -74,7 +40,7 @@
     <div
       class="live-in"
       class:fade-in-up={isHistoryVisible}
-      bind:this={historyRef}
+      use:historyObserver
     >
       <p>2001年、宮古島出身</p>
       <p>東京都在住</p>
@@ -82,83 +48,51 @@
     <div
       class="skillSec-ttl"
       class:fade-in-up={isSkillSecTtlVisible}
-      bind:this={skillSecTtlRef}
+      use:skillSecTtlObserver
     >
       スキル
     </div>
     <div
       class="skills-container"
       class:fade-in-up={isSkillsVisible}
-      bind:this={skillsRef}
+      use:skillsObserver
     >
-      <div
-        class="skill-group-wrapper"
-        class:slide-in-left={visibleSkillGroups[0]}
-        use:setSkillGroupRef={0}
-      >
-        <div class="skill-gr-title">言語</div>
-        <div class="skills-group">
-          <p>JavaScript</p>
-          <p>TypeScript</p>
-          <p>PHP</p>
-          <p>Python</p>
+      {#each ["言語", "フレームワーク", "スタイリング", "CMS", "バックエンド / 他"] as title, i}
+        <div
+          class="skill-group-wrapper"
+          class:slide-in-left={visibleSkillGroups[i]}
+          use:skillGroupObserver(i)
+        >
+          <div class="skill-gr-title">{title}</div>
+          <div class="skills-group">
+            {#if i === 0}
+              <p>JavaScript</p>
+              <p>TypeScript</p>
+              <p>PHP</p>
+              <p>Python</p>
+            {:else if i === 1}
+              <p>React</p>
+              <p>Vue</p>
+              <p>Svelte</p>
+              <p>Next</p>
+              <p>Nuxt</p>
+            {:else if i === 2}
+              <p>CSS Modules</p>
+              <p>Tailwind CSS</p>
+              <p>Material-UI</p>
+            {:else if i === 3}
+              <p>WordPress</p>
+              <p>HubSpot</p>
+              <p>other HeadlessCMS...</p>
+            {:else if i === 4}
+              <p>AppRouter[Next.js]</p>
+              <p>Hono.js</p>
+              <p>Express</p>
+              <p>Docekr</p>
+            {/if}
+          </div>
         </div>
-      </div>
-
-      <div
-        class="skill-group-wrapper"
-        class:slide-in-left={visibleSkillGroups[1]}
-        use:setSkillGroupRef={1}
-      >
-        <div class="skill-gr-title">フレームワーク</div>
-        <div class="skills-group">
-          <p>React</p>
-          <p>Vue</p>
-          <p>Svelte</p>
-          <p>Next</p>
-          <p>Nuxt</p>
-        </div>
-      </div>
-
-      <div
-        class="skill-group-wrapper"
-        class:slide-in-left={visibleSkillGroups[2]}
-        use:setSkillGroupRef={2}
-      >
-        <div class="skill-gr-title">スタイリング</div>
-        <div class="skills-group">
-          <p>CSS Modules</p>
-          <p>Tailwind CSS</p>
-          <p>Material-UI</p>
-        </div>
-      </div>
-
-      <div
-        class="skill-group-wrapper"
-        class:slide-in-left={visibleSkillGroups[3]}
-        use:setSkillGroupRef={3}
-      >
-        <div class="skill-gr-title">CMS</div>
-        <div class="skills-group">
-          <p>WordPress</p>
-          <p>HubSpot</p>
-          <p>other HeadlessCMS...</p>
-        </div>
-      </div>
-
-      <div
-        class="skill-group-wrapper"
-        class:slide-in-left={visibleSkillGroups[4]}
-        use:setSkillGroupRef={4}
-      >
-        <div class="skill-gr-title">バックエンド / 他</div>
-        <div class="skills-group">
-          <p>AppRouter[Next.js]</p>
-          <p>Hono.js</p>
-          <p>Express</p>
-          <p>Docekr</p>
-        </div>
-      </div>
+      {/each}
     </div>
   </div>
 </section>
@@ -179,47 +113,6 @@
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .fade-in-up {
-    opacity: 1;
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-  .slide-in-left {
-    opacity: 1;
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
   .section-me {
     background-color: var(--turquoise-fresh);
     display: grid;
@@ -296,7 +189,6 @@
     padding-bottom: 27px;
     max-width: 253px;
     width: 100%;
-    /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
     padding-left: calc(var(--font-size-sm) + 3px);
     column-gap: 8px;
   }
@@ -337,7 +229,6 @@
     .skills-group {
       padding-bottom: 48px;
       max-width: 100%;
-      /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
       padding-left: calc(var(--font-size-lg) + 11px);
       column-gap: 16px;
     }
