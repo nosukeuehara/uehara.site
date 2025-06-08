@@ -7,7 +7,6 @@
 
   onMount(async () => {
     const res = await fetchInfos();
-    console.log(res);
     articles = res;
   });
 </script>

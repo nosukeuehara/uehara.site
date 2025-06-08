@@ -3,17 +3,22 @@
   import type { Info } from "../types/microcms";
   import { onMount } from "svelte";
 
-  export let params: { id: string };
+  interface Props {
+    params: {
+      id: string;
+    };
+  }
 
-  let info: Info | null = null;
-  let loading = true;
-  let error: string | null = null;
+  let props: Props = $props();
+  let info: Info | null = $state(null);
+  let loading = $state(true);
+  let error: string | null = $state(null);
 
   async function fetchInfo() {
     try {
-      if (!params.id) throw new Error("IDが無効です");
+      if (!props.params.id) throw new Error("IDが無効です");
 
-      info = await fetchSpecificInfo(params.id);
+      info = await fetchSpecificInfo(props.params.id);
     } catch (err) {
       error = err instanceof Error ? err.message : String(err);
     } finally {
@@ -56,12 +61,11 @@
   }
 
   img {
-    max-width: 300px;
+    min-width: 327px;
     width: 100%;
     height: auto;
     padding: 1.5rem 0;
     display: block;
-    margin: 0 auto;
   }
 
   strong {
@@ -74,18 +78,10 @@
     padding-bottom: 1rem;
   }
 
-  .body {
-    padding-top: 2rem;
-  }
-
-  .body {
-    padding-top: 2rem;
-  }
-
   :global(.body h2) {
     font-size: 1.3rem;
     border-bottom: 1px solid var(--pine-forest);
-    padding-bottom: 0.5rem;
+    padding: 2rem 0 1rem;
   }
 
   :global(.body p) {
