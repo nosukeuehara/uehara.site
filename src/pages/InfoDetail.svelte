@@ -76,16 +76,20 @@
   }
 
   :global(.body h2) {
-    font-size: 1.3rem;
+    font-size: var(--font-size-lg);
     border-bottom: 1px solid var(--pine-forest);
     padding: 2rem 0 4px;
   }
 
+  :global(.body h3) {
+    font-size: var(--font-size-md);
+    padding: 2rem 0 0;
+  }
   :global(strong) {
     font-weight: var(--font-weight-bold);
   }
 
   :global(.body p) {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
   }
 </style>
