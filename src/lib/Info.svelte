@@ -89,7 +89,8 @@
     margin: 0;
 
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 表示したい行数を指定 */
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

@@ -100,7 +100,8 @@
       padding: 190px 24px 60px;
     }
 
-    article {
+    article,
+    .loadingUI {
       max-width: 1080px;
       margin: 0 auto;
     }
