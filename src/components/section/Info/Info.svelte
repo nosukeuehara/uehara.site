@@ -13,10 +13,10 @@
     <div class="info-wrapper">
       <Info />
     </div>
+    <a class="go-infos" href="/Info" use:link>
+      <p>→ 報</p>
+    </a>
   </div>
-  <a class="go-infos" href="/Info" use:link>
-    <p>→ 報</p>
-  </a>
 </section>
 
 <style>
@@ -27,9 +27,10 @@
     display: flex;
     justify-content: flex-end;
     font-size: var(--font-size-xl);
-    position: absolute;
-    bottom: 45px;
-    right: 24px;
+    position: relative;
+    padding-top: 80px;
+    bottom: 0px;
+    right: 0px;
   }
   .go-infos p {
     font-size: var(--font-size-md);

@@ -109,15 +109,15 @@
       </p>
       <a class="link link-coto" href={cotoLink}>coto</a>
     </div>
+    <a
+      class="work-page-link"
+      aria-disabled="true"
+      href={works}
+      class:slide-in-left={isWorksPageLinkVisible}
+      use:link
+      use:worksPageLinkObserver>→ 集</a
+    >
   </div>
-  <a
-    class="work-page-link"
-    aria-disabled="true"
-    href={works}
-    class:slide-in-left={isWorksPageLinkVisible}
-    use:link
-    use:worksPageLinkObserver>→ 集</a
-  >
 </section>
 
 <style>
@@ -276,13 +276,13 @@
   }
   .work-page-link {
     display: flex;
-    margin-top: 60px;
+    padding-top: 80px;
     font-size: var(--font-size-md);
     color: var(--dark);
     justify-content: flex-end;
-    position: absolute;
-    bottom: 45px;
-    right: 24px;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
   }
   @media (min-width: 768px) {
     .section-works-contents {
