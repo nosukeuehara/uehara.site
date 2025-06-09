@@ -21,8 +21,11 @@
       <p class="name-kana">ue / hara</p>
     </div>
     <div class="links" class:fade-in-delay={isLoaded}>
-      <a class="github-link" href={import.meta.env.VITE_GITHUB_REPO_URL}
-        >GitHub</a
+      <a
+        target="_blank"
+        class="github-link"
+        rel="noopener noreferrer"
+        href={import.meta.env.VITE_GITHUB_REPO_URL}>GitHub</a
       >
     </div>
   </div>
