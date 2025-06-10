@@ -2,8 +2,7 @@
   import { link } from "svelte-spa-router";
   import { createObserver } from "../../../lib/actions/createObserver";
 
-  const cotoLink =
-    "https://coto-git-develop-ryunosuke-ueharas-projects.vercel.app/";
+  const cotoLink = "https://coto-nine.vercel.app/";
   const works = "/works";
 
   let isTitleVisible = false;
