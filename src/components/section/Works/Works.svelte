@@ -40,19 +40,16 @@
 
   function startTypingAnimation() {
     isTypingTitle = true;
-
     const titleInterval = setInterval(() => {
       if (titleIndex < titleText.length) {
-        displayTitle += titleText[titleIndex];
-        titleIndex++;
+        displayTitle += titleText[titleIndex++];
       } else {
         clearInterval(titleInterval);
         setTimeout(() => {
           isTypingSubtitle = true;
           const subtitleInterval = setInterval(() => {
             if (subtitleIndex < subtitleText.length) {
-              displaySubtitle += subtitleText[subtitleIndex];
-              subtitleIndex++;
+              displaySubtitle += subtitleText[subtitleIndex++];
             } else {
               clearInterval(subtitleInterval);
             }
@@ -64,19 +61,19 @@
 </script>
 
 <section class="section-works section-style-base">
-  <div class="section-works-contents">
+  <div class="section-works__contents">
     <div
-      class="section-works-title-wrapper"
+      class="section-works__title-wrapper"
       class:typing={isTitleVisible}
       use:titleObserver
     >
-      <h2 class="section-works-title">
+      <h2 class="section-works__title">
         <span class="typing-text">{displayTitle}</span>
         {#if isTypingTitle && titleIndex <= titleText.length}
           <span class="cursor">|</span>
         {/if}
       </h2>
-      <p class="section-works-subtitle">
+      <p class="section-works__subtitle">
         <span class="typing-text">{displaySubtitle}</span>
         {#if isTypingSubtitle && subtitleIndex <= subtitleText.length}
           <span class="cursor">|</span>
@@ -85,96 +82,83 @@
     </div>
 
     <div
-      class="work-uehara"
+      class="section-works__item section-works__item--uehara"
       class:slide-in-left={isUeharaVisible}
       use:ueharaObserver
     >
-      <h3 class="work-title">上 / 原</h3>
-      <p class="work-description">
+      <h3 class="section-works__item-title">上 / 原</h3>
+      <p class="section-works__item-description">
         好きなことを自由にアウトプットするための個人サイト。<br />
         平凡な名字に記号を加えることで、無機質さと余白を感じるデザインに。<br />
         創作物や趣味の写真、なんとなく書いた文章などを掲載してます。
       </p>
     </div>
 
-    <div class="work-coto" class:slide-in-left={isCotoVisible} use:cotoObserver>
-      <h3 class="work-title">coto</h3>
-      <p class="work-description">
+    <div
+      class="section-works__item section-works__item--coto"
+      class:slide-in-left={isCotoVisible}
+      use:cotoObserver
+    >
+      <h3 class="section-works__item-title">coto</h3>
+      <p class="section-works__item-description">
         「言葉」や「物事」など"コト"を由来に名付けた読書管理のためのサービス。<br
         />
         インターネットが得意じゃない人たちでも直感的に使えるよう、シンプルでわかりやすいデザインを意識しました。<br
         />
         よりやさしいを考えて現在も開発中。
       </p>
-      <a class="link link-coto" href={cotoLink}>coto</a>
+      <a href={cotoLink} class="section-works__link section-works__link--coto">
+        coto
+      </a>
     </div>
+
     <a
-      class="work-page-link"
+      class="section-works__page-link"
       aria-disabled="true"
       href={works}
-      class:slide-in-left={isWorksPageLinkVisible}
       use:link
-      use:worksPageLinkObserver>→ 集</a
+      class:slide-in-left={isWorksPageLinkVisible}
+      use:worksPageLinkObserver
     >
+      → 集
+    </a>
   </div>
 </section>
 
 <style>
-  * {
+  .section-works * {
     color: var(--dark);
   }
+
   .section-works {
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     position: relative;
   }
-  .section-works-contents {
+
+  .section-works__contents {
     width: 100%;
     margin: 0 auto;
   }
-  /* アニメーション用の初期状態 */
-  .section-works-title-wrapper {
+
+  .section-works__title-wrapper {
     opacity: 0;
     margin-bottom: 42px;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-works-title-wrapper * {
+  .section-works__title-wrapper * {
     line-height: 1;
   }
-  .work-uehara,
-  .work-coto {
+
+  .section-works__item {
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  /* アニメーション後の状態 */
-  /* タイピングエフェクト */
-  .typing {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .cursor {
-    animation: blink 1s infinite;
-    color: var(--dark);
-  }
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
-  .work-uehara,
-  .work-coto {
     border-radius: 8px;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    padding-bottom: 40px;
   }
-  .work-uehara::before,
-  .work-coto::before {
+  .section-works__item::before {
     content: "";
     position: absolute;
     top: 0;
@@ -189,27 +173,31 @@
     );
     transition: left 0.5s ease;
   }
-  .section-works-title {
+
+  .section-works__item-title {
+    font-size: var(--font-size-lg);
+    padding-bottom: 14px;
+  }
+  .section-works__item-description {
+    margin: 0;
+  }
+
+  .section-works__title {
     padding-bottom: 3px;
   }
-  .section-works-title span.typing-text {
+  .section-works__title .typing-text {
     font-size: var(--font-size-lg);
   }
-  .section-works-title span.cursor {
-    font-size: var(--font-size-lg);
-  }
-  .section-works-subtitle span.typing-text {
-    font-size: var(--font-size-md);
-  }
-  .section-works-subtitle span.cursor {
-    font-size: var(--font-size-md);
-  }
-  .section-works-subtitle {
+  .section-works__subtitle {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
   }
-  .section-works-title-wrapper::after {
+  .section-works__subtitle .typing-text {
+    font-size: var(--font-size-md);
+  }
+
+  .section-works__title-wrapper::after {
     content: "";
     display: block;
     height: 2px;
@@ -225,29 +213,21 @@
     opacity: 0;
     animation: fadeInLine 1s ease-out 1.5s forwards;
   }
-  @keyframes fadeInLine {
-    from {
-      opacity: 0;
-      width: 0;
-    }
-    to {
-      opacity: 1;
-      width: 100%;
-    }
-  }
-  .link {
+
+  .section-works__link {
     display: inline-block;
     padding-top: 5px;
     position: relative;
     transition: all 0.3s ease;
+    text-decoration: none;
   }
-  .link:hover {
+  .section-works__link:hover {
     transform: translateX(5px);
   }
-  .link-coto {
+  .section-works__link--coto {
     font-family: "Lunasima", sans-serif;
   }
-  .link::before {
+  .section-works__link::before {
     content: "→";
     display: inline-block;
     padding-right: 4px;
@@ -255,55 +235,47 @@
     color: var(--dark);
     transition: transform 0.3s ease;
   }
-  .link:hover::before {
+  .section-works__link:hover::before {
     transform: translateX(3px);
   }
-  .work-uehara {
-    padding-bottom: 40px;
-  }
-  .work-uehara h3 {
-    font-size: var(--font-size-lg);
-    padding-bottom: 14px;
-  }
-  .work-coto {
-    padding-bottom: 40px;
-  }
-  .work-coto h3 {
-    font-family: "Lunasima", sans-serif;
-    font-size: var(--font-size-lg);
-    padding-bottom: 14px;
-  }
-  .work-page-link {
+
+  .section-works__page-link {
     display: flex;
     padding-top: 80px;
     font-size: var(--font-size-md);
     color: var(--dark);
     justify-content: flex-end;
     position: relative;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
   }
+
+  .typing {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .cursor {
+    animation: blink 1s infinite;
+    color: var(--dark);
+  }
+
   @media (min-width: 768px) {
-    .section-works-contents {
+    .section-works__contents {
       max-width: 1080px;
     }
-    .section-works-title span.typing-text {
+    .section-works__title .typing-text {
       font-size: var(--font-size-xl);
     }
-    .section-works-title span.cursor {
-      font-size: var(--font-size-xl);
-    }
-    .section-works-subtitle span.typing-text {
+    .section-works__subtitle .typing-text {
       font-size: var(--font-size-lg);
     }
-    .section-works-subtitle span.cursor {
+    .section-works__item-title {
+      padding-bottom: 12px;
       font-size: var(--font-size-lg);
     }
-    .work-uehara h3 {
-      padding-bottom: 12px;
-    }
-    .work-coto h3 {
-      padding-bottom: 12px;
+    .section-works__page-link {
+      padding-top: 80px;
     }
   }
 </style>

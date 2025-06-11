@@ -1,56 +1,50 @@
 <script lang="ts">
-  import Info from "../../../lib/Info.svelte";
+  import Info from "../../../lib/InfoContents.svelte";
   import { link } from "svelte-spa-router";
 </script>
 
 <section class="section-info section-style-base">
-  <div class="section-info-contents">
-    <div class="section-info-title-wrapper">
-      <h2 class="section-info-title">報</h2>
-      <p class="section-info-subtitle">info</p>
+  <div class="section-info__contents">
+    <div class="section-info__title-wrapper">
+      <h2 class="section-info__title">報</h2>
+      <p class="section-info__subtitle">info</p>
     </div>
 
-    <div class="info-wrapper">
+    <div class="section-info__info-wrapper">
       <Info />
     </div>
-    <a class="go-infos" href="/Info" use:link>
+
+    <a href="/Info" class="section-info__more-link" use:link>
       <p>→ 報</p>
     </a>
   </div>
 </section>
 
 <style>
-  * {
+  .section-info * {
     color: var(--pine-forest);
   }
-  .go-infos {
-    display: flex;
-    justify-content: flex-end;
-    font-size: var(--font-size-xl);
-    position: relative;
-    padding-top: 80px;
-    bottom: 0px;
-    right: 0px;
-  }
-  .go-infos p {
-    font-size: var(--font-size-md);
-  }
+
   .section-info {
     background-color: var(--sunshine-yellow);
     min-height: 100vh;
     position: relative;
   }
-  .section-info-contents {
+
+  .section-info__contents {
     width: 100%;
     margin: 0 auto;
   }
-  .section-info-title-wrapper * {
-    line-height: 1;
-  }
-  .section-info-title-wrapper {
+
+  .section-info__title-wrapper {
     margin-bottom: 42px;
   }
-  .section-info-title-wrapper::after {
+
+  .section-info__title-wrapper * {
+    line-height: 1;
+  }
+
+  .section-info__title-wrapper::after {
     content: "";
     display: block;
     height: 2px;
@@ -64,28 +58,46 @@
       transparent 20px
     );
   }
-  .section-info-title {
+
+  .section-info__title {
     font-size: var(--font-size-lg);
     padding-bottom: 3px;
   }
-  .section-info-subtitle {
+
+  .section-info__subtitle {
     font-size: var(--font-size-md);
   }
 
-  .info-wrapper {
+  .section-info__info-wrapper {
     width: 100%;
     padding-bottom: 40px;
   }
 
+  .section-info__more-link {
+    display: flex;
+    justify-content: flex-end;
+    font-size: var(--font-size-xl);
+    position: relative;
+    padding-top: 80px;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
+  }
+
+  .section-info__more-link p {
+    font-size: var(--font-size-md);
+    margin: 0;
+  }
+
   @media (min-width: 768px) {
-    .section-info-contents {
+    .section-info__contents {
       max-width: 1080px;
     }
-    .section-info-title {
+    .section-info__title {
       font-size: var(--font-size-xl);
       padding-bottom: 3px;
     }
-    .section-info-subtitle {
+    .section-info__subtitle {
       font-size: var(--font-size-lg);
     }
   }

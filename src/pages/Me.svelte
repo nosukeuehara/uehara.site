@@ -1,101 +1,85 @@
 <script lang="ts">
-  import DefaultLayout from "../layout/DefaultLayout.svelte";
+  import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { createObserver } from "../lib/actions/createObserver";
+  import { historyItems, skillGroups } from "../contentData/meItem";
 
+  // IntersectionObserver のセットアップ
   let isProfileVisible = false;
   let isHistoryVisible = false;
   let isSkillSecTtlVisible = false;
   let isSkillsVisible = false;
-  let visibleSkillGroups: boolean[] = [false, false, false, false, false];
+  let visibleSkillGroups = Array(5).fill(false);
 
   const profileObserver = createObserver(
-    (entry) => (isProfileVisible = entry.isIntersecting)
+    (e) => (isProfileVisible = e.isIntersecting)
   );
   const historyObserver = createObserver(
-    (entry) => (isHistoryVisible = entry.isIntersecting)
+    (e) => (isHistoryVisible = e.isIntersecting)
   );
   const skillSecTtlObserver = createObserver(
-    (entry) => (isSkillSecTtlVisible = entry.isIntersecting)
+    (e) => (isSkillSecTtlVisible = e.isIntersecting)
   );
   const skillsObserver = createObserver(
-    (entry) => (isSkillsVisible = entry.isIntersecting)
+    (e) => (isSkillsVisible = e.isIntersecting)
   );
-
-  function skillGroupObserver(index: number) {
-    return createObserver((entry) => {
-      visibleSkillGroups[index] = entry.isIntersecting;
+  function skillGroupObserver(i: number) {
+    return createObserver((e) => {
+      visibleSkillGroups[i] = e.isIntersecting;
       visibleSkillGroups = [...visibleSkillGroups];
     });
   }
 </script>
 
 <DefaultLayout>
-  <div class="section-me">
-    <div class="section-me-contents">
+  <div class="me section-style-base">
+    <div class="me__contents">
+      <!-- profile -->
       <div
-        class="profile"
+        class="me__profile"
         class:fade-in-up={isProfileVisible}
         use:profileObserver
       >
-        <h2 class="name">上 原 龍 之 介</h2>
-        <p class="job">frontend @ web</p>
+        <h2 class="me__name">上 原 龍 之 介</h2>
+        <p class="me__job">frontend @ web</p>
       </div>
 
+      <!-- history -->
       <div
-        class="live-in"
+        class="me__history"
         class:fade-in-up={isHistoryVisible}
         use:historyObserver
       >
-        <p>2001年、宮古島出身</p>
-        <p>東京都在住</p>
+        {#each historyItems as h}
+          <p class="me__history-item">{h}</p>
+        {/each}
       </div>
 
+      <!-- skill section title -->
       <div
-        class="skillSec-ttl"
+        class="me__skill-section-title"
         class:fade-in-up={isSkillSecTtlVisible}
         use:skillSecTtlObserver
       >
         スキル
       </div>
 
+      <!-- skills -->
       <div
-        class="skills-container"
+        class="me__skills"
         class:fade-in-up={isSkillsVisible}
         use:skillsObserver
       >
-        {#each ["言語", "フレームワーク", "スタイリング", "CMS", "バックエンド / 他"] as title, i}
+        {#each skillGroups as { title, items }, i}
           <div
-            class="skill-group-wrapper"
+            class="me__skill-group"
             class:slide-in-left={visibleSkillGroups[i]}
             use:skillGroupObserver(i)
           >
-            <div class="skill-gr-title">{title}</div>
-            <div class="skills-group">
-              {#if i === 0}
-                <p>JavaScript</p>
-                <p>TypeScript</p>
-                <p>PHP</p>
-                <p>Python</p>
-              {:else if i === 1}
-                <p>React</p>
-                <p>Vue</p>
-                <p>Svelte</p>
-                <p>Next</p>
-                <p>Nuxt</p>
-              {:else if i === 2}
-                <p>CSS Modules</p>
-                <p>Tailwind CSS</p>
-                <p>Material-UI</p>
-              {:else if i === 3}
-                <p>WordPress</p>
-                <p>HubSpot</p>
-                <p>other HeadlessCMS...</p>
-              {:else if i === 4}
-                <p>AppRouter[Next.js]</p>
-                <p>Hono.js</p>
-                <p>Express</p>
-                <p>Docekr</p>
-              {/if}
+            <div class="me__skill-group-title">{title}</div>
+            <div class="me__skills-group">
+              {#each items as item}
+                <p class="me__skills-group-item">{item}</p>
+              {/each}
             </div>
           </div>
         {/each}
@@ -105,30 +89,40 @@
 </DefaultLayout>
 
 <style>
-  * {
+  .me * {
     color: var(--clear-white);
   }
-  .section-me {
+
+  .me {
     background-color: var(--turquoise-fresh);
     min-height: 100vh;
     padding: 100px 24px;
   }
-  .profile,
-  .live-in,
-  .skillSec-ttl,
-  .skills-container,
-  .skill-group-wrapper {
+
+  .me__contents {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .me__profile,
+  .me__history,
+  .me__skill-section-title,
+  .me__skills,
+  .me__skill-group {
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .fade-in-up {
     opacity: 1;
     animation: fadeInUp 0.8s ease-out forwards;
   }
+
   .slide-in-left {
     opacity: 1;
     animation: slideInLeft 0.8s ease-out forwards;
   }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -151,28 +145,13 @@
     }
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .section-me-contents {
-    width: 100%;
-    margin: 0 auto;
-  }
-  .profile {
-    width: 100%;
+  .me__profile {
     display: flex;
-    margin-bottom: 42px;
     flex-direction: column;
+    margin-bottom: 42px;
+    position: relative;
   }
-  .profile::after {
+  .me__profile::after {
     content: "";
     display: block;
     height: 2px;
@@ -186,99 +165,109 @@
       transparent 20px
     );
   }
-  .name {
+
+  .me__name {
     font-size: var(--font-size-lg);
     padding-bottom: 3px;
+    margin: 0;
   }
-  .job {
+
+  .me__job {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
+    margin: 0;
   }
-  .live-in {
-    font-size: var(--font-size-sm);
+
+  .me__history {
     padding-bottom: 2rem;
   }
-  .live-in p {
+
+  .me__history-item {
     font-size: var(--font-size-sm);
+    margin: 0;
   }
-  .skillSec-ttl {
+
+  .me__skill-section-title {
     font-family: var(--font-jp);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-thin);
     padding-bottom: 15px;
   }
-  .skills-container {
+
+  .me__skills {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  .skill-gr-title {
+
+  .me__skill-group {
+    width: 100%;
+  }
+
+  .me__skill-group-title {
     font-family: var(--font-jp);
     font-size: var(--font-size-sm);
     padding-bottom: 8px;
   }
-  .skill-gr-title::before {
+  .me__skill-group-title::before {
     content: "✜";
     display: inline-block;
     font-size: var(--font-size-sm);
     padding-right: 3px;
   }
-  .skills-group {
+
+  .me__skills-group {
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 27px;
     max-width: 253px;
     width: 100%;
-    /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
     padding-left: calc(var(--font-size-sm) + 3px);
     column-gap: 8px;
   }
-  .skills-group p {
+
+  .me__skills-group-item {
     font-family: var(--font-en);
     white-space: nowrap;
-  }
-
-  .skill-group-wrapper {
-    width: 100%;
+    margin: 0;
   }
 
   @media (min-width: 768px) {
-    .section-me {
+    .me {
       padding: 190px 24px;
     }
-    .section-me-contents {
+    .me__contents {
       max-width: 1080px;
     }
-    .name {
+    .me__name {
       font-size: var(--font-size-xl);
     }
-    .job {
+    .me__job {
       font-size: var(--font-size-lg);
     }
-    .live-in p {
+    .me__history-item {
       font-size: var(--font-size-md);
     }
-    .skillSec-ttl {
+    .me__skill-section-title {
       font-size: var(--font-size-xl);
       padding-bottom: 19px;
     }
-    .skill-gr-title {
+    .me__skill-group-title {
       font-size: var(--font-size-lg);
       padding-bottom: 16px;
     }
-    .skill-gr-title::before {
+    .me__skill-group-title::before {
       font-size: var(--font-size-lg);
       padding-right: 11px;
     }
-    .skills-group {
+    .me__skills-group {
       padding-bottom: 48px;
       max-width: 100%;
-      /* skill-gr-titleのfont-sizeとその疑似クラスのpadding-rightの値から算出 */
       padding-left: calc(var(--font-size-lg) + 11px);
       column-gap: 16px;
     }
-    .skills-group p {
+    .me__skills-group-item {
       font-size: var(--font-size-md);
     }
   }

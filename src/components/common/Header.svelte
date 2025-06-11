@@ -12,12 +12,13 @@
   }
 </script>
 
+<!-- SP表示版のヘッダーメニュー -->
 <div>
   <header class="header">
-    <a class="home-text" href="/" use:link>上 / 原</a>
+    <a class="header__home-link" href="/" use:link>上 / 原</a>
     <button
-      class="header-btn"
-      class:header-btn--clicked={isMenuOpen}
+      class="header__menu-btn"
+      class:header__menu-btn--active={isMenuOpen}
       onclick={toggleMenu}
     >
       ＋
@@ -27,36 +28,42 @@
   <!-- フルスクリーンメニュー -->
   {#if isMenuOpen}
     <div
-      class="fullscreen-menu"
+      class="menu"
       onclick={closeMenu}
       onkeydown={(e) => e.key === "Escape" && closeMenu()}
       role="dialog"
       aria-modal="true"
       tabindex="-1"
     >
-      <div class="menu-content" tabindex="0" role="button">
-        <div class="menu-nav">
-          <div>
-            <a class="menu-link" href="/me" use:link onclick={closeMenu}>私</a>
+      <div class="menu__content" tabindex="0" role="button">
+        <nav class="menu__nav">
+          <div class="menu__nav-item">
+            <a class="menu__nav-link" href="/me" use:link onclick={closeMenu}
+              >私</a
+            >
           </div>
 
-          <div>
-            <a class="menu-link" href="/works" use:link onclick={closeMenu}
+          <div class="menu__nav-item">
+            <a class="menu__nav-link" href="/works" use:link onclick={closeMenu}
               >集</a
             >
           </div>
 
-          <div>
-            <a class="menu-link" href="/ramble" use:link onclick={closeMenu}
-              >言・こと</a
+          <div class="menu__nav-item">
+            <a
+              class="menu__nav-link"
+              href="/ramble"
+              use:link
+              onclick={closeMenu}>言・こと</a
             >
           </div>
 
-          <div>
-            <a class="menu-link" href="/info" use:link onclick={closeMenu}>報</a
+          <div class="menu__nav-item">
+            <a class="menu__nav-link" href="/info" use:link onclick={closeMenu}
+              >報</a
             >
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   {/if}
@@ -76,24 +83,30 @@
     z-index: 999;
   }
 
-  .header-btn {
+  .header__home-link {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .header__menu-btn {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     transform: rotate(0deg);
     transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
   }
 
-  .header-btn--clicked {
+  .header__menu-btn--active {
     transform: rotate(45deg);
   }
 
-  .home-text {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    margin: 0;
-  }
-
-  .fullscreen-menu {
+  .menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -101,14 +114,14 @@
     height: 100vh;
     z-index: 900;
     background-color: var(--cactus-green);
-    animation: fadeIn 0.3s ease;
+    animation: menu-fade-in 0.3s ease;
   }
 
-  .menu-content {
-    animation: slideIn 0.3s ease;
+  .menu__content {
+    animation: menu-slide-in 0.3s ease;
   }
 
-  .menu-nav {
+  .menu__nav {
     position: relative;
     padding: 200px 1.5rem;
     height: 100vh;
@@ -117,41 +130,22 @@
     gap: 2rem;
   }
 
-  .menu-nav a {
-    font-family: var(--font-en);
-    color: var(--clear-white);
-    font-size: 1.5em;
-    display: block;
-  }
-
-  .menu-nav div {
+  .menu__nav-item {
     border-bottom: 1px solid var(--clear-white);
     padding-bottom: 0.25rem;
   }
 
-  .menu-link {
+  .menu__nav-link {
+    font-family: var(--font-en);
     color: var(--clear-white);
+    font-size: 1.5em;
+    display: block;
     text-decoration: none;
+    transition: opacity 0.2s ease;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideIn {
-    from {
-      transform: translateY(-30px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .menu__nav-link:hover {
+    opacity: 0.8;
   }
 
   @media (min-width: 768px) {

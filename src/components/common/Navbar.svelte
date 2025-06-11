@@ -4,23 +4,19 @@
 </script>
 
 <div class="nav-header">
-  <ul class="nav">
+  <ul class="nav-header__list">
     {#each sitemap as item}
-      <li>
-        <a href={item.link} class="menu-link" use:link>{item.name}</a>
+      <li class="nav-header__item">
+        <a href={item.link} class="nav-header__link" use:link>
+          {item.name}
+        </a>
       </li>
     {/each}
   </ul>
 </div>
 
 <style>
-  @media (max-width: 768px) {
-    .nav-header {
-      display: none;
-    }
-  }
-
-  .nav {
+  .nav-header__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -28,19 +24,25 @@
     max-width: 400px;
   }
 
-  .nav li {
+  .nav-header__item {
     padding-bottom: 0.2em;
     border-bottom: solid 2px;
   }
 
-  .nav li a {
+  .nav-header__link {
     display: block;
     width: 100%;
     transform: translateX(0);
     transition: transform 0.3s ease;
   }
 
-  .nav li a:hover {
+  .nav-header__link:hover {
     transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-header {
+      display: none;
+    }
   }
 </style>

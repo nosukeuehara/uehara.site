@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DefaultLayout from "../layout/DefaultLayout.svelte";
+  import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
 
   const href = "/ramble";
@@ -42,28 +42,24 @@
       }
     );
 
-    if (titleRef) observer.observe(titleRef);
-    if (ueharaRef) observer.observe(ueharaRef);
-    if (cotoRef) observer.observe(cotoRef);
-
+    observer.observe(titleRef);
+    observer.observe(ueharaRef);
+    observer.observe(cotoRef);
     return () => observer.disconnect();
   });
 
   function startTypingAnimation() {
     isTypingTitle = true;
-
     const titleInterval = setInterval(() => {
       if (titleIndex < titleText.length) {
-        displayTitle += titleText[titleIndex];
-        titleIndex++;
+        displayTitle += titleText[titleIndex++];
       } else {
         clearInterval(titleInterval);
         setTimeout(() => {
           isTypingSubtitle = true;
           const subtitleInterval = setInterval(() => {
             if (subtitleIndex < subtitleText.length) {
-              displaySubtitle += subtitleText[subtitleIndex];
-              subtitleIndex++;
+              displaySubtitle += subtitleText[subtitleIndex++];
             } else {
               clearInterval(subtitleInterval);
             }
@@ -75,34 +71,34 @@
 </script>
 
 <DefaultLayout>
-  <div class="section-works section-style-base">
-    <div class="section-works-contents">
+  <section class="works section-style-base">
+    <div class="works__container">
       <div
-        class="section-works-title-wrapper"
+        class="works__title-block"
         class:fade-slide-up={isTitleVisible}
         bind:this={titleRef}
       >
-        <h2 class="section-works-title">
-          <span class="typing-text">{displayTitle}</span>
+        <h2 class="works__title">
+          <span class="works__typing-text">{displayTitle}</span>
           {#if isTypingTitle && titleIndex <= titleText.length}
-            <span class="cursor">|</span>
+            <span class="works__cursor">|</span>
           {/if}
         </h2>
-        <p class="section-works-subtitle">
-          <span class="typing-text">{displaySubtitle}</span>
+        <p class="works__subtitle">
+          <span class="works__typing-text">{displaySubtitle}</span>
           {#if isTypingSubtitle && subtitleIndex <= subtitleText.length}
-            <span class="cursor">|</span>
+            <span class="works__cursor">|</span>
           {/if}
         </p>
       </div>
 
       <div
-        class="work-uehara"
+        class="works__item works__item--uehara"
         class:slide-in-left={isUeharaVisible}
         bind:this={ueharaRef}
       >
-        <h3 class="work-title">上 / 原</h3>
-        <p class="work-description">
+        <h3 class="works__item-title">上 / 原</h3>
+        <p class="works__item-description">
           好きなことを自由にアウトプットするための個人サイト。<br />
           平凡な名字に記号を加えることで、無機質さと余白を感じるデザインに。<br
           />
@@ -111,37 +107,36 @@
       </div>
 
       <div
-        class="work-coto"
+        class="works__item works__item--coto"
         class:slide-in-left={isCotoVisible}
         bind:this={cotoRef}
       >
-        <h3 class="work-title">coto</h3>
-        <p class="work-description">
+        <h3 class="works__item-title">coto</h3>
+        <p class="works__item-description">
           「言葉」や「物事」など"コト"を由来に名付けた読書管理のためのサービス。<br
           />
           インターネットが得意じゃない人たちでも直感的に使えるよう、シンプルでわかりやすいデザインを意識しました。<br
           />
           よりやさしいを考えて現在も開発中。
         </p>
-        <a class="link link-coto" {href}>coto</a>
+        <a {href} class="works__link works__link--coto"> coto </a>
       </div>
     </div>
-  </div>
+  </section>
 </DefaultLayout>
 
 <style>
-  * {
-    color: var(--dark);
-  }
-  .section-works {
+  .works {
     background-color: var(--peach-fuzz);
     min-height: 100vh;
   }
-  .section-works-contents {
+  .works__container {
     width: 100%;
     margin: 0 auto;
+    padding: 0 24px;
   }
-  .section-works-title-wrapper {
+
+  .works__title-block {
     opacity: 0;
     transform: translateY(30px);
     margin-bottom: 42px;
@@ -151,44 +146,16 @@
     opacity: 1;
     transform: translateY(0);
   }
-  .slide-in-left {
-    opacity: 1;
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  .cursor {
-    animation: blink 1s infinite;
-    color: var(--dark);
-  }
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
-  .work-uehara,
-  .work-coto {
+
+  .works__item {
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
     position: relative;
     overflow: hidden;
+    padding-bottom: 40px;
   }
-  .work-uehara::before,
-  .work-coto::before {
+  .works__item::before {
     content: "";
     position: absolute;
     top: 0;
@@ -203,27 +170,48 @@
     );
     transition: left 0.5s ease;
   }
-  .section-works-title {
+
+  .slide-in-left {
+    opacity: 1;
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .works__title {
     padding-bottom: 3px;
   }
-  .section-works-title span.typing-text {
+  .works__typing-text {
     font-size: var(--font-size-lg);
   }
-  .section-works-title span.cursor {
-    font-size: var(--font-size-lg);
-  }
-  .section-works-subtitle span.typing-text {
-    font-size: var(--font-size-md);
-  }
-  .section-works-subtitle span.cursor {
-    font-size: var(--font-size-md);
-  }
-  .section-works-subtitle {
+  .works__subtitle {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
   }
-  .section-works-title-wrapper::after {
+  .works__cursor {
+    animation: blink 1s infinite;
+  }
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .works__title-block::after {
     content: "";
     display: block;
     height: 1px;
@@ -249,58 +237,50 @@
       width: 100%;
     }
   }
-  .link {
+
+  .works__item-title {
+    font-size: var(--font-size-lg);
+    padding-bottom: 14px;
+  }
+  .works__item-description {
+    margin: 0;
+  }
+
+  .works__link {
     display: inline-block;
     padding-top: 5px;
     position: relative;
     transition: all 0.3s ease;
+    text-decoration: none;
   }
-  .link:hover {
+  .works__link:hover {
     transform: translateX(5px);
   }
-  .link-coto {
+  .works__link--coto {
     font-family: "Lunasima", sans-serif;
   }
-  .link::before {
+  .works__link::before {
     content: "→";
-    display: inline-block;
     padding-right: 4px;
     font-weight: var(--font-weight-regular);
-    color: var(--dark);
     transition: transform 0.3s ease;
   }
-  .link:hover::before {
+  .works__link:hover::before {
     transform: translateX(3px);
   }
-  .work-uehara,
-  .work-coto {
-    padding-bottom: 40px;
-  }
-  .work-uehara h3,
-  .work-coto h3 {
-    font-size: var(--font-size-lg);
-    padding-bottom: 14px;
-  }
-  .work-coto h3 {
-    font-family: "Lunasima", sans-serif;
-  }
+
   @media (min-width: 768px) {
-    .section-works {
-      padding: 190px 24px;
-    }
-    .section-works-contents {
+    .works__container {
       max-width: 1080px;
     }
-    .section-works-title span.typing-text,
-    .section-works-title span.cursor {
+    .works__typing-text,
+    .works__cursor {
       font-size: var(--font-size-xl);
     }
-    .section-works-subtitle span.typing-text,
-    .section-works-subtitle span.cursor {
+    .works__subtitle {
       font-size: var(--font-size-lg);
     }
-    .work-uehara h3,
-    .work-coto h3 {
+    .works__item-title {
       padding-bottom: 12px;
     }
   }

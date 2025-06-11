@@ -4,23 +4,26 @@
 </script>
 
 <div class="footer">
-  <div class="names">
-    <p class="name-kanji">上 / 原</p>
-    <p class="name-kana">ue / hara</p>
+  <div class="footer__names">
+    <p class="footer__name footer__name--kanji">上 / 原</p>
+    <p class="footer__name footer__name--kana">ue / hara</p>
   </div>
-  <div class="account-container">
-    <a class="mail" href={`mailto:${import.meta.env.VITE_EMAIL_ADD}`}>
+  <div class="footer__account">
+    <a
+      class="footer__link footer__link--mail"
+      href={`mailto:${import.meta.env.VITE_EMAIL_ADD}`}
+    >
       uehara.ryunosuke.06@gmail.com
     </a>
     <a
-      class="github"
+      class="footer__link footer__link--github"
       href={import.meta.env.VITE_GITHUB_REPO_URL}
       target="_blank"
       rel="noopener noreferrer"
     >
       GitHub
       <svg
-        class="external-icon"
+        class="footer__icon"
         xmlns="http://www.w3.org/2000/svg"
         width="12"
         height="12"
@@ -37,11 +40,11 @@
       </svg>
     </a>
   </div>
-  <div class="footer-sitemap">
-    <ul class="footer-sitemap-list">
+  <div class="footer__sitemap">
+    <ul class="footer__sitemap-list">
       {#each sitemap as item}
-        <li class="footer-sitemap-item">
-          <a href={item.link} class="footer-sitemap-link" use:link
+        <li class="footer__sitemap-item">
+          <a href={item.link} class="footer__sitemap-link" use:link
             >{item.name}</a
           >
         </li>
@@ -60,59 +63,64 @@
     align-items: center;
     padding: 80px 0px;
   }
-  .names {
+
+  .footer__names {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .names .name-kanji {
-    font-size: var(--font-size-xl);
+
+  .footer__name {
+    color: var(--clear-white);
     font-weight: var(--font-weight-bold);
+  }
+
+  .footer__name--kanji {
+    font-size: var(--font-size-xl);
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--clear-white);
     transition: transform 0.3s ease;
   }
-  .names .name-kana {
+
+  .footer__name--kana {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
-    color: var(--clear-white);
-    font-weight: var(--font-weight-bold);
     letter-spacing: 1px;
   }
-  .account-container {
+
+  .footer__account {
     display: flex;
     padding-top: 20px;
     flex-direction: column;
     align-items: center;
     gap: 6px;
   }
-  .account-container .mail,
-  .github {
-    font-size: var(--font-size-xs);
-  }
-  .mail {
-    text-decoration: none;
-  }
-  .github {
+
+  .footer__link {
     font-size: var(--font-size-xs);
     color: var(--clear-white);
     text-decoration: none;
+  }
+
+  .footer__link--github {
     display: inline-flex;
     align-items: center;
     gap: 4px;
   }
-  .external-icon {
+
+  .footer__icon {
     width: 14px;
     height: 14px;
     stroke: currentColor;
     opacity: 0.8;
   }
-  .footer-sitemap {
+
+  .footer__sitemap {
     margin-top: 60px;
     width: 150px;
   }
-  .footer-sitemap-list {
+
+  .footer__sitemap-list {
     list-style: none;
     padding: 0;
     margin: 0 auto;
@@ -121,19 +129,12 @@
     gap: 20px;
     align-items: flex-start;
   }
-  .footer-sitemap-link {
-    font-size: 1.2em;
-    color: var(--clear-white);
-    text-decoration: none;
-    transition:
-      color 0.3s ease,
-      transform 0.3s ease;
-    display: block;
-  }
-  .footer-sitemap-item {
+
+  .footer__sitemap-item {
     width: 100%;
   }
-  .footer-sitemap-item::after {
+
+  .footer__sitemap-item::after {
     content: "";
     display: block;
     height: 0px;
@@ -141,14 +142,20 @@
     margin: 3px 0 10px;
     border: 1px solid var(--clear-white);
   }
-  .footer-sitemap-list .footer-sitemap-item a {
+
+  .footer__sitemap-link {
+    font-size: 1.2em;
+    color: var(--clear-white);
+    text-decoration: none;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
     display: block;
     width: 100%;
     transform: translateX(0);
-    transition: transform 0.3s ease;
   }
 
-  .footer-sitemap-list .footer-sitemap-item a:hover {
+  .footer__sitemap-link:hover {
     transform: translateX(5px);
   }
 </style>

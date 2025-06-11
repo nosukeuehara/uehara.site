@@ -1,40 +1,42 @@
 <script lang="ts">
   import { fetchSpecificInfo } from "../service/api";
-  import DefaultLayout from "../layout/DefaultLayout.svelte";
+  import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { link } from "svelte-spa-router";
 
   interface Props {
-    params: {
-      id: string;
-    };
+    params: { id: string };
   }
-
   let props: Props = $props();
 </script>
 
 <DefaultLayout>
   <div class="info-detail">
     {#await fetchSpecificInfo(props.params.id)}
-      <div class="loadingUI">
-        <p>読み込み中...</p>
+      <div class="info-detail__loading">
+        <p class="info-detail__loading-text">読み込み中...</p>
       </div>
     {:then info}
-      <article>
-        <h1>{info.title}</h1>
-        <div class="category"><p>#{info.category.name}</p></div>
+      <article class="info-detail__article">
+        <h1 class="info-detail__title">{info.title}</h1>
+        <div class="info-detail__category">
+          <p class="info-detail__category-text">#{info.category.name}</p>
+        </div>
         <img
+          class="info-detail__image"
           src={info.eyecatch.url}
           alt={info.title}
           width={info.eyecatch.width}
           height={info.eyecatch.height}
         />
-        <div class="body">{@html info.body}</div>
+        <div class="info-detail__body">
+          {@html info.body}
+        </div>
       </article>
-      <a class="go-infos" href="/Info" use:link>
-        <p>→ 報</p>
+      <a class="info-detail__back-link" href="/Info" use:link>
+        <p class="info-detail__back-link-text">→ 報</p>
       </a>
     {:catch err}
-      <p style="color:red;">
+      <p class="info-detail__error">
         {err instanceof Error ? err.message : String(err)}
       </p>
     {/await}
@@ -42,28 +44,44 @@
 </DefaultLayout>
 
 <style>
-  * {
+  .info-detail * {
     color: var(--pine-forest);
+    box-sizing: border-box;
   }
-  .loadingUI {
-    height: 100vh;
-    padding: 100px 24px 60px;
-  }
-  .go-infos {
-    display: flex;
-    justify-content: center;
-    padding-top: 60px;
-  }
+
   .info-detail {
     background-color: var(--sunshine-yellow);
     padding: 90px 24px 30px;
   }
-  h1 {
-    font-size: var(--font-size-lg);
-    padding-bottom: 1rem;
+
+  .info-detail__loading {
+    height: 100vh;
+    padding: 100px 24px 60px;
+  }
+  .info-detail__loading-text {
+    margin: 0;
   }
 
-  img {
+  .info-detail__article {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .info-detail__title {
+    font-size: var(--font-size-lg);
+    padding-bottom: 1rem;
+    margin: 0;
+  }
+
+  .info-detail__category {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+  }
+  .info-detail__category-text {
+    margin: 0;
+  }
+
+  .info-detail__image {
     max-width: 327px;
     width: 100%;
     height: auto;
@@ -72,26 +90,44 @@
     margin: 0 auto;
   }
 
-  .category {
-    display: inline-block;
-    font-size: var(--font-size-xs);
+  .info-detail__back-link {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    text-decoration: none;
+  }
+  .info-detail__back-link-text {
+    margin: 0;
   }
 
-  :global(.body h2) {
+  .info-detail__error {
+    color: red;
+    text-align: center;
+  }
+
+  .info-detail__body :global(h2),
+  .info-detail__body :global(h3),
+  .info-detail__body :global(strong),
+  .info-detail__body :global(p) {
+    margin: 0;
+  }
+
+  .info-detail__body :global(h2) {
     font-size: var(--font-size-lg);
     border-bottom: 1px solid var(--pine-forest);
     padding: 2rem 0 4px;
   }
 
-  :global(.body h3) {
+  .info-detail__body :global(h3) {
     font-size: var(--font-size-md);
     padding: 2rem 0 0;
   }
-  :global(strong) {
+
+  .info-detail__body :global(strong) {
     font-weight: var(--font-weight-bold);
   }
 
-  :global(.body p) {
+  .info-detail__body :global(p) {
     padding: 0.5rem 0;
   }
 
@@ -99,9 +135,8 @@
     .info-detail {
       padding: 190px 24px 60px;
     }
-
-    article,
-    .loadingUI {
+    .info-detail__article,
+    .info-detail__loading {
       max-width: 1080px;
       margin: 0 auto;
     }

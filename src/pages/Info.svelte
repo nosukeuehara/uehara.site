@@ -1,17 +1,17 @@
 <script lang="ts">
-  import DefaultLayout from "../layout/DefaultLayout.svelte";
-  import Info from "../lib/Info.svelte";
+  import DefaultLayout from "./common/layout/DefaultLayout.svelte";
+  import Info from "../lib/InfoContents.svelte";
 </script>
 
 <DefaultLayout>
-  <div class="section-info section-style-base">
-    <div class="section-info-contents">
-      <div class="section-info-title-wrapper">
-        <h2 class="section-info-title">報</h2>
-        <p class="section-info-subtitle">info</p>
+  <div class="info section-style-base">
+    <div class="info__contents">
+      <div class="info__title-wrapper">
+        <h2 class="info__title">報</h2>
+        <p class="info__subtitle">info</p>
       </div>
 
-      <div class="release-wrapper">
+      <div class="info__release-wrapper">
         <Info />
       </div>
     </div>
@@ -19,21 +19,25 @@
 </DefaultLayout>
 
 <style>
-  * {
+  .info * {
     color: var(--pine-forest);
   }
-  .section-info {
+
+  .info {
     background-color: var(--sunshine-yellow);
     min-height: 100vh;
   }
-  .section-info-contents {
+
+  .info__contents {
     width: 100%;
     margin: 0 auto;
   }
-  .section-info-title-wrapper {
+
+  .info__title-wrapper {
     margin-bottom: 42px;
   }
-  .section-info-title-wrapper::after {
+
+  .info__title-wrapper::after {
     content: "";
     display: block;
     height: 2px;
@@ -47,32 +51,38 @@
       transparent 20px
     );
   }
-  .section-info-title {
+
+  .info__title {
     font-size: var(--font-size-lg);
-  }
-  .section-info-subtitle {
-    font-size: var(--font-size-md);
+    margin: 0;
   }
 
-  .release-wrapper {
+  .info__subtitle {
+    font-size: var(--font-size-md);
+    margin: 0;
+  }
+
+  .info__release-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 40px 0;
+    padding-bottom: 40px;
   }
 
   @media (min-width: 768px) {
-    .section-info {
+    .info {
       padding: 190px 24px;
     }
-    .section-info-contents {
+
+    .info__contents {
       max-width: 1080px;
     }
 
-    .section-info-title {
+    .info__title {
       font-size: var(--font-size-xl);
     }
-    .section-info-subtitle {
+
+    .info__subtitle {
       font-size: var(--font-size-lg);
     }
   }

@@ -1,95 +1,83 @@
 <script lang="ts">
   import { createObserver } from "../../../lib/actions/createObserver";
+  import { historyItems, skillGroups } from "../../../contentData/meItem";
 
+  // IntersectionObserver の設定はそのまま
   let isProfileVisible = false;
   let isHistoryVisible = false;
   let isSkillSecTtlVisible = false;
   let isSkillsVisible = false;
-  let visibleSkillGroups: boolean[] = [false, false, false, false, false];
+  let visibleSkillGroups = Array(5).fill(false);
 
   const profileObserver = createObserver(
-    (entry) => (isProfileVisible = entry.isIntersecting)
+    (e) => (isProfileVisible = e.isIntersecting)
   );
   const historyObserver = createObserver(
-    (entry) => (isHistoryVisible = entry.isIntersecting)
+    (e) => (isHistoryVisible = e.isIntersecting)
   );
   const skillSecTtlObserver = createObserver(
-    (entry) => (isSkillSecTtlVisible = entry.isIntersecting)
+    (e) => (isSkillSecTtlVisible = e.isIntersecting)
   );
   const skillsObserver = createObserver(
-    (entry) => (isSkillsVisible = entry.isIntersecting)
+    (e) => (isSkillsVisible = e.isIntersecting)
   );
-  function skillGroupObserver(index: number) {
-    return createObserver((entry) => {
-      visibleSkillGroups[index] = entry.isIntersecting;
+  function skillGroupObserver(i: number) {
+    return createObserver((e) => {
+      visibleSkillGroups[i] = e.isIntersecting;
       visibleSkillGroups = [...visibleSkillGroups];
     });
   }
 </script>
 
 <section class="section-me section-style-base">
-  <div class="section-me-contents">
+  <div class="section-me__contents">
+    <!-- プロフィール -->
     <div
-      class="profile"
+      class="section-me__profile"
       class:fade-in-up={isProfileVisible}
       use:profileObserver
     >
-      <h2 class="name">上 原 龍 之 介</h2>
-      <p class="job">frontend @ web</p>
+      <h2 class="section-me__name">上 原 龍 之 介</h2>
+      <p class="section-me__job">frontend @ web</p>
     </div>
+
+    <!-- 履歴 -->
     <div
-      class="live-in"
+      class="section-me__history"
       class:fade-in-up={isHistoryVisible}
       use:historyObserver
     >
-      <p>2001年、宮古島出身</p>
-      <p>東京都在住</p>
+      {#each historyItems as h}
+        <p class="section-me__history-item">{h}</p>
+      {/each}
     </div>
+
+    <!-- スキル見出し -->
     <div
-      class="skillSec-ttl"
+      class="section-me__skill-section-title"
       class:fade-in-up={isSkillSecTtlVisible}
       use:skillSecTtlObserver
     >
       スキル
     </div>
+
+    <!-- スキル一覧 -->
     <div
-      class="skills-container"
+      class="section-me__skills"
       class:fade-in-up={isSkillsVisible}
       use:skillsObserver
     >
-      {#each ["言語", "フレームワーク", "スタイリング", "CMS", "バックエンド / 他"] as title, i}
+      {#each skillGroups as { title, items }, i}
         <div
-          class="skill-group-wrapper"
+          class="section-me__skill-group"
           class:slide-in-left={visibleSkillGroups[i]}
           use:skillGroupObserver(i)
         >
-          <div class="skill-gr-title">{title}</div>
-          <div class="skills-group">
-            {#if i === 0}
-              <p>JavaScript</p>
-              <p>TypeScript</p>
-              <p>PHP</p>
-              <p>Python</p>
-            {:else if i === 1}
-              <p>React</p>
-              <p>Vue</p>
-              <p>Svelte</p>
-              <p>Next</p>
-              <p>Nuxt</p>
-            {:else if i === 2}
-              <p>CSS Modules</p>
-              <p>Tailwind CSS</p>
-              <p>Material-UI</p>
-            {:else if i === 3}
-              <p>WordPress</p>
-              <p>HubSpot</p>
-              <p>other HeadlessCMS...</p>
-            {:else if i === 4}
-              <p>AppRouter[Next.js]</p>
-              <p>Hono.js</p>
-              <p>Express</p>
-              <p>Docker</p>
-            {/if}
+          <div class="section-me__skill-group-title">{title}</div>
+          <div class="section-me__skills-group">
+            {#each items as item}
+              <p class="section-me__skills-group-item">{item}</p>
+            {/each}
           </div>
         </div>
       {/each}
@@ -98,40 +86,43 @@
 </section>
 
 <style>
-  * {
+  .section-me * {
     color: var(--clear-white);
   }
+
   .section-me {
     background-color: var(--turquoise-fresh);
     min-height: 100vh;
-  }
-  .profile,
-  .live-in,
-  .skillSec-ttl,
-  .skills-container,
-  .skill-group-wrapper {
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .section-me {
-    background-color: var(--turquoise-fresh);
     display: grid;
     justify-items: start;
   }
-  .section-me-contents {
+
+  .section-me__contents {
     width: 100%;
     margin: 0 auto;
   }
-  .profile * {
-    line-height: 1;
+
+  .section-me__profile,
+  .section-me__history,
+  .section-me__skill-section-title,
+  .section-me__skills,
+  .section-me__skill-group {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .profile {
+
+  .section-me__profile {
     width: 100%;
     display: flex;
-    margin-bottom: 42px;
     flex-direction: column;
+    margin-bottom: 42px;
   }
-  .profile::after {
+
+  .section-me__profile * {
+    line-height: 1;
+  }
+
+  .section-me__profile::after {
     content: "";
     display: block;
     height: 2px;
@@ -145,45 +136,58 @@
       transparent 20px
     );
   }
-  .name {
+
+  .section-me__name {
     font-size: var(--font-size-lg);
     padding-bottom: 3px;
   }
-  .job {
+
+  .section-me__job {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
   }
-  .live-in {
+
+  .section-me__history {
     font-size: var(--font-size-sm);
     padding-bottom: 2rem;
   }
-  .live-in p {
+
+  .section-me__history-item {
     font-size: var(--font-size-sm);
   }
-  .skillSec-ttl {
+
+  .section-me__skill-section-title {
     font-family: var(--font-jp);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-thin);
     padding-bottom: 15px;
   }
-  .skills-container {
+
+  .section-me__skills {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  .skill-gr-title {
+
+  .section-me__skill-group {
+    width: 100%;
+  }
+
+  .section-me__skill-group-title {
     font-family: var(--font-jp);
     font-size: var(--font-size-sm);
     padding-bottom: 8px;
   }
-  .skill-gr-title::before {
+
+  .section-me__skill-group-title::before {
     content: "✜";
     display: inline-block;
     font-size: var(--font-size-sm);
     padding-right: 3px;
   }
-  .skills-group {
+
+  .section-me__skills-group {
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 27px;
@@ -192,47 +196,44 @@
     padding-left: calc(var(--font-size-sm) + 3px);
     column-gap: 8px;
   }
-  .skills-group p {
+
+  .section-me__skills-group-item {
     font-family: var(--font-en);
     white-space: nowrap;
   }
 
-  .skill-group-wrapper {
-    width: 100%;
-  }
-
   @media (min-width: 768px) {
-    .section-me-contents {
+    .section-me__contents {
       max-width: 1080px;
     }
-    .name {
+    .section-me__name {
       font-size: var(--font-size-xl);
     }
-    .job {
+    .section-me__job {
       font-size: var(--font-size-lg);
     }
-    .live-in p {
+    .section-me__history-item {
       font-size: var(--font-size-md);
     }
-    .skillSec-ttl {
+    .section-me__skill-section-title {
       font-size: var(--font-size-xl);
       padding-bottom: 19px;
     }
-    .skill-gr-title {
+    .section-me__skill-group-title {
       font-size: var(--font-size-lg);
       padding-bottom: 16px;
     }
-    .skill-gr-title::before {
+    .section-me__skill-group-title::before {
       font-size: var(--font-size-lg);
       padding-right: 11px;
     }
-    .skills-group {
+    .section-me__skills-group {
       padding-bottom: 48px;
       max-width: 100%;
       padding-left: calc(var(--font-size-lg) + 11px);
       column-gap: 16px;
     }
-    .skills-group p {
+    .section-me__skills-group-item {
       font-size: var(--font-size-md);
     }
   }

@@ -1,16 +1,16 @@
 <script lang="ts">
 </script>
 
-<section class="notfound-container">
-  <div class="notfound-content">
-    <h1 class="notfound-title">404</h1>
-    <p class="notfound-message">ページが見つかりません</p>
-    <a href="/" class="notfound-link">トップページに戻る</a>
+<section class="notfound">
+  <div class="notfound__content">
+    <h1 class="notfound__title">404</h1>
+    <p class="notfound__message">ページが見つかりません</p>
+    <a href="/" class="notfound__link">トップページに戻る</a>
   </div>
 </section>
 
 <style>
-  .notfound-container {
+  .notfound {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,27 +23,27 @@
     z-index: 1000;
   }
 
-  .notfound-content {
+  .notfound__content {
     text-align: center;
     background-color: var(--clear-white);
     padding: 3rem 2rem;
     border-radius: 1rem;
   }
 
-  .notfound-title {
+  .notfound__title {
     font-size: 5rem;
     margin: 0;
     color: var(--tomato-red);
     font-weight: bold;
   }
 
-  .notfound-message {
+  .notfound__message {
     font-size: 1.5rem;
     margin-top: 1rem;
     color: var(--dark);
   }
 
-  .notfound-link {
+  .notfound__link {
     display: inline-block;
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
@@ -54,7 +54,7 @@
     transition: all 0.3s ease;
   }
 
-  .notfound-link:hover {
+  .notfound__link:hover {
     background-color: var(--crimson-wine);
   }
 </style>
