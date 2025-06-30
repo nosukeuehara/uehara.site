@@ -129,6 +129,7 @@
   .works {
     background-color: var(--peach-fuzz);
     min-height: 100vh;
+    color: var(--dark);
   }
   .works__container {
     width: 100%;
@@ -162,12 +163,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, var(--dark), transparent);
     transition: left 0.5s ease;
   }
 
@@ -258,12 +254,14 @@
   }
   .works__link--coto {
     font-family: "Lunasima", sans-serif;
+    color: var(--dark);
   }
   .works__link::before {
     content: "→";
     padding-right: 4px;
     font-weight: var(--font-weight-regular);
     transition: transform 0.3s ease;
+    color: var(--dark);
   }
   .works__link:hover::before {
     transform: translateX(3px);
