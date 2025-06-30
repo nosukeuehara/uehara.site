@@ -64,8 +64,8 @@
 
   .info__release-wrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     padding-bottom: 40px;
   }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Info from "../../../lib/InfoContents.svelte";
+  import Latest3Infos from "../../../lib/LatesThreetInfoContents.svelte";
   import { link } from "svelte-spa-router";
 </script>
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="section-info__info-wrapper">
-      <Info />
+      <Latest3Infos />
     </div>
 
     <a href="/Info" class="section-info__more-link" use:link>
