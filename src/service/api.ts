@@ -6,7 +6,6 @@ export async function fetchCotos(): Promise<{ contents: Blog[] }> {
 }
 
 export async function fetchInfos(): Promise<Info[]> {
-  console.log(`${import.meta.env.VITE_MICROCMS_API_URL}api/info`)
   const res = await fetch(`${import.meta.env.VITE_MICROCMS_API_URL}api/info`);
   const data = await res.json();
   return data.contents;
