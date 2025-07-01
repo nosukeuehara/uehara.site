@@ -71,7 +71,7 @@
 </script>
 
 <DefaultLayout>
-  <section class="works section-style-base">
+  <section class="works">
     <div class="works__container">
       <div
         class="works__title-block"
@@ -130,6 +130,7 @@
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     color: var(--dark);
+    padding: 190px 24px;
   }
   .works__container {
     width: 100%;
