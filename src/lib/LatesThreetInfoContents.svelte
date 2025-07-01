@@ -11,7 +11,7 @@
       <p class="info-list__no-items">記事がありません</p>
     {:else}
       {#each res.slice(0, 3) as article}
-        <a class="info-list__item" href={`/info/${article.id}`} use:link>
+        <div class="info-list__item">
           <img
             class="info-list__item-image"
             src={article.eyecatch.url}
@@ -21,13 +21,17 @@
             {new Date(article.publishedAt).toLocaleDateString()}
           </p>
           <p class="info-list__item-category">
-            #{article.category.name}
+            <a href={`/info/categories/${article.category.id}`} use:link>
+              #{article.category.name}
+            </a>
           </p>
-          <h2 class="info-list__item-title">{article.title}</h2>
-          <p class="info-list__item-description">
-            {article.description}
-          </p>
-        </a>
+          <a href={`/info/${article.id}`} use:link>
+            <h2 class="info-list__item-title">{article.title}</h2>
+            <p class="info-list__item-description">
+              {article.description}
+            </p>
+          </a>
+        </div>
       {/each}
     {/if}
   {:catch error}
@@ -55,10 +59,11 @@
     width: 100%;
     max-width: 400px;
     grid-template-rows: subgrid;
-    grid-row: span 6;
+    grid-row: span 4;
     text-decoration: none;
     background-color: #ffffffad;
     gap: 8px;
+    padding-bottom: 8px;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;

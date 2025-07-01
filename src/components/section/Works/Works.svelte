@@ -112,16 +112,16 @@
       </a>
     </div>
 
-    <a
-      class="section-works__page-link"
-      aria-disabled="true"
-      href={works}
-      use:link
-      class:slide-in-left={isWorksPageLinkVisible}
-      use:worksPageLinkObserver
-    >
-      → 集
-    </a>
+    <div class="section-works__page-link">
+      <a
+        href={works}
+        use:link
+        class:slide-in-left={isWorksPageLinkVisible}
+        use:worksPageLinkObserver
+      >
+        → 集
+      </a>
+    </div>
   </div>
 </section>
 
@@ -241,14 +241,18 @@
 
   .section-works__page-link {
     display: flex;
-    padding-top: 80px;
-    font-size: var(--font-size-md);
-    color: var(--dark);
     justify-content: flex-end;
+    font-size: var(--font-size-xl);
     position: relative;
+    padding-top: 80px;
     bottom: 0;
     right: 0;
     text-decoration: none;
+  }
+
+  .section-works__page-link a {
+    font-size: var(--font-size-md);
+    margin: 0;
   }
 
   .typing {

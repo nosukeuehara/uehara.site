@@ -14,9 +14,9 @@
       <Latest3Infos />
     </div>
 
-    <a href="/Info" class="section-info__more-link" use:link>
-      <p>→ 報</p>
-    </a>
+    <div class="section-info__more-link">
+      <a href="/Info" use:link>→ 報</a>
+    </div>
   </div>
 </section>
 
@@ -84,7 +84,7 @@
     text-decoration: none;
   }
 
-  .section-info__more-link p {
+  .section-info__more-link a {
     font-size: var(--font-size-md);
     margin: 0;
   }
