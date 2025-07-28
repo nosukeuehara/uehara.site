@@ -1,6 +1,8 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
   import { sitemap } from "../../utils";
+  const userEmail = "uehara.ryunosuke.06@gmail.com";
+  const copyRight = "© 2026 上 / 原. All rights reserved.";
 </script>
 
 <div class="footer">
@@ -13,7 +15,7 @@
       class="footer__link footer__link--mail"
       href={`mailto:${import.meta.env.VITE_EMAIL_ADD}`}
     >
-      uehara.ryunosuke.06@gmail.com
+      {userEmail}
     </a>
     <a
       class="footer__link footer__link--github"
@@ -51,6 +53,8 @@
       {/each}
     </ul>
   </div>
+
+  <div class="copy-right">{copyRight}</div>
 </div>
 
 <style>
@@ -61,7 +65,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 0px;
+    padding-top: 80px;
   }
 
   .footer__names {
@@ -157,5 +161,12 @@
 
   .footer__sitemap-link:hover {
     transform: translateX(5px);
+  }
+
+  .copy-right {
+    font-size: var(--font-size-xs);
+    color: var(--clear-white);
+    text-align: center;
+    padding: 80px 0px 10px;
   }
 </style>

@@ -12,11 +12,13 @@
     {:else}
       {#each res.slice(0, 3) as article}
         <div class="info-list__item">
-          <img
-            class="info-list__item-image"
-            src={article.eyecatch.url}
-            alt="記事のサムネイル"
-          />
+          <a href={`/info/categories/${article.category.id}`} use:link>
+            <img
+              class="info-list__item-image"
+              src={article.eyecatch.url}
+              alt="記事のサムネイル"
+            />
+          </a>
           <p class="info-list__item-published">
             {new Date(article.publishedAt).toLocaleDateString()}
           </p>
