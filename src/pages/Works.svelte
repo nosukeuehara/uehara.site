@@ -81,7 +81,7 @@
         <h2 class="works__title">
           <span class="works__typing-text">{displayTitle}</span>
           {#if isTypingTitle && titleIndex <= titleText.length}
-            <span class="works__cursor">|</span>
+            <span class="works__cursor--lg">|</span>
           {/if}
         </h2>
         <p class="works__subtitle">
@@ -182,19 +182,26 @@
     }
   }
 
-  .works__title {
+  /* .works__title {
     padding-bottom: 3px;
-  }
-  .works__typing-text {
+  } */
+  .works__title .works__typing-text {
     font-size: var(--font-size-lg);
   }
-  .works__subtitle {
+  .works__subtitle .works__typing-text {
     font-family: var(--font-en);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-light);
   }
+
+  .works__cursor--lg {
+    animation: blink 1s infinite;
+    font-size: var(--font-size-lg);
+  }
+
   .works__cursor {
     animation: blink 1s infinite;
+    font-size: var(--font-size-md);
   }
   @keyframes blink {
     0%,

@@ -70,7 +70,7 @@
       <h2 class="section-works__title">
         <span class="typing-text">{displayTitle}</span>
         {#if isTypingTitle && titleIndex <= titleText.length}
-          <span class="cursor">|</span>
+          <span class="cursor--lg">|</span>
         {/if}
       </h2>
       <p class="section-works__subtitle">
@@ -259,9 +259,17 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  .cursor--lg {
+    animation: blink 1s infinite;
+    color: var(--dark);
+    font-size: var(--font-size-lg);
+  }
+
   .cursor {
     animation: blink 1s infinite;
     color: var(--dark);
+    font-size: var(--font-size-md);
   }
 
   @media (min-width: 768px) {
