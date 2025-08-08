@@ -141,7 +141,6 @@
   }
 
   .info-detail__body :global(a) {
-    color: var(--clear-white);
     padding: 0 5px;
 
     &::after {
