@@ -142,12 +142,14 @@
 
   .info-detail__body :global(a) {
     padding: 0 5px;
+    color: var(--pine-forest);
 
     &::after {
       content: "";
       display: inline-block;
       width: 15px;
       height: 15px;
+      color: var(--pine-forest);
       mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>');
       mask-repeat: no-repeat;
       mask-size: contain;
