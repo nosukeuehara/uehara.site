@@ -112,6 +112,10 @@
     margin: 0;
   }
 
+  .info-detail__body :global(figure) {
+    text-align: center;
+  }
+
   .info-detail__body :global(h1) {
     font-size: var(--font-size-xl);
     padding: 2rem 0 4px;
