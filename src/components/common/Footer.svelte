@@ -167,6 +167,6 @@
     font-size: var(--font-size-xs);
     color: var(--clear-white);
     text-align: center;
-    padding: 80px 0px 10px;
+    padding: 80px 0px 20px;
   }
 </style>

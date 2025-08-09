@@ -96,7 +96,7 @@
   .me {
     background-color: var(--turquoise-fresh);
     min-height: 100vh;
-    padding: 100px 24px;
+    padding: 120px 24px;
   }
 
   .me__contents {

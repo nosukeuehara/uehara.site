@@ -4,7 +4,7 @@
 </script>
 
 <DefaultLayout>
-  <div class="info section-style-base">
+  <div class="info">
     <div class="info__contents">
       <div class="info__title-wrapper">
         <h2 class="info__title">報</h2>
@@ -26,6 +26,7 @@
   .info {
     background-color: var(--sunshine-yellow);
     min-height: 100vh;
+    padding: 120px 24px;
   }
 
   .info__contents {

@@ -130,7 +130,7 @@
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     color: var(--dark);
-    padding: 90px 24px;
+    padding: 120px 24px;
   }
   .works__container {
     width: 100%;
