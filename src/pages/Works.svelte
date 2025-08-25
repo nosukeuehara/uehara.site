@@ -81,13 +81,13 @@
         <h2 class="works__title">
           <span class="works__typing-text">{displayTitle}</span>
           {#if isTypingTitle && titleIndex <= titleText.length}
-            <span class="works__cursor--lg">|</span>
+            <span class="works__cursor--xl">|</span>
           {/if}
         </h2>
         <p class="works__subtitle">
           <span class="works__typing-text">{displaySubtitle}</span>
           {#if isTypingSubtitle && subtitleIndex <= subtitleText.length}
-            <span class="works__cursor">|</span>
+            <span class="works__cursor-lg">|</span>
           {/if}
         </p>
       </div>
@@ -130,7 +130,7 @@
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     color: var(--dark);
-    padding: 120px 24px;
+    padding: 190px 24px;
   }
   .works__container {
     width: 100%;
@@ -182,26 +182,23 @@
     }
   }
 
-  /* .works__title {
-    padding-bottom: 3px;
-  } */
   .works__title .works__typing-text {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
   .works__subtitle .works__typing-text {
     font-family: var(--font-en);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-light);
   }
 
-  .works__cursor--lg {
+  .works__cursor--xl {
     animation: blink 1s infinite;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
 
-  .works__cursor {
+  .works__cursor-lg {
     animation: blink 1s infinite;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
   }
   @keyframes blink {
     0%,
