@@ -2,14 +2,17 @@
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
 
-  const href = "/ramble";
+  const cotoLink = "https://coto-nine.vercel.app/";
+  const sushipalsLink = "https://sushi-peace.web.app/";
 
   let titleRef: HTMLDivElement;
   let ueharaRef: HTMLDivElement;
   let cotoRef: HTMLDivElement;
+  let sushiRef: HTMLDivElement;
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
+  let isSushiVisible = false;
 
   let titleText = "集";
   let subtitleText = "works";
@@ -33,6 +36,8 @@
             isUeharaVisible = entry.isIntersecting;
           } else if (entry.target === cotoRef) {
             isCotoVisible = entry.isIntersecting;
+          } else if (entry.target === sushiRef) {
+            isSushiVisible = entry.isIntersecting;
           }
         });
       },
@@ -45,6 +50,7 @@
     observer.observe(titleRef);
     observer.observe(ueharaRef);
     observer.observe(cotoRef);
+    observer.observe(sushiRef);
     return () => observer.disconnect();
   });
 
@@ -93,7 +99,7 @@
       </div>
 
       <div
-        class="works__item works__item--uehara"
+        class="works__item"
         class:slide-in-left={isUeharaVisible}
         bind:this={ueharaRef}
       >
@@ -107,7 +113,7 @@
       </div>
 
       <div
-        class="works__item works__item--coto"
+        class="works__item"
         class:slide-in-left={isCotoVisible}
         bind:this={cotoRef}
       >
@@ -119,7 +125,24 @@
           />
           よりやさしいを考えて現在も開発中。
         </p>
-        <a {href} class="works__link works__link--coto"> coto </a>
+        <a href={cotoLink} class="works__link works__link--coto"> coto </a>
+      </div>
+
+      <div
+        class="works__item"
+        class:slide-in-left={isSushiVisible}
+        bind:this={sushiRef}
+      >
+        <h3 class="works__item-title">SushiPals</h3>
+        <p class="works__item-description">
+          回転寿司の個別会計をスマートかつ楽しく解決するサービスです。<br />
+          友達と回転寿司に行きたい、けど自分の食べたお皿の金額をわざわざ計算するのは面倒。<br
+          />
+          そんなとき、友達とワイワイ楽しみながら回転寿司を有意義な時間にするのがSushiPalsです。
+        </p>
+        <a href={sushipalsLink} class="works__link works__link--sushi">
+          SushiPals
+        </a>
       </div>
     </div>
   </section>
@@ -257,6 +280,10 @@
     transform: translateX(5px);
   }
   .works__link--coto {
+    font-family: "Lunasima", sans-serif;
+    color: var(--dark);
+  }
+  .works__link--sushi {
     font-family: "Lunasima", sans-serif;
     color: var(--dark);
   }

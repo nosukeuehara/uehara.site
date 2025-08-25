@@ -3,11 +3,13 @@
   import { createObserver } from "../../../lib/actions/createObserver";
 
   const cotoLink = "https://coto-nine.vercel.app/";
+  const sushipalsLink = "https://sushi-peace.web.app/";
   const works = "/works";
 
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
+  let isSushiVisible = false;
   let isWorksPageLinkVisible = false;
 
   let titleText = "集";
@@ -32,6 +34,10 @@
 
   const cotoObserver = createObserver(
     (entry) => (isCotoVisible = entry.isIntersecting)
+  );
+
+  const sushipalsObserver = createObserver(
+    (entry) => (isSushiVisible = entry.isIntersecting)
   );
 
   const worksPageLinkObserver = createObserver(
@@ -82,7 +88,7 @@
     </div>
 
     <div
-      class="section-works__item section-works__item--uehara"
+      class="section-works__item"
       class:slide-in-left={isUeharaVisible}
       use:ueharaObserver
     >
@@ -95,7 +101,7 @@
     </div>
 
     <div
-      class="section-works__item section-works__item--coto"
+      class="section-works__item"
       class:slide-in-left={isCotoVisible}
       use:cotoObserver
     >
@@ -109,6 +115,26 @@
       </p>
       <a href={cotoLink} class="section-works__link section-works__link--coto">
         coto
+      </a>
+    </div>
+
+    <div
+      class="section-works__item"
+      class:slide-in-left={isSushiVisible}
+      use:sushipalsObserver
+    >
+      <h3 class="section-works__item-title">SushiPals</h3>
+      <p class="section-works__item-description">
+        回転寿司の個別会計をスマートかつ楽しく解決するサービスです。<br />
+        友達と回転寿司に行きたい、けど自分の食べたお皿の金額をわざわざ計算するのは面倒。<br
+        />
+        そんなとき、友達とワイワイ楽しみながら回転寿司を有意義な時間にするのがSushiPalsです。
+      </p>
+      <a
+        href={sushipalsLink}
+        class="section-works__link section-works__link--sushipals"
+      >
+        SushiPals
       </a>
     </div>
 
@@ -225,6 +251,9 @@
     transform: translateX(5px);
   }
   .section-works__link--coto {
+    font-family: "Lunasima", sans-serif;
+  }
+  .section-works__link--sushipals {
     font-family: "Lunasima", sans-serif;
   }
   .section-works__link::before {
