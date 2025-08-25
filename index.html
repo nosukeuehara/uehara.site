@@ -1,30 +1,84 @@
 <!doctype html>
-<html lang="jp">
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="個人の創作作品を集めたポートフォリオサイト。エッセイや写真、デジタルプロジェクトなどを掲載。">
-  <meta name="keywords" content="上原, ポートフォリオ, 創作, エッセイ, 写真, アート, Web制作">
-  <meta name="author" content="上原">
-  <meta property="og:title" content="上 / 原 | 創">
-  <meta property="og:description" content="創作を軸にした作品集。個人の表現を形にするサイトです。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://uehara-site.pages.dev">
-  <meta property="og:image" content="https://uehara-site.pages.dev/favicon.png">
-  <meta name="twitter:card" content="summary_large_image">
+    <title>上原 | 創作</title>
+    <meta
+      name="description"
+      content="上原 龍之介のポートフォリオ。エッセイ、写真、Web制作、デジタルプロジェクトなど、創作を中心に表現をまとめています。"
+    />
+    <meta
+      name="keywords"
+      content="上原, 上原龍之介, ポートフォリオ, 創作, エッセイ, 写真, アート, Web制作, 作品集, 上/原, ue/hara"
+    />
+    <meta name="author" content="上原 龍之介" />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>上/原 | 創</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@100..900&display=swap"
-    rel="stylesheet">
-</head>
+    <!-- OGP / SNS -->
+    <meta property="og:title" content="上 / 原 | 創" />
+    <meta
+      property="og:description"
+      content="エッセイ、写真、Web制作、デジタル作品をまとめたポートフォリオサイト。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://uehara-site.pages.dev/" />
+    <meta
+      property="og:image"
+      content="https://uehara-site.pages.dev/uehara.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://uehara-site.pages.dev/favicon.png"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://uehara-site.pages.dev/favicon-48.png"
+      sizes="48x48"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://uehara-site.pages.dev/favicon-192.png"
+      sizes="192x192"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://uehara-site.pages.dev/favicon-512.png"
+      sizes="512x512"
+    />
 
+    <!-- レスポンシブ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://uehara-site.pages.dev/favicon.png",
+        "@type": "Person",
+        "name": "上原 龍之介",
+        "url": "https://uehara-site.pages.dev",
+        "description": "エッセイ、写真、Web制作、デジタル作品をまとめたポートフォリオサイト。",
+        "sameAs": ["https://github.com/nosukeuehara"]
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
