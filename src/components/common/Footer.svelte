@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
   import { sitemap } from "../../utils";
   const userEmail = "uehara.ryunosuke.06@gmail.com";
   const copyRight = "© 2026 上 / 原. All rights reserved.";
@@ -46,7 +45,7 @@
     <ul class="footer__sitemap-list">
       {#each sitemap as item}
         <li class="footer__sitemap-item">
-          <a href={item.link} class="footer__sitemap-link" use:link
+          <a href={item.link} class="footer__sitemap-link"
             >{item.name}</a
           >
         </li>

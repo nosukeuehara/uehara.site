@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
   import { createObserver } from "../../../lib/actions/createObserver";
 
   const cotoLink = "https://coto-nine.vercel.app/";
@@ -141,7 +140,7 @@
     <div class="section-works__page-link">
       <a
         href={works}
-        use:link
+       
         class:slide-in-left={isWorksPageLinkVisible}
         use:worksPageLinkObserver
       >

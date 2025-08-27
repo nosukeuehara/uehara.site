@@ -1,7 +1,6 @@
 <script lang="ts">
   import { fetchInfoByCategoryId } from "../service/api";
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
-  import { link } from "svelte-spa-router";
   import Categories from "../lib/Categories.svelte";
 
   interface Props {
@@ -35,7 +34,7 @@
               <p class="info-list__item-published">
                 {new Date(article.publishedAt).toLocaleDateString()}
               </p>
-              <a href={`/info/${article.id}`} use:link>
+              <a href={`/info/${article.id}`}>
                 <h2 class="info-list__item-title">{article.title}</h2>
                 <p class="info-list__item-description">
                   {article.description}
@@ -45,7 +44,7 @@
           {/each}
         </div>
       {/if}
-      <a class="info-category__back-link" href="/info" use:link>
+      <a class="info-category__back-link" href="/info">
         記事一覧へ戻る
       </a>
     {:catch err}
