@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
   import { sitemap } from "../../../utils";
 </script>
 
 <!-- PC表示版のページ内ナビゲーションヘッダー -->
 <nav class="page-nav">
   <header class="page-nav__header">
-    <a class="page-nav__brand" href="/" use:link>上 / 原</a>
+    <a class="page-nav__brand" href="/">上 / 原</a>
     <ul class="page-nav__menu">
       {#each sitemap as item}
         <li class="page-nav__menu-item">
-          <a href={item.link} class="page-nav__menu-link" use:link>
+          <a href={item.link} class="page-nav__menu-link">
             {item.name}
           </a>
         </li>

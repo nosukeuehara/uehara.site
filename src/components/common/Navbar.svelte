@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
   import { sitemap } from "../../utils";
 </script>
 
@@ -7,7 +6,7 @@
   <ul class="nav-header__list">
     {#each sitemap as item}
       <li class="nav-header__item">
-        <a href={item.link} class="nav-header__link" use:link>
+        <a href={item.link} class="nav-header__link">
           {item.name}
         </a>
       </li>
