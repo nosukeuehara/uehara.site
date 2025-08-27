@@ -41,7 +41,7 @@
       <p class="section-me__job">frontend @ web</p>
     </div>
 
-    <!-- 履歴 -->
+    <!-- 経歴 -->
     <div
       class="section-me__history"
       class:fade-in-up={isHistoryVisible}

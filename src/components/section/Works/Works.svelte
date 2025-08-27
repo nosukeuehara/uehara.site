@@ -3,11 +3,13 @@
   import { createObserver } from "../../../lib/actions/createObserver";
 
   const cotoLink = "https://coto-nine.vercel.app/";
+  const sushipalsLink = "https://sushi-peace.web.app/";
   const works = "/works";
 
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
+  let isSushiVisible = false;
   let isWorksPageLinkVisible = false;
 
   let titleText = "集";
@@ -32,6 +34,10 @@
 
   const cotoObserver = createObserver(
     (entry) => (isCotoVisible = entry.isIntersecting)
+  );
+
+  const sushipalsObserver = createObserver(
+    (entry) => (isSushiVisible = entry.isIntersecting)
   );
 
   const worksPageLinkObserver = createObserver(
@@ -70,7 +76,7 @@
       <h2 class="section-works__title">
         <span class="typing-text">{displayTitle}</span>
         {#if isTypingTitle && titleIndex <= titleText.length}
-          <span class="cursor">|</span>
+          <span class="cursor--lg">|</span>
         {/if}
       </h2>
       <p class="section-works__subtitle">
@@ -82,7 +88,7 @@
     </div>
 
     <div
-      class="section-works__item section-works__item--uehara"
+      class="section-works__item"
       class:slide-in-left={isUeharaVisible}
       use:ueharaObserver
     >
@@ -95,7 +101,7 @@
     </div>
 
     <div
-      class="section-works__item section-works__item--coto"
+      class="section-works__item"
       class:slide-in-left={isCotoVisible}
       use:cotoObserver
     >
@@ -112,16 +118,36 @@
       </a>
     </div>
 
-    <a
-      class="section-works__page-link"
-      aria-disabled="true"
-      href={works}
-      use:link
-      class:slide-in-left={isWorksPageLinkVisible}
-      use:worksPageLinkObserver
+    <div
+      class="section-works__item"
+      class:slide-in-left={isSushiVisible}
+      use:sushipalsObserver
     >
-      → 集
-    </a>
+      <h3 class="section-works__item-title">SushiPals</h3>
+      <p class="section-works__item-description">
+        回転寿司の個別会計をスマートかつ楽しく解決するサービスです。<br />
+        友達と回転寿司に行きたい、けど自分の食べたお皿の金額をわざわざ計算するのは面倒。<br
+        />
+        そんなとき、友達とワイワイ楽しみながら回転寿司を有意義な時間にするのがSushiPalsです。
+      </p>
+      <a
+        href={sushipalsLink}
+        class="section-works__link section-works__link--sushipals"
+      >
+        SushiPals
+      </a>
+    </div>
+
+    <div class="section-works__page-link">
+      <a
+        href={works}
+        use:link
+        class:slide-in-left={isWorksPageLinkVisible}
+        use:worksPageLinkObserver
+      >
+        → 集
+      </a>
+    </div>
   </div>
 </section>
 
@@ -227,6 +253,9 @@
   .section-works__link--coto {
     font-family: "Lunasima", sans-serif;
   }
+  .section-works__link--sushipals {
+    font-family: "Lunasima", sans-serif;
+  }
   .section-works__link::before {
     content: "→";
     display: inline-block;
@@ -241,23 +270,35 @@
 
   .section-works__page-link {
     display: flex;
-    padding-top: 80px;
-    font-size: var(--font-size-md);
-    color: var(--dark);
     justify-content: flex-end;
+    font-size: var(--font-size-xl);
     position: relative;
+    padding-top: 80px;
     bottom: 0;
     right: 0;
     text-decoration: none;
+  }
+
+  .section-works__page-link a {
+    font-size: var(--font-size-md);
+    margin: 0;
   }
 
   .typing {
     opacity: 1;
     transform: translateY(0);
   }
+
+  .cursor--lg {
+    animation: blink 1s infinite;
+    color: var(--dark);
+    font-size: var(--font-size-lg);
+  }
+
   .cursor {
     animation: blink 1s infinite;
     color: var(--dark);
+    font-size: var(--font-size-md);
   }
 
   @media (min-width: 768px) {

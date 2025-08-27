@@ -10,9 +10,9 @@
     {#if res.length === 0}
       <p class="info-list__no-items">記事がありません</p>
     {:else}
-      {#each res as article}
+      {#each res.slice(0, 3) as article}
         <div class="info-list__item">
-          <a href={`/info/${article.id}`} use:link>
+          <a href={`/info/categories/${article.category.id}`} use:link>
             <img
               class="info-list__item-image"
               src={article.eyecatch.url}
@@ -106,6 +106,7 @@
     color: #444;
     margin: 0;
     padding: 0 20px;
+
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -117,7 +118,7 @@
   .info-list__error {
     text-align: center;
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-bold);
     grid-column: 1 / -1;
     margin: 0;
   }

@@ -5,6 +5,7 @@ import Works from "./pages/Works.svelte";
 import Ramble from "./pages/Ramble.svelte";
 import Info from "./pages/Info.svelte";
 import InfoDetail from "./pages/InfoDetail.svelte";
+import InfoCategory from "./pages/InfoCategory.svelte";
 
 // Common Components
 import NotFound from "./components/common/NotFound.svelte";
@@ -16,5 +17,6 @@ export const routes = {
   "/ramble": Ramble,
   "/info": Info,
   "/info/:id": InfoDetail,
+  "/info/categories/:categoryId": InfoCategory,
   "*": NotFound,
 };

@@ -2,14 +2,17 @@
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
 
-  const href = "/ramble";
+  const cotoLink = "https://coto-nine.vercel.app/";
+  const sushipalsLink = "https://sushi-peace.web.app/";
 
   let titleRef: HTMLDivElement;
   let ueharaRef: HTMLDivElement;
   let cotoRef: HTMLDivElement;
+  let sushiRef: HTMLDivElement;
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
+  let isSushiVisible = false;
 
   let titleText = "集";
   let subtitleText = "works";
@@ -33,6 +36,8 @@
             isUeharaVisible = entry.isIntersecting;
           } else if (entry.target === cotoRef) {
             isCotoVisible = entry.isIntersecting;
+          } else if (entry.target === sushiRef) {
+            isSushiVisible = entry.isIntersecting;
           }
         });
       },
@@ -45,6 +50,7 @@
     observer.observe(titleRef);
     observer.observe(ueharaRef);
     observer.observe(cotoRef);
+    observer.observe(sushiRef);
     return () => observer.disconnect();
   });
 
@@ -71,7 +77,7 @@
 </script>
 
 <DefaultLayout>
-  <section class="works section-style-base">
+  <section class="works">
     <div class="works__container">
       <div
         class="works__title-block"
@@ -81,19 +87,19 @@
         <h2 class="works__title">
           <span class="works__typing-text">{displayTitle}</span>
           {#if isTypingTitle && titleIndex <= titleText.length}
-            <span class="works__cursor">|</span>
+            <span class="works__cursor--xl">|</span>
           {/if}
         </h2>
         <p class="works__subtitle">
           <span class="works__typing-text">{displaySubtitle}</span>
           {#if isTypingSubtitle && subtitleIndex <= subtitleText.length}
-            <span class="works__cursor">|</span>
+            <span class="works__cursor-lg">|</span>
           {/if}
         </p>
       </div>
 
       <div
-        class="works__item works__item--uehara"
+        class="works__item"
         class:slide-in-left={isUeharaVisible}
         bind:this={ueharaRef}
       >
@@ -107,7 +113,7 @@
       </div>
 
       <div
-        class="works__item works__item--coto"
+        class="works__item"
         class:slide-in-left={isCotoVisible}
         bind:this={cotoRef}
       >
@@ -119,7 +125,24 @@
           />
           よりやさしいを考えて現在も開発中。
         </p>
-        <a {href} class="works__link works__link--coto"> coto </a>
+        <a href={cotoLink} class="works__link works__link--coto"> coto </a>
+      </div>
+
+      <div
+        class="works__item"
+        class:slide-in-left={isSushiVisible}
+        bind:this={sushiRef}
+      >
+        <h3 class="works__item-title">SushiPals</h3>
+        <p class="works__item-description">
+          回転寿司の個別会計をスマートかつ楽しく解決するサービスです。<br />
+          友達と回転寿司に行きたい、けど自分の食べたお皿の金額をわざわざ計算するのは面倒。<br
+          />
+          そんなとき、友達とワイワイ楽しみながら回転寿司を有意義な時間にするのがSushiPalsです。
+        </p>
+        <a href={sushipalsLink} class="works__link works__link--sushi">
+          SushiPals
+        </a>
       </div>
     </div>
   </section>
@@ -129,11 +152,12 @@
   .works {
     background-color: var(--peach-fuzz);
     min-height: 100vh;
+    color: var(--dark);
+    padding: 190px 24px;
   }
   .works__container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 24px;
   }
 
   .works__title-block {
@@ -162,12 +186,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, var(--dark), transparent);
     transition: left 0.5s ease;
   }
 
@@ -186,19 +205,23 @@
     }
   }
 
-  .works__title {
-    padding-bottom: 3px;
+  .works__title .works__typing-text {
+    font-size: var(--font-size-xl);
   }
-  .works__typing-text {
-    font-size: var(--font-size-lg);
-  }
-  .works__subtitle {
+  .works__subtitle .works__typing-text {
     font-family: var(--font-en);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-light);
   }
-  .works__cursor {
+
+  .works__cursor--xl {
     animation: blink 1s infinite;
+    font-size: var(--font-size-xl);
+  }
+
+  .works__cursor-lg {
+    animation: blink 1s infinite;
+    font-size: var(--font-size-lg);
   }
   @keyframes blink {
     0%,
@@ -258,12 +281,18 @@
   }
   .works__link--coto {
     font-family: "Lunasima", sans-serif;
+    color: var(--dark);
+  }
+  .works__link--sushi {
+    font-family: "Lunasima", sans-serif;
+    color: var(--dark);
   }
   .works__link::before {
     content: "→";
     padding-right: 4px;
     font-weight: var(--font-weight-regular);
     transition: transform 0.3s ease;
+    color: var(--dark);
   }
   .works__link:hover::before {
     transform: translateX(3px);

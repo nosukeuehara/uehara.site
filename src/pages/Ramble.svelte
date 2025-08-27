@@ -21,7 +21,7 @@
 </script>
 
 <DefaultLayout>
-  <div class="ramble section-style-base">
+  <div class="ramble">
     <div class="ramble__contents">
       <div
         class="ramble__title-wrapper"
@@ -62,6 +62,7 @@
   .ramble {
     background-color: var(--amber-orange);
     min-height: 100vh;
+    padding: 120px 24px;
   }
 
   .ramble__contents {
