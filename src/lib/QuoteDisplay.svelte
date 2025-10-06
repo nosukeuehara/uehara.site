@@ -104,6 +104,7 @@
   <button class="quote" on:click={copyQuote} type="button">
     <p class="quote-text">{displayed}</p>
     <p class="quote-author">{author}</p>
+    <p class="quote-author">https://meigen.doodlenote.net/</p>
   </button>
 </div>
 
