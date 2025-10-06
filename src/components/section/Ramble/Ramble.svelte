@@ -1,7 +1,6 @@
 <script lang="ts">
   import QuoteDisplay from "../../../lib/QuoteDisplay.svelte";
   import { createObserver } from "../../../lib/actions/createObserver";
-  import { link } from "svelte-spa-router";
 
   const href = "/ramble";
 
@@ -39,7 +38,7 @@
       <p class="section-ramble__coming-soon-text">近日公開</p>
       <a
         {href}
-        use:link
+       
         aria-disabled="true"
         class="section-ramble__link section-ramble__link--disabled"
       >

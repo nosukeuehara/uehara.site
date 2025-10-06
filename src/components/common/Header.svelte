@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
 
   let isMenuOpen = $state(false);
 
@@ -15,7 +14,7 @@
 <!-- SP表示版のヘッダーメニュー -->
 <div>
   <header class="header">
-    <a class="header__home-link" href="/" use:link>上 / 原</a>
+    <a class="header__home-link" href="/">上 / 原</a>
     <button
       class="header__menu-btn"
       class:header__menu-btn--active={isMenuOpen}
@@ -38,13 +37,13 @@
       <div class="menu__content" tabindex="0" role="button">
         <nav class="menu__nav">
           <div class="menu__nav-item">
-            <a class="menu__nav-link" href="/me" use:link onclick={closeMenu}
+            <a class="menu__nav-link" href="/me" onclick={closeMenu}
               >私</a
             >
           </div>
 
           <div class="menu__nav-item">
-            <a class="menu__nav-link" href="/works" use:link onclick={closeMenu}
+            <a class="menu__nav-link" href="/works" onclick={closeMenu}
               >集</a
             >
           </div>
@@ -53,13 +52,13 @@
             <a
               class="menu__nav-link"
               href="/ramble"
-              use:link
+             
               onclick={closeMenu}>言・こと</a
             >
           </div>
 
           <div class="menu__nav-item">
-            <a class="menu__nav-link" href="/info" use:link onclick={closeMenu}
+            <a class="menu__nav-link" href="/info" onclick={closeMenu}
               >報</a
             >
           </div>

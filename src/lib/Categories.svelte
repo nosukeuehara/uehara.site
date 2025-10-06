@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fetchInfoCategories } from "../service/api";
-  import { link } from "svelte-spa-router";
 
   interface Props {
     params: { categoryId: string };
@@ -16,7 +15,7 @@
       {#each categories as cat}
         <a
           href={`/info/categories/${cat.id}`}
-          use:link
+         
           class="info-category__tag {props.params.categoryId === cat.id
             ? 'active'
             : ''}"
