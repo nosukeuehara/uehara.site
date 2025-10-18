@@ -153,7 +153,7 @@
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     color: var(--dark);
-    padding: 190px 24px;
+    padding: 120px 24px;
   }
   .works__container {
     width: 100%;
@@ -299,6 +299,9 @@
   }
 
   @media (min-width: 768px) {
+    .works {
+      padding: 190px 24px;
+    }
     .works__container {
       max-width: 1080px;
     }
