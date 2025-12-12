@@ -2,7 +2,7 @@
   import { link } from "svelte-spa-router";
   import { sitemap } from "../../utils";
   const userEmail = "uehara.ryunosuke.06@gmail.com";
-  const copyRight = "© 2026 上 / 原. All rights reserved.";
+  const copyRight = `© ${new Date().getFullYear()} 上 / 原. All rights reserved.`;
 </script>
 
 <div class="footer">
