@@ -1,7 +1,6 @@
 <script lang="ts">
   import { fetchSpecificInfo } from "../service/api";
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
-  import { link } from "svelte-spa-router";
 
   interface Props {
     params: { id: string };
@@ -32,7 +31,7 @@
           {@html info.body}
         </div>
       </article>
-      <a class="info-detail__back-link" href="/Info" use:link>
+      <a class="info-detail__back-link" href="/info">
         <p class="info-detail__back-link-text">→ 報</p>
       </a>
     {:catch err}

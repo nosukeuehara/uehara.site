@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fetchInfos } from "../service/api";
-  import { link } from "svelte-spa-router";
 </script>
 
 <div class="info-list">
@@ -12,7 +11,7 @@
     {:else}
       {#each res as article}
         <div class="info-list__item">
-          <a href={`/info/${article.id}`} use:link>
+          <a href={`/info/${article.id}`}>
             <img
               class="info-list__item-image"
               src={article.eyecatch.url}
@@ -23,11 +22,11 @@
             {new Date(article.publishedAt).toLocaleDateString()}
           </p>
           <p class="info-list__item-category">
-            <a href={`/info/categories/${article.category.id}`} use:link>
+            <a href={`/info/categories/${article.category.id}`}>
               #{article.category.name}
             </a>
           </p>
-          <a href={`/info/${article.id}`} use:link>
+          <a href={`/info/${article.id}`}>
             <h2 class="info-list__item-title">{article.title}</h2>
             <p class="info-list__item-description">
               {article.description}

@@ -1,6 +1,5 @@
 <script lang="ts">
   import Latest3Infos from "../../../lib/LatesThreetInfoContents.svelte";
-  import { link } from "svelte-spa-router";
 </script>
 
 <section class="section-info section-style-base">
@@ -15,7 +14,7 @@
     </div>
 
     <div class="section-info__more-link">
-      <a href="/Info" use:link>→ 報</a>
+      <a href="/info">→ 報</a>
     </div>
   </div>
 </section>
