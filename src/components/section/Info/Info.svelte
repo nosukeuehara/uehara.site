@@ -66,6 +66,7 @@
 
   .section-info__subtitle {
     font-size: var(--font-size-md);
+    font-family: var(--font-en);
   }
 
   .section-info__info-wrapper {

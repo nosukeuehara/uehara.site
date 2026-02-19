@@ -61,6 +61,8 @@
   .info__subtitle {
     font-size: var(--font-size-md);
     margin: 0;
+    font-family: var(--font-en);
+    font-weight: var(--font-weight-light);
   }
 
   .info__release-wrapper {
