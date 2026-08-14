@@ -129,7 +129,7 @@
     const wipeLift = getScatterValue(item.label, index, 17, -0.08, 0.08);
     const wipeDelay = getScatterValue(item.label, index, 18, 0, 260);
     const wipeExitY = getScatterValue(item.label, index, 20, -46, 46);
-    const shouldRoll = getScatterValue(item.label, index, 21, 0, 3) >= 1;
+    const shouldRoll = getScatterValue(item.label, index, 21, 0, 4) >= 3;
     const wipeRoll = shouldRoll
       ? wipeDirection * getScatterValue(item.label, index, 22, 70, 190)
       : wipeDirection * getScatterValue(item.label, index, 22, 4, 18);
