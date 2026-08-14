@@ -305,11 +305,11 @@
     clearSweepTimers();
     sweepPhase = "wipe";
     sweepTimers = [
-      window.setTimeout(() => (sweepPhase = "scatter"), 3100),
-      window.setTimeout(() => (sweepPhase = "slash"), 4450),
-      window.setTimeout(() => (sweepPhase = "hold"), 5250),
-      window.setTimeout(() => (sweepPhase = "returning"), 9250),
-      window.setTimeout(() => (sweepPhase = "idle"), 10550),
+      window.setTimeout(() => (sweepPhase = "scatter"), 2950),
+      window.setTimeout(() => (sweepPhase = "slash"), 2980),
+      window.setTimeout(() => (sweepPhase = "hold"), 3780),
+      window.setTimeout(() => (sweepPhase = "returning"), 7780),
+      window.setTimeout(() => (sweepPhase = "idle"), 9080),
     ];
   }
 
@@ -405,7 +405,6 @@
       </span>
     {/if}
   {/each}
-
 </div>
 
 <style>
@@ -586,14 +585,14 @@
 
   .profile-cloud--wipe .profile-cloud__name-rest,
   .profile-cloud--scatter .profile-cloud__name-rest {
-    animation: profileCloudNameRestWipe 3.1s
-      cubic-bezier(0.37, 0, 0.63, 1) both;
+    animation: profileCloudNameRestWipe 3.1s cubic-bezier(0.37, 0, 0.63, 1) both;
   }
 
   .profile-cloud--slash .profile-cloud__name-rest,
   .profile-cloud--hold .profile-cloud__name-rest,
   .profile-cloud--returning .profile-cloud__name-rest {
     opacity: 0;
+    visibility: hidden;
   }
 
   .profile-cloud__item--latin,
@@ -627,13 +626,19 @@
     34% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%)
-        translate(calc(var(--wipe-exit-x) * 0.34), calc(var(--wipe-exit-y) * 0.3))
+        translate(
+          calc(var(--wipe-exit-x) * 0.34),
+          calc(var(--wipe-exit-y) * 0.3)
+        )
         rotate(calc(var(--mobile-rotation) + var(--wipe-roll-step-1)));
     }
     68% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%)
-        translate(calc(var(--wipe-exit-x) * 0.7), calc(var(--wipe-exit-y) * 0.62))
+        translate(
+          calc(var(--wipe-exit-x) * 0.7),
+          calc(var(--wipe-exit-y) * 0.62)
+        )
         rotate(calc(var(--mobile-rotation) + var(--wipe-roll-step-2)));
     }
     100% {
@@ -651,15 +656,15 @@
     }
     34% {
       opacity: 1;
-      transform: translate(0.9em, 0.04em) rotate(18deg);
+      transform: translate(22vw, 0.04em) rotate(18deg);
     }
     68% {
       opacity: 1;
-      transform: translate(2.1em, 0.08em) rotate(72deg);
+      transform: translate(58vw, 0.08em) rotate(72deg);
     }
     100% {
       opacity: 1;
-      transform: translate(5.8em, 0.14em) rotate(190deg);
+      transform: translate(125vw, 0.14em) rotate(190deg);
     }
   }
 
@@ -749,13 +754,19 @@
     34% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%)
-        translate(calc(var(--wipe-exit-x) * 0.34), calc(var(--wipe-exit-y) * 0.3))
+        translate(
+          calc(var(--wipe-exit-x) * 0.34),
+          calc(var(--wipe-exit-y) * 0.3)
+        )
         rotate(calc(var(--desktop-rotation) + var(--wipe-roll-step-1)));
     }
     68% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%)
-        translate(calc(var(--wipe-exit-x) * 0.7), calc(var(--wipe-exit-y) * 0.62))
+        translate(
+          calc(var(--wipe-exit-x) * 0.7),
+          calc(var(--wipe-exit-y) * 0.62)
+        )
         rotate(calc(var(--desktop-rotation) + var(--wipe-roll-step-2)));
     }
     100% {
