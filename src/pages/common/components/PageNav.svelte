@@ -33,6 +33,7 @@
       height: 100px;
       display: flex;
       padding: 0 24px;
+      z-index: 1000;
     }
 
     .page-nav__header {
