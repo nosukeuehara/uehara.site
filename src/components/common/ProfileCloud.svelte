@@ -127,9 +127,13 @@
     const scatterRotation = getScatterValue(item.label, index, 14, -42, 42);
     const wipeDistance = getScatterValue(item.label, index, 16, 0.55, 1.35);
     const wipeLift = getScatterValue(item.label, index, 17, -0.08, 0.08);
-    const wipeDelay = getScatterValue(item.label, index, 18, 0, 260);
-    const wipeExitY = getScatterValue(item.label, index, 20, -46, 46);
-    const shouldRoll = getScatterValue(item.label, index, 21, 0, 4) >= 3;
+    const wipeTeamDelay = wipeDirection === 1 ? 0 : 560;
+    const wipeDelay =
+      wipeTeamDelay + getScatterValue(item.label, index, 18, 0, 620);
+    const wipeDuration = getScatterValue(item.label, index, 23, 1180, 2050);
+    const wipeExitY = getScatterValue(item.label, index, 20, -150, 150);
+    const wipeExitDistance = getScatterValue(item.label, index, 19, 155, 205);
+    const shouldRoll = getScatterValue(item.label, index, 21, 0, 5) >= 4;
     const wipeRoll = shouldRoll
       ? wipeDirection * getScatterValue(item.label, index, 22, 70, 190)
       : wipeDirection * getScatterValue(item.label, index, 22, 4, 18);
@@ -176,7 +180,8 @@
       `--wipe-distance: ${wipeDistance}em`,
       `--wipe-lift: ${wipeLift}em`,
       `--wipe-delay: ${wipeDelay}ms`,
-      `--wipe-exit-x: calc(${wipeDirection} * 135vw)`,
+      `--wipe-duration: ${wipeDuration}ms`,
+      `--wipe-exit-x: calc(${wipeDirection} * ${wipeExitDistance}vw)`,
       `--wipe-exit-y: ${wipeExitY}px`,
       `--wipe-roll: ${wipeRoll}deg`,
       `--wipe-roll-step-1: ${wipeRollStep1}deg`,
@@ -305,11 +310,11 @@
     clearSweepTimers();
     sweepPhase = "wipe";
     sweepTimers = [
-      window.setTimeout(() => (sweepPhase = "scatter"), 2950),
-      window.setTimeout(() => (sweepPhase = "slash"), 2980),
-      window.setTimeout(() => (sweepPhase = "hold"), 3780),
-      window.setTimeout(() => (sweepPhase = "returning"), 7780),
-      window.setTimeout(() => (sweepPhase = "idle"), 9080),
+      window.setTimeout(() => (sweepPhase = "scatter"), 3660),
+      window.setTimeout(() => (sweepPhase = "slash"), 3690),
+      window.setTimeout(() => (sweepPhase = "hold"), 4490),
+      window.setTimeout(() => (sweepPhase = "returning"), 8490),
+      window.setTimeout(() => (sweepPhase = "idle"), 9790),
     ];
   }
 
@@ -480,8 +485,8 @@
   }
 
   .profile-cloud--wipe .profile-cloud__item {
-    animation: profileCloudWipeItem 3.1s var(--wipe-delay)
-      cubic-bezier(0.37, 0, 0.63, 1) both;
+    animation: profileCloudWipeItem var(--wipe-duration) var(--wipe-delay)
+      cubic-bezier(0.48, 0.02, 0.3, 1) both;
     pointer-events: none;
   }
 
@@ -585,7 +590,8 @@
 
   .profile-cloud--wipe .profile-cloud__name-rest,
   .profile-cloud--scatter .profile-cloud__name-rest {
-    animation: profileCloudNameRestWipe 3.1s cubic-bezier(0.37, 0, 0.63, 1) both;
+    animation: profileCloudNameRestWipe 1.65s cubic-bezier(0.48, 0.02, 0.3, 1)
+      both;
   }
 
   .profile-cloud--slash .profile-cloud__name-rest,
@@ -623,24 +629,6 @@
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%) rotate(var(--mobile-rotation));
     }
-    34% {
-      opacity: var(--cloud-opacity);
-      transform: translate(-50%, -50%)
-        translate(
-          calc(var(--wipe-exit-x) * 0.34),
-          calc(var(--wipe-exit-y) * 0.3)
-        )
-        rotate(calc(var(--mobile-rotation) + var(--wipe-roll-step-1)));
-    }
-    68% {
-      opacity: var(--cloud-opacity);
-      transform: translate(-50%, -50%)
-        translate(
-          calc(var(--wipe-exit-x) * 0.7),
-          calc(var(--wipe-exit-y) * 0.62)
-        )
-        rotate(calc(var(--mobile-rotation) + var(--wipe-roll-step-2)));
-    }
     100% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%)
@@ -653,14 +641,6 @@
     0% {
       opacity: 1;
       transform: translate(0, 0) rotate(0deg);
-    }
-    34% {
-      opacity: 1;
-      transform: translate(22vw, 0.04em) rotate(18deg);
-    }
-    68% {
-      opacity: 1;
-      transform: translate(58vw, 0.08em) rotate(72deg);
     }
     100% {
       opacity: 1;
@@ -750,24 +730,6 @@
     0% {
       opacity: var(--cloud-opacity);
       transform: translate(-50%, -50%) rotate(var(--desktop-rotation));
-    }
-    34% {
-      opacity: var(--cloud-opacity);
-      transform: translate(-50%, -50%)
-        translate(
-          calc(var(--wipe-exit-x) * 0.34),
-          calc(var(--wipe-exit-y) * 0.3)
-        )
-        rotate(calc(var(--desktop-rotation) + var(--wipe-roll-step-1)));
-    }
-    68% {
-      opacity: var(--cloud-opacity);
-      transform: translate(-50%, -50%)
-        translate(
-          calc(var(--wipe-exit-x) * 0.7),
-          calc(var(--wipe-exit-y) * 0.62)
-        )
-        rotate(calc(var(--desktop-rotation) + var(--wipe-roll-step-2)));
     }
     100% {
       opacity: var(--cloud-opacity);
