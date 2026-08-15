@@ -203,41 +203,41 @@
 
   function getFontSize(item: CloudItem) {
     if (item.label === "上 原 龍 之 介") {
-      return 5.1;
+      return 2.95;
     }
 
     if (item.tone === "primary") {
-      return 2.4 + item.weight * 2.8;
+      return 2.08 + item.weight * 2.42;
     }
 
     if (item.tone === "secondary") {
-      return 1.7 + item.weight * 1.95;
+      return 1.48 + item.weight * 1.68;
     }
 
-    return 1.75 + Math.sqrt(item.weight) * 4.15;
+    return 1.52 + Math.sqrt(item.weight) * 3.6;
   }
 
   function getDesktopFontSize(item: CloudItem) {
     const sizeByLabel = new Map([
-      ["上 原 龍 之 介", 5.2],
-      ["TypeScript", 4.6],
-      ["React", 4.25],
-      ["2001", 3.1],
-      ["Python", 4.45],
-      ["Rust", 4.15],
-      ["Tailwind", 3.7],
-      ["Docker", 3.25],
-      ["Next.js", 3.15],
-      ["web", 3.05],
-      ["ue / hara", 3],
-      ["HTML", 2.85],
-      ["CSS", 2.85],
-      ["Shell", 2.85],
-      ["Vue", 2.85],
-      ["Svelte", 3.1],
-      ["JavaScript", 2.9],
-      ["宮古島", 2.75],
-      ["sweep", 2.7],
+      ["上 原 龍 之 介", 2.75],
+      ["TypeScript", 4.02],
+      ["React", 3.72],
+      ["2001", 2.7],
+      ["Python", 3.9],
+      ["Rust", 3.63],
+      ["Tailwind", 3.23],
+      ["Docker", 2.84],
+      ["Next.js", 2.75],
+      ["web", 2.67],
+      ["ue / hara", 2.61],
+      ["HTML", 2.49],
+      ["CSS", 2.49],
+      ["Shell", 2.49],
+      ["Vue", 2.49],
+      ["Svelte", 2.7],
+      ["JavaScript", 2.53],
+      ["宮古島", 2.4],
+      ["sweep", 2.37],
     ]);
 
     return sizeByLabel.get(item.label) ?? getFontSize(item) * 0.78;
@@ -245,18 +245,18 @@
 
   function getMobileFontSize(item: CloudItem) {
     if (item.label === "上 原 龍 之 介") {
-      return 3.25;
+      return 2.18;
     }
 
     if (item.tone === "primary") {
-      return 2.04 + item.weight * 1.3;
+      return 1.76 + item.weight * 1.12;
     }
 
     if (item.tone === "secondary") {
-      return 1.44 + item.weight * 0.98;
+      return 1.24 + item.weight * 0.84;
     }
 
-    return 1.3 + Math.sqrt(item.weight) * 2.05;
+    return 1.13 + Math.sqrt(item.weight) * 1.78;
   }
 
   function getFontWeight(item: CloudItem) {
@@ -565,27 +565,36 @@
   }
 
   .profile-cloud--slash .profile-cloud__name-first,
-  .profile-cloud--hold .profile-cloud__name-first,
-  .profile-cloud--returning .profile-cloud__name-first {
+  .profile-cloud--hold .profile-cloud__name-first {
     transform: translateX(-0.08em);
   }
 
   .profile-cloud--slash .profile-cloud__name-last,
-  .profile-cloud--hold .profile-cloud__name-last,
-  .profile-cloud--returning .profile-cloud__name-last {
+  .profile-cloud--hold .profile-cloud__name-last {
     transform: translateX(0.08em);
+  }
+
+  .profile-cloud--returning .profile-cloud__name-first {
+    animation: nameFirstReturn 1.12s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .profile-cloud--returning .profile-cloud__name-last {
+    animation: nameLastReturn 1.12s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .profile-cloud--slash .profile-cloud__name-slash {
     animation: slashDrop 1.12s 0.12s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .profile-cloud--hold .profile-cloud__name-slash,
-  .profile-cloud--returning .profile-cloud__name-slash {
+  .profile-cloud--hold .profile-cloud__name-slash {
     margin: 0 0.2em;
     opacity: 1;
     transform: translateY(0) rotate(0deg);
     width: 0.42em;
+  }
+
+  .profile-cloud--returning .profile-cloud__name-slash {
+    animation: slashReturn 0.92s cubic-bezier(0.55, 0, 0.3, 1) forwards;
   }
 
   .profile-cloud--wipe .profile-cloud__name-rest,
@@ -595,10 +604,17 @@
   }
 
   .profile-cloud--slash .profile-cloud__name-rest,
-  .profile-cloud--hold .profile-cloud__name-rest,
-  .profile-cloud--returning .profile-cloud__name-rest {
+  .profile-cloud--hold .profile-cloud__name-rest {
     opacity: 0;
     visibility: hidden;
+  }
+
+  .profile-cloud--returning .profile-cloud__name-rest {
+    animation: nameRestReturn 1.05s 0.18s cubic-bezier(0.16, 1, 0.3, 1)
+      forwards;
+    opacity: 0;
+    transform: translateX(-0.16em);
+    visibility: visible;
   }
 
   .profile-cloud__item--latin,
@@ -682,6 +698,50 @@
       opacity: 1;
       transform: translateY(0) rotate(0deg);
       width: 0.42em;
+    }
+  }
+
+  @keyframes slashReturn {
+    from {
+      margin: 0 0.2em;
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+      width: 0.42em;
+    }
+    to {
+      margin: 0;
+      opacity: 0;
+      transform: translateY(0.36em) rotate(-10deg);
+      width: 0;
+    }
+  }
+
+  @keyframes nameFirstReturn {
+    from {
+      transform: translateX(-0.08em);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes nameLastReturn {
+    from {
+      transform: translateX(0.08em);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes nameRestReturn {
+    from {
+      opacity: 0;
+      transform: translateX(-0.16em);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 
