@@ -4,11 +4,14 @@
 
   const cotoLink = "https://coto-nine.vercel.app/";
   const sushipalsLink = "https://sushi-peace.web.app/";
+  const bitpetLink = "/bitpet";
+  const bitpetGithubLink = "https://github.com/nosukeuehara/bitpet";
   const works = "/works";
 
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
+  let isBitpetVisible = false;
   let isSushiVisible = false;
   let isWorksPageLinkVisible = false;
 
@@ -34,6 +37,10 @@
 
   const cotoObserver = createObserver(
     (entry) => (isCotoVisible = entry.isIntersecting)
+  );
+
+  const bitpetObserver = createObserver(
+    (entry) => (isBitpetVisible = entry.isIntersecting)
   );
 
   const sushipalsObserver = createObserver(
@@ -138,6 +145,38 @@
       </a>
     </div>
 
+    <div
+      class="section-works__item section-works__item--bitpet"
+      class:slide-in-bitpet={isBitpetVisible}
+      use:bitpetObserver
+    >
+      <h3 class="section-works__item-title section-works__item-title--bitpet">
+        bitpet
+      </h3>
+      <p class="section-works__item-description">
+        ちょっとひと息<br />
+        CLIで育てる小さなモンスター<br />
+        遊んで食べて出かけて成長する
+      </p>
+      <div class="section-works__links">
+        <a
+          href={bitpetLink}
+          use:link
+          class="section-works__link section-works__link--bitpet"
+        >
+          bitpet
+        </a>
+        <a
+          href={bitpetGithubLink}
+          target="_blank"
+          rel="noreferrer"
+          class="section-works__link section-works__link--bitpet-github"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+
     <div class="section-works__page-link">
       <a
         href={works}
@@ -200,10 +239,48 @@
     transition: left 0.5s ease;
   }
 
+  .section-works__item--bitpet {
+    overflow: visible;
+  }
+
+  .section-works__item--bitpet::after {
+    animation: bitpetBlink 2.4s ease-in-out infinite;
+    background: var(--dark);
+    border-radius: 2px;
+    box-shadow:
+      10px 0 0 var(--dark),
+      5px 8px 0 var(--dark);
+    content: "";
+    height: 4px;
+    left: -18px;
+    opacity: 0.72;
+    position: absolute;
+    top: 0.62em;
+    width: 4px;
+  }
+
   .section-works__item-title {
     font-size: var(--font-size-lg);
     padding-bottom: 14px;
   }
+
+  .section-works__item-title--bitpet {
+    letter-spacing: 0;
+    position: relative;
+    width: fit-content;
+  }
+
+  .section-works__item-title--bitpet::before {
+    content: "$ ";
+    font-weight: var(--font-weight-light);
+  }
+
+  .section-works__item-title--bitpet::after {
+    animation: bitpetCursor 1s steps(1, end) infinite;
+    content: "_";
+    margin-left: 0.08em;
+  }
+
   .section-works__item-description {
     margin: 0;
   }
@@ -247,6 +324,13 @@
     transition: all 0.3s ease;
     text-decoration: none;
   }
+
+  .section-works__links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
   .section-works__link:hover {
     transform: translateX(5px);
   }
@@ -256,6 +340,12 @@
   .section-works__link--sushipals {
     font-family: "Lunasima", sans-serif;
   }
+
+  .section-works__link--bitpet,
+  .section-works__link--bitpet-github {
+    color: var(--dark);
+  }
+
   .section-works__link::before {
     content: "→";
     display: inline-block;
@@ -266,6 +356,11 @@
   }
   .section-works__link:hover::before {
     transform: translateX(3px);
+  }
+
+  .section-works__link--bitpet::before,
+  .section-works__link--bitpet-github::before {
+    content: ">";
   }
 
   .section-works__page-link {
@@ -299,6 +394,51 @@
     animation: blink 1s infinite;
     color: var(--dark);
     font-size: var(--font-size-md);
+  }
+
+  .slide-in-bitpet {
+    opacity: 1;
+    animation: bitpetEnter 0.95s cubic-bezier(0.2, 0.9, 0.24, 1.1) forwards;
+  }
+
+  @keyframes bitpetEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(-42px) translateY(18px) rotate(-1.5deg);
+    }
+    58% {
+      opacity: 1;
+      transform: translateX(8px) translateY(-8px) rotate(0.8deg);
+    }
+    78% {
+      transform: translateX(-3px) translateY(3px) rotate(-0.3deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0) rotate(0deg);
+    }
+  }
+
+  @keyframes bitpetBlink {
+    0%,
+    78%,
+    100% {
+      transform: translateY(0) scaleY(1);
+    }
+    82% {
+      transform: translateY(2px) scaleY(0.18);
+    }
+  }
+
+  @keyframes bitpetCursor {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
   }
 
   @media (min-width: 768px) {

@@ -1,18 +1,23 @@
 <script lang="ts">
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
+  import { link } from "svelte-spa-router";
 
   const cotoLink = "https://coto-nine.vercel.app/";
   const sushipalsLink = "https://sushi-peace.web.app/";
+  const bitpetLink = "/bitpet";
+  const bitpetGithubLink = "https://github.com/nosukeuehara/bitpet";
 
   let titleRef: HTMLDivElement;
   let ueharaRef: HTMLDivElement;
   let cotoRef: HTMLDivElement;
   let sushiRef: HTMLDivElement;
+  let bitpetRef: HTMLDivElement;
   let isTitleVisible = false;
   let isUeharaVisible = false;
   let isCotoVisible = false;
   let isSushiVisible = false;
+  let isBitpetVisible = false;
 
   let titleText = "集";
   let subtitleText = "works";
@@ -38,6 +43,8 @@
             isCotoVisible = entry.isIntersecting;
           } else if (entry.target === sushiRef) {
             isSushiVisible = entry.isIntersecting;
+          } else if (entry.target === bitpetRef) {
+            isBitpetVisible = entry.isIntersecting;
           }
         });
       },
@@ -51,6 +58,7 @@
     observer.observe(ueharaRef);
     observer.observe(cotoRef);
     observer.observe(sushiRef);
+    observer.observe(bitpetRef);
     return () => observer.disconnect();
   });
 
@@ -144,6 +152,33 @@
           SushiPals
         </a>
       </div>
+
+      <div
+        class="works__item works__item--bitpet"
+        class:slide-in-bitpet={isBitpetVisible}
+        bind:this={bitpetRef}
+      >
+        <h3 class="works__item-title works__item-title--bitpet">bitpet</h3>
+        <p class="works__item-description">
+          ターミナルの中で小さなモンスターを育てるCLIアプリ。<br />
+          ごはんをあげたり、遊んだり、出かけたりしながら少しずつ成長していきます。<br
+          />
+          Rustで作っていて、日常の作業の合間にちょっと触りたくなるような存在を目指しました。
+        </p>
+        <div class="works__links">
+          <a href={bitpetLink} use:link class="works__link works__link--bitpet">
+            bitpet
+          </a>
+          <a
+            href={bitpetGithubLink}
+            target="_blank"
+            rel="noreferrer"
+            class="works__link works__link--bitpet-github"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </DefaultLayout>
@@ -153,7 +188,7 @@
     background-color: var(--peach-fuzz);
     min-height: 100vh;
     color: var(--dark);
-    padding: 190px 24px;
+    padding: 120px 24px;
   }
   .works__container {
     width: 100%;
@@ -186,14 +221,39 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, var(--dark), transparent);
     transition: left 0.5s ease;
+  }
+
+  .works__item--bitpet {
+    overflow: visible;
+  }
+
+  .works__item--bitpet::after {
+    animation: bitpetBlink 2.4s ease-in-out infinite;
+    background: var(--dark);
+    border-radius: 2px;
+    box-shadow:
+      10px 0 0 var(--dark),
+      5px 8px 0 var(--dark);
+    content: "";
+    height: 4px;
+    left: -18px;
+    opacity: 0.72;
+    position: absolute;
+    top: 0.62em;
+    width: 4px;
   }
 
   .slide-in-left {
     opacity: 1;
     animation: slideInLeft 0.8s ease-out forwards;
   }
+
+  .slide-in-bitpet {
+    opacity: 1;
+    animation: bitpetEnter 0.95s cubic-bezier(0.2, 0.9, 0.24, 1.1) forwards;
+  }
+
   @keyframes slideInLeft {
     from {
       opacity: 0;
@@ -202,6 +262,24 @@
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @keyframes bitpetEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(-42px) translateY(18px) rotate(-1.5deg);
+    }
+    58% {
+      opacity: 1;
+      transform: translateX(8px) translateY(-8px) rotate(0.8deg);
+    }
+    78% {
+      transform: translateX(-3px) translateY(3px) rotate(-0.3deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0) rotate(0deg);
     }
   }
 
@@ -265,6 +343,24 @@
     font-size: var(--font-size-lg);
     padding-bottom: 14px;
   }
+
+  .works__item-title--bitpet {
+    letter-spacing: 0;
+    position: relative;
+    width: fit-content;
+  }
+
+  .works__item-title--bitpet::before {
+    content: "$ ";
+    font-weight: var(--font-weight-light);
+  }
+
+  .works__item-title--bitpet::after {
+    animation: bitpetCursor 1s steps(1, end) infinite;
+    content: "_";
+    margin-left: 0.08em;
+  }
+
   .works__item-description {
     margin: 0;
   }
@@ -279,6 +375,13 @@
   .works__link:hover {
     transform: translateX(5px);
   }
+
+  .works__links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
   .works__link--coto {
     font-family: "Lunasima", sans-serif;
     color: var(--dark);
@@ -287,8 +390,15 @@
     font-family: "Lunasima", sans-serif;
     color: var(--dark);
   }
+
+  .works__link--bitpet,
+  .works__link--bitpet-github {
+    color: var(--dark);
+  }
+
   .works__link::before {
     content: "→";
+    display: inline-block;
     padding-right: 4px;
     font-weight: var(--font-weight-regular);
     transition: transform 0.3s ease;
@@ -298,12 +408,41 @@
     transform: translateX(3px);
   }
 
+  .works__link--bitpet::before,
+  .works__link--bitpet-github::before {
+    content: ">";
+  }
+
+  @keyframes bitpetBlink {
+    0%,
+    78%,
+    100% {
+      transform: translateY(0) scaleY(1);
+    }
+    82% {
+      transform: translateY(2px) scaleY(0.18);
+    }
+  }
+
+  @keyframes bitpetCursor {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
   @media (min-width: 768px) {
+    .works {
+      padding: 190px 24px;
+    }
     .works__container {
       max-width: 1080px;
     }
-    .works__typing-text,
-    .works__cursor {
+    .works__typing-text {
       font-size: var(--font-size-xl);
     }
     .works__subtitle {

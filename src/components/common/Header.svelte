@@ -50,11 +50,8 @@
           </div>
 
           <div class="menu__nav-item">
-            <a
-              class="menu__nav-link"
-              href="/ramble"
-              use:link
-              onclick={closeMenu}>言・こと</a
+            <a class="menu__nav-link" href="/huuud" use:link onclick={closeMenu}
+              >ふーど</a
             >
           </div>
 

@@ -12,7 +12,7 @@
     {:else}
       {#each res.slice(0, 3) as article}
         <div class="info-list__item">
-          <a href={`/info/categories/${article.category.id}`} use:link>
+          <a href={`/info/${article.id}`} use:link>
             <img
               class="info-list__item-image"
               src={article.eyecatch.url}
