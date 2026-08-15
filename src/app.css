@@ -32,6 +32,16 @@
   --chocolate-bark: #653a1f;
   --dark-soil: #2e1e0d;
   --dark: #3f3d38;
+  --pixel-bg: #1d2438;
+  --pixel-ink: #1b1d2a;
+  --pixel-panel: #fff4c7;
+  --pixel-green: #61d095;
+  --pixel-yellow: #ffd94a;
+  --pixel-red: #ff5a5f;
+  --pixel-blue: #50c8ff;
+  --pixel-purple: #8b62ff;
+  --pixel-border: 4px solid var(--pixel-ink);
+  --pixel-shadow: 6px 6px 0 var(--pixel-ink);
 
   /* font weight */
   --font-weight-heavy: 700;
@@ -53,6 +63,7 @@
   /* font family */
   --font-en: "Outfit", sans-serif;
   --font-jp: "Noto Sans JP", sans-serif;
+  --font-pixel: "Courier New", "MS Gothic", monospace;
 
   /* screen size */
   --screen-size-xs: 272px;
@@ -127,4 +138,144 @@ ul {
 
 .gl-font-en {
   font-family: var(--font-en);
+}
+
+body.bitpet-campaign-theme {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    var(--pixel-bg);
+  background-size: 16px 16px;
+}
+
+body.bitpet-campaign-theme,
+body.bitpet-campaign-theme * {
+  image-rendering: pixelated;
+}
+
+body.bitpet-campaign-theme a,
+body.bitpet-campaign-theme button {
+  transition-duration: 80ms;
+}
+
+body.bitpet-campaign-theme h1,
+body.bitpet-campaign-theme h2,
+body.bitpet-campaign-theme h3,
+body.bitpet-campaign-theme .page-top__name-kana,
+body.bitpet-campaign-theme .section-works__subtitle,
+body.bitpet-campaign-theme .section-info__subtitle,
+body.bitpet-campaign-theme .section-huuud__subtitle,
+body.bitpet-campaign-theme .works__subtitle,
+body.bitpet-campaign-theme .footer__name--kana,
+body.bitpet-campaign-theme .nav-header__link,
+body.bitpet-campaign-theme .page-nav__menu-link,
+body.bitpet-campaign-theme .menu__nav-link {
+  font-family: var(--font-pixel);
+}
+
+body.bitpet-campaign-theme .page-top,
+body.bitpet-campaign-theme .section-me,
+body.bitpet-campaign-theme .section-works,
+body.bitpet-campaign-theme .works,
+body.bitpet-campaign-theme .section-huuud,
+body.bitpet-campaign-theme .section-info,
+body.bitpet-campaign-theme .footer,
+body.bitpet-campaign-theme .menu {
+  background-blend-mode: multiply;
+  background-image:
+    linear-gradient(90deg, rgba(27, 29, 42, 0.12) 2px, transparent 2px),
+    linear-gradient(rgba(27, 29, 42, 0.12) 2px, transparent 2px);
+  background-size: 20px 20px;
+}
+
+body.bitpet-campaign-theme .page-top {
+  background-color: #61d095;
+}
+
+body.bitpet-campaign-theme .section-me {
+  background-color: #50c8ff;
+}
+
+body.bitpet-campaign-theme .section-works,
+body.bitpet-campaign-theme .works {
+  background-color: #ffd94a;
+}
+
+body.bitpet-campaign-theme .section-huuud {
+  background-color: #ff8d3d;
+}
+
+body.bitpet-campaign-theme .section-info {
+  background-color: #ffe86b;
+}
+
+body.bitpet-campaign-theme .footer,
+body.bitpet-campaign-theme .menu {
+  background-color: #8b62ff;
+}
+
+body.bitpet-campaign-theme .section-style-base {
+  position: relative;
+}
+
+body.bitpet-campaign-theme .section-style-base::before {
+  border: 4px solid rgba(27, 29, 42, 0.5);
+  content: "";
+  inset: 12px;
+  pointer-events: none;
+  position: absolute;
+}
+
+body.bitpet-campaign-theme .page-top__name-kanji,
+body.bitpet-campaign-theme .page-top__name-kana,
+body.bitpet-campaign-theme .section-works__title .typing-text,
+body.bitpet-campaign-theme .section-works__subtitle .typing-text,
+body.bitpet-campaign-theme .section-info__title,
+body.bitpet-campaign-theme .section-info__subtitle,
+body.bitpet-campaign-theme .section-huuud__title,
+body.bitpet-campaign-theme .section-huuud__subtitle,
+body.bitpet-campaign-theme .works__typing-text,
+body.bitpet-campaign-theme .footer__name {
+  text-shadow: 3px 3px 0 var(--pixel-ink);
+}
+
+body.bitpet-campaign-theme .section-works *,
+body.bitpet-campaign-theme .works *,
+body.bitpet-campaign-theme .section-info *,
+body.bitpet-campaign-theme .info-list * {
+  color: var(--pixel-ink);
+}
+
+body.bitpet-campaign-theme .page-top__github-link,
+body.bitpet-campaign-theme .section-works__link,
+body.bitpet-campaign-theme .works__link,
+body.bitpet-campaign-theme .section-info__more-link a,
+body.bitpet-campaign-theme .section-huuud__link,
+body.bitpet-campaign-theme .footer__link,
+body.bitpet-campaign-theme .footer__sitemap-link,
+body.bitpet-campaign-theme .nav-header__item,
+body.bitpet-campaign-theme .page-nav__menu-link,
+body.bitpet-campaign-theme .menu__nav-item {
+  border: 2px solid currentColor;
+  padding: 6px 8px;
+}
+
+body.bitpet-campaign-theme .page-top__github-link,
+body.bitpet-campaign-theme .section-works__link,
+body.bitpet-campaign-theme .works__link,
+body.bitpet-campaign-theme .section-info__more-link a,
+body.bitpet-campaign-theme .section-huuud__link {
+  background: var(--pixel-panel);
+  box-shadow: 4px 4px 0 var(--pixel-ink);
+  color: var(--pixel-ink);
+}
+
+body.bitpet-campaign-theme .info-list__item {
+  background: var(--pixel-panel);
+  border: var(--pixel-border);
+  box-shadow: var(--pixel-shadow);
+}
+
+body.bitpet-campaign-theme .info-list__item-image {
+  filter: saturate(1.5) contrast(1.15);
 }

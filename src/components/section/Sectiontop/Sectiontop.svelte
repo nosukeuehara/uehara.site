@@ -15,6 +15,10 @@
   </div>
 
   <div class="page-top__contents">
+    <div class="page-top__release" class:fade-in-delay={isLoaded}>
+      <span class="page-top__release-label">bitpet v1 release</span>
+      <span class="page-top__release-copy">terminal pet in 8bit mode</span>
+    </div>
     <div class="page-top__names" class:slide-up={isLoaded}>
       <p class="page-top__name-kanji">上 / 原</p>
       <p class="page-top__name-kana">ue / hara</p>
@@ -43,6 +47,7 @@
   }
 
   .page-top__navbar-wrapper,
+  .page-top__release,
   .page-top__names,
   .page-top__links,
   .page-top__scroll-hint {
@@ -69,6 +74,35 @@
     flex-direction: column;
     align-items: center;
     width: fit-content;
+  }
+
+  .page-top__release {
+    border: 3px solid var(--clear-white);
+    display: none;
+    gap: 4px;
+    padding: 10px 14px;
+    transform: translateY(24px);
+    width: min(320px, calc(100vw - 48px));
+  }
+
+  :global(body.bitpet-campaign-theme) .page-top__release {
+    display: grid;
+  }
+
+  .page-top__release-label,
+  .page-top__release-copy {
+    font-family: var(--font-pixel);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+  }
+
+  .page-top__release-label {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+  }
+
+  .page-top__release-copy {
+    font-size: var(--font-size-xxs);
   }
 
   .page-top__name-kanji {
