@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onDestroy, onMount, tick } from "svelte";
   import initBitpetWasm, { BitPetWasm } from "../lib/bitpet-wasm/bitpet.js";
+  import Seo from "../lib/Seo.svelte";
+  import { pageSeo } from "../seo";
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
 
   type Stage = "Egg" | "Baby" | "Stage 1" | "Stage 2" | "Final";
@@ -238,7 +240,9 @@
     );
   }
 
-  function updateFromWasm(action: "status" | "feed" | "play" | "go" | "report" | "streak") {
+  function updateFromWasm(
+    action: "status" | "feed" | "play" | "go" | "report" | "streak"
+  ) {
     if (!petWasm) {
       return "";
     }
@@ -280,8 +284,12 @@
       hunger: Number(pet.hunger ?? 72),
       mood: Number(pet.mood ?? 72),
       energy: Number(pet.energy ?? 72),
-      eggCreatedAt: toMilliseconds(hatching?.egg_created_at ?? wasmSave.last_updated_at),
-      hatchesAt: toMilliseconds(hatching?.hatches_at ?? wasmSave.last_updated_at),
+      eggCreatedAt: toMilliseconds(
+        hatching?.egg_created_at ?? wasmSave.last_updated_at
+      ),
+      hatchesAt: toMilliseconds(
+        hatching?.hatches_at ?? wasmSave.last_updated_at
+      ),
       lastUpdatedAt: toMilliseconds(wasmSave.last_updated_at),
       dailyKey: String(dailyActions.day ?? getDayKey(Date.now())),
       feedCount: Number(report.feed_count ?? dailyActions.feed_count ?? 0),
@@ -289,14 +297,19 @@
       adventureCount: Number(report.adventure_count ?? 0),
       expGainedToday: Number(report.experience_gained ?? 0),
       moodDeltaToday: Number(report.mood_delta ?? 0),
-      loginDates: Array.from({ length: Number(wasmSave.login?.streak ?? 1) }, (_, index) =>
-        String(index)
+      loginDates: Array.from(
+        { length: Number(wasmSave.login?.streak ?? 1) },
+        (_, index) => String(index)
       ),
-      events: (report.events ?? []).map((event: { timestamp: number; kind: string }) => ({
-        at: formatTime(toMilliseconds(event.timestamp)),
-        text: event.kind,
-      })),
-      expeditionEndsAt: expedition?.ends_at ? toMilliseconds(expedition.ends_at) : null,
+      events: (report.events ?? []).map(
+        (event: { timestamp: number; kind: string }) => ({
+          at: formatTime(toMilliseconds(event.timestamp)),
+          text: event.kind,
+        })
+      ),
+      expeditionEndsAt: expedition?.ends_at
+        ? toMilliseconds(expedition.ends_at)
+        : null,
     };
   }
 
@@ -339,7 +352,11 @@
       next = {
         ...next,
         stage: "Baby",
-        events: addEvent(next.events, `Egg hatched into ${next.name}`, currentNow),
+        events: addEvent(
+          next.events,
+          `Egg hatched into ${next.name}`,
+          currentNow
+        ),
       };
       message = `Egg hatched. ${next.name} is here.`;
     }
@@ -864,6 +881,7 @@
   }
 </script>
 
+<Seo {...pageSeo.bitpet} />
 <DefaultLayout>
   <section class="bitpet-work">
     <div class="bitpet-work__background" aria-hidden="true">
@@ -893,7 +911,9 @@
       </div>
 
       <div class="bitpet-work__mobile-about">
-        <pre class="bitpet-work__mobile-pet">{getAsciiFor(save, false).join("\n")}</pre>
+        <pre class="bitpet-work__mobile-pet">{getAsciiFor(save, false).join(
+            "\n"
+          )}</pre>
         <div class="bitpet-work__mobile-copy">
           <p>
             bitpetは、ターミナルの中で小さなペットを育てるCLIアプリです。

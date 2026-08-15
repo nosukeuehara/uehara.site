@@ -2,8 +2,8 @@
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { createObserver } from "../lib/actions/createObserver";
   import Foods from "../lib/Foods.svelte";
-
-  const href = "/huuud";
+  import Seo from "../lib/Seo.svelte";
+  import { pageSeo } from "../seo";
 
   let isTitleVisible = false;
   let isFoodVisu = false;
@@ -16,6 +16,7 @@
   );
 </script>
 
+<Seo {...pageSeo.huuud} />
 <DefaultLayout>
   <div class="huuud">
     <div class="huuud__contents">
@@ -24,7 +25,7 @@
         class:fade-in-up={isTitleVisible}
         use:titleObserver
       >
-        <h2 class="huuud__title">ふーど</h2>
+        <h1 class="huuud__title">ふーど</h1>
         <p class="huuud__subtitle">huuud</p>
       </div>
 

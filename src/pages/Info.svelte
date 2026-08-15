@@ -1,13 +1,16 @@
 <script lang="ts">
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import Info from "../lib/InfoContents.svelte";
+  import Seo from "../lib/Seo.svelte";
+  import { pageSeo } from "../seo";
 </script>
 
+<Seo {...pageSeo.info} />
 <DefaultLayout>
   <div class="info">
     <div class="info__contents">
       <div class="info__title-wrapper">
-        <h2 class="info__title">報</h2>
+        <h1 class="info__title">報</h1>
         <p class="info__subtitle">info</p>
       </div>
 

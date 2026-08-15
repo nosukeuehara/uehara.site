@@ -16,7 +16,7 @@
             <img
               class="info-list__item-image"
               src={article.eyecatch.url}
-              alt="記事のサムネイル"
+              alt={article.title}
             />
           </a>
           <p class="info-list__item-published">

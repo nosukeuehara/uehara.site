@@ -20,7 +20,7 @@
       <span class="page-top__release-copy">terminal pet in 8bit mode</span>
     </div>
     <div class="page-top__names" class:slide-up={isLoaded}>
-      <p class="page-top__name-kanji">上 / 原</p>
+      <h1 class="page-top__name-kanji">上 / 原</h1>
       <p class="page-top__name-kana">ue / hara</p>
     </div>
     <div class="page-top__links" class:fade-in-delay={isLoaded}>

@@ -2,16 +2,27 @@
   import { fetchSpecificInfo } from "../service/api";
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { link } from "svelte-spa-router";
+  import Seo from "../lib/Seo.svelte";
+  import { articleJsonLd, infoToSeo, pageSeo } from "../seo";
+  import type { JsonLd, PageSeo } from "../seo";
 
   interface Props {
     params: { id: string };
   }
   let props: Props = $props();
+  let detailSeo = $state<PageSeo>(pageSeo.info);
+  let detailJsonLd = $state<JsonLd | undefined>();
+  const infoPromise = fetchSpecificInfo(props.params.id).then((info) => {
+    detailSeo = infoToSeo(info);
+    detailJsonLd = articleJsonLd(info);
+    return info;
+  });
 </script>
 
+<Seo {...detailSeo} jsonLd={detailJsonLd} />
 <DefaultLayout>
   <div class="info-detail">
-    {#await fetchSpecificInfo(props.params.id)}
+    {#await infoPromise}
       <div class="info-detail__loading">
         <p class="info-detail__loading-text">読み込み中...</p>
       </div>
@@ -32,7 +43,7 @@
           {@html info.body}
         </div>
       </article>
-      <a class="info-detail__back-link" href="/Info" use:link>
+      <a class="info-detail__back-link" href="/info" use:link>
         <p class="info-detail__back-link-text">→ 報</p>
       </a>
     {:catch err}

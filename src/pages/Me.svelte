@@ -7,6 +7,8 @@
     fallbackLanguageSkills,
     type LanguageSkill,
   } from "../contentData/meItem";
+  import Seo from "../lib/Seo.svelte";
+  import { pageSeo } from "../seo";
   import { fetchGitHubLanguageSkills } from "../service/githubSkills";
 
   // IntersectionObserver のセットアップ
@@ -22,6 +24,7 @@
   );
 </script>
 
+<Seo {...pageSeo.me} />
 <DefaultLayout>
   <div class="me section-style-base">
     <div
@@ -29,6 +32,7 @@
       class:fade-in-up={isCloudVisible}
       use:cloudObserver
     >
+      <h1 class="me__title">上原 龍之介のプロフィール</h1>
       <ProfileCloud languages={languageSkills} />
     </div>
   </div>
@@ -55,6 +59,19 @@
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     margin: 0 auto;
+  }
+
+  .me__title {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 
   .fade-in-up {

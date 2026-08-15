@@ -15,7 +15,7 @@
     </div>
 
     <div class="section-info__more-link">
-      <a href="/Info" use:link>→ 報</a>
+      <a href="/info" use:link>→ 報</a>
     </div>
   </div>
 </section>

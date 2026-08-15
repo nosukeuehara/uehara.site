@@ -141,11 +141,40 @@ ul {
 }
 
 body.bitpet-campaign-theme {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html.bitpet-campaign-theme,
+body.bitpet-campaign-theme {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     var(--pixel-bg);
   background-size: 16px 16px;
+}
+
+body.bitpet-campaign-theme::before {
+  color: rgba(255, 244, 199, 0.22);
+  content: " /\\_/\\     /\\       zZ      /^ ^\\     /\\___/\\\A( o.o )   (..)     ( -.-)   ( 0 0 )   (  o o  )\A > ^ <    /||\\     /|_|      \\_/     /  ^  \\\A\A  /\\       /\\_/\\     /^ ^\\     zZ      /\\___/\\\A (..)     ( o.o )   ( 0 0 )   ( -.-)   (  o o  )\A /||\\      > ^ <      \\_/      /|_|    (_/___\\_)\A\A zZ       /^ ^\\     /\\       /\\_/\\     /\\___/\\\A( -.-)    ( 0 0 )   (..)     ( o.o )   (  o o  )\A /|_|       \\_/     /||\\      > ^ <    /  ^  \\";
+  font-family: var(--font-pixel);
+  font-size: clamp(18px, 4.8vw, 54px);
+  font-weight: var(--font-weight-bold);
+  inset: -18vh -18vw;
+  letter-spacing: 0;
+  line-height: 1.12;
+  pointer-events: none;
+  position: fixed;
+  text-shadow: 4px 4px 0 rgba(27, 29, 42, 0.35);
+  transform: rotate(-8deg);
+  white-space: pre;
+  z-index: 0;
+}
+
+body.bitpet-campaign-theme #app {
+  position: relative;
+  z-index: 1;
 }
 
 body.bitpet-campaign-theme,

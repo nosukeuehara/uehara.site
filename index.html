@@ -2,19 +2,22 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>uehara soo | 作品集</title>
+    <title>uehara soo | Web制作・個人開発の作品集</title>
 
     <meta
       name="description"
-      content="上原 龍之介のポートフォリオ。Web制作、デジタルプロジェクトなど、創作を中心に表現をまとめています。"
+      content="上原 龍之介のポートフォリオ。Svelte、Rust、Web制作、個人開発の作品やお知らせをまとめています。"
     />
     <link rel="canonical" href="https://uehara-site.pages.dev/" />
 
     <!-- OGP / SNS -->
-    <meta property="og:title" content="uehara soo | 作品集" />
+    <meta
+      property="og:title"
+      content="uehara soo | Web制作・個人開発の作品集"
+    />
     <meta
       property="og:description"
-      content="Web制作、デジタル作品をまとめたポートフォリオサイト。"
+      content="上原 龍之介のポートフォリオ。Svelte、Rust、Web制作、個人開発の作品やお知らせをまとめています。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://uehara-site.pages.dev/" />
@@ -25,6 +28,18 @@
     <meta property="og:site_name" content="uehara soo | 作品集" />
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="uehara soo | Web制作・個人開発の作品集"
+    />
+    <meta
+      name="twitter:description"
+      content="上原 龍之介のポートフォリオ。Svelte、Rust、Web制作、個人開発の作品やお知らせをまとめています。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://uehara-site.pages.dev/uehara.png"
+    />
 
     <!-- Favicon -->
     <link
@@ -52,7 +67,7 @@
     />
     <link
       rel="apple-touch-icon"
-      href="https://uehara-site.pages.dev/apple-touch-icon.png"
+      href="https://uehara-site.pages.dev/favicon-192.png"
     />
 
     <!-- レスポンシブ -->
@@ -67,17 +82,28 @@
     />
 
     <!-- 構造化データ (JSON-LD) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://uehara-site.pages.dev/#owner",
-        "name": "上原 龍之介",
-        "url": "https://uehara-site.pages.dev/",
-        "image": "https://uehara-site.pages.dev/uehara.png",
-        "description": "web制作、デジタル作品をまとめたポートフォリオサイト。",
-        "sameAs": ["https://github.com/nosukeuehara"]
-      }
+    <script id="page-json-ld" type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://uehara-site.pages.dev/#website",
+          "name": "uehara soo | 作品集",
+          "url": "https://uehara-site.pages.dev",
+          "inLanguage": "ja"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://uehara-site.pages.dev/#owner",
+          "name": "上原 龍之介",
+          "alternateName": "uehara soo",
+          "url": "https://uehara-site.pages.dev/",
+          "image": "https://uehara-site.pages.dev/uehara.png",
+          "description": "Web制作、デジタル作品をまとめたポートフォリオサイト。",
+          "sameAs": ["https://github.com/nosukeuehara"]
+        }
+      ]
     </script>
   </head>
   <body>

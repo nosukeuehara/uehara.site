@@ -3,16 +3,30 @@
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { link } from "svelte-spa-router";
   import Categories from "../lib/Categories.svelte";
+  import Seo from "../lib/Seo.svelte";
+  import { categoryToSeo } from "../seo";
+  import type { PageSeo } from "../seo";
 
   interface Props {
     params: { categoryId: string };
   }
   let props: Props = $props();
+  let categorySeo = $state<PageSeo>(categoryToSeo(props.params.categoryId));
+  const articlesPromise = fetchInfoByCategoryId(props.params.categoryId).then(
+    (articles) => {
+      categorySeo = categoryToSeo(
+        props.params.categoryId,
+        articles[0]?.category.name
+      );
+      return articles;
+    }
+  );
 </script>
 
+<Seo {...categorySeo} />
 <DefaultLayout>
   <div class="info-category">
-    {#await fetchInfoByCategoryId(props.params.categoryId)}
+    {#await articlesPromise}
       <div class="info-category__loading">
         <p class="info-category__loading-text">読み込み中...</p>
       </div>
@@ -20,9 +34,9 @@
       {#if articles.length === 0}
         <p class="info-category__no-items">記事が見つかりませんでした。</p>
       {:else}
-        <h2 class="info-category__title">
+        <h1 class="info-category__title">
           「{articles[0].category.name}」 の記事一覧
-        </h2>
+        </h1>
         <Categories params={props.params} />
         <div class="info-category__list">
           {#each articles as article}
@@ -30,7 +44,7 @@
               <img
                 class="info-list__item-image"
                 src={article.eyecatch.url}
-                alt="記事のサムネイル"
+                alt={article.title}
               />
               <p class="info-list__item-published">
                 {new Date(article.publishedAt).toLocaleDateString()}

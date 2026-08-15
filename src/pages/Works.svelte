@@ -2,6 +2,8 @@
   import DefaultLayout from "./common/layout/DefaultLayout.svelte";
   import { onMount } from "svelte";
   import { link } from "svelte-spa-router";
+  import Seo from "../lib/Seo.svelte";
+  import { pageSeo } from "../seo";
 
   const cotoLink = "https://coto-nine.vercel.app/";
   const sushipalsLink = "https://sushi-peace.web.app/";
@@ -84,6 +86,7 @@
   }
 </script>
 
+<Seo {...pageSeo.works} />
 <DefaultLayout>
   <section class="works">
     <div class="works__container">
@@ -92,12 +95,12 @@
         class:fade-slide-up={isTitleVisible}
         bind:this={titleRef}
       >
-        <h2 class="works__title">
+        <h1 class="works__title">
           <span class="works__typing-text">{displayTitle}</span>
           {#if isTypingTitle && titleIndex <= titleText.length}
             <span class="works__cursor--xl">|</span>
           {/if}
-        </h2>
+        </h1>
         <p class="works__subtitle">
           <span class="works__typing-text">{displaySubtitle}</span>
           {#if isTypingSubtitle && subtitleIndex <= subtitleText.length}

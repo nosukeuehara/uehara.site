@@ -16,6 +16,10 @@
 
   function syncCampaignTheme() {
     campaign = getBitpetCampaign();
+    document.documentElement.classList.toggle(
+      "bitpet-campaign-theme",
+      campaign.active
+    );
     document.body.classList.toggle("bitpet-campaign-theme", campaign.active);
   }
 
@@ -28,6 +32,9 @@
     if (campaignTimer) {
       window.clearInterval(campaignTimer);
     }
+
+    document.documentElement.classList.remove("bitpet-campaign-theme");
+    document.body.classList.remove("bitpet-campaign-theme");
   });
 </script>
 
