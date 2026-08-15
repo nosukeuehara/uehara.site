@@ -2,9 +2,20 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
+    tags:
+      - "site/bitpet-8bit-*"
 
   workflow_dispatch:
+    inputs:
+      bitpet_campaign_end_at:
+        description: "BitPet campaign end time. ISO 8601 UTC. Default is 2026-09-15T14:59:59.000Z."
+        required: false
+        type: string
+        default: "2026-09-15T14:59:59.000Z"
+
+env:
+  VITE_BITPET_CAMPAIGN_END_AT: ${{ github.event.inputs.bitpet_campaign_end_at || '2026-09-15T14:59:59.000Z' }}
 
 permissions:
   contents: read
@@ -12,7 +23,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -28,9 +39,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
+      - name: Type check
+        run: npm run check
       - name: Build
         run: npm run build
       - name: Setup Pages
@@ -38,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
